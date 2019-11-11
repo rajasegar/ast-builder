@@ -61,4 +61,4 @@ var r={buildVariableDeclaration:function(e){var t=e.kind,r=e.declarations[0],i=r
 return a.variableDeclaration(t,[a.variableDeclarator(a.identifier(i.name),a.literal(n.value))])},buildImportDeclaration:function(e){var t=e.source,r=e.specifiers[0],i=r.imported,n=r.local
 return a.importDeclaration([a.importSpecifier(a.identifier(i.name),a.identifier(n.name))],a.literal(t.value))}}
 e.default=r}),define("ast-maker/config/environment",[],function(){try{var e="ast-maker/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),a={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(a,"__esModule",{value:!0}),a}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-maker/app").default.create({name:"ast-maker",version:"0.0.0+dd535a82"})
+return Object.defineProperty(a,"__esModule",{value:!0}),a}catch(r){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-maker/app").default.create({name:"ast-maker",version:"0.0.0+8731d18a"})
