@@ -1,16 +1,52 @@
-function decapitalize(s) {
-  return s[0].toLowerCase() + s.slice(1);
+//function decapitalize(s) {
+//  return s[0].toLowerCase() + s.slice(1);
+//}
+
+function callExpression(expression) {
+  let { arguments: args, callee } = expression;
+  return `j.callExpression(
+        j.identifier('${callee.name}'),
+        [${buildArgs(args)}]
+      )`;
 }
 
+function literal(node) {
+  let value = typeof node.value === 'string' ? `'${node.value}'` : node.value;
+  return `j.literal(${value})`;
+}
+
+function buildValue(node) {
+  switch(node.type) {
+    case "Literal":
+      return literal(node);
+    case "ObjectExpression":
+      return objectExpression(node);
+    case "CallExpression":
+      return callExpression(node);
+    default:
+      console.log(node.type); // eslint-disable-line
+      return '';
+  }
+}
+
+function objectExpression(node) {
+  let { properties } = node;
+  let str = properties.map(p => {
+    let { key, value } = p;
+    return `j.property("init", j.identifier('${key.name}'), ${buildValue(value)})`;
+  });
+  return `j.objectExpression([${str.join(',')}])`;
+}
 function variableDeclaration(node) {
   let { kind, declarations } = node;
   let { id, init}  = declarations[0];
-  let value = typeof init.value === "string" ? `'${init.value}'` : init.value;
+  let value = buildValue(init);
+  
   let str = `j.variableDeclaration(
   '${kind}',
       [j.variableDeclarator(
       j.identifier('${id.name}'),
-        j.${decapitalize(init.type)}(${value})
+        ${value}
           )]);`;
 
             
@@ -62,7 +98,7 @@ str = `j.memberExpression(
 
 function expressionStatement(node) {
   let { expression } = node;
-  let { arguments: args, callee } = expression;
+  let { arguments: args, callee, extra } = expression;
   let str = '';
   if (callee.type === 'MemberExpression') { // Member Expression
     str = `j.expressionStatement(
@@ -71,15 +107,52 @@ function expressionStatement(node) {
     [${buildArgs(args)}]
     ))`;
   } else { // Call Expression
-    str = `j.expressionStatement(
+
+    if(extra && extra.parenthesized) {
+      str = `j.expressionStatement(
+     j.parenthesizedExpression(
+    j.callExpression(
+        j.identifier('${callee.name}'),
+        [${buildArgs(args)}]
+      )))`;
+
+    } else {
+      str = `j.expressionStatement(
     j.callExpression(
         j.identifier('${callee.name}'),
         [${buildArgs(args)}]
       ))`;
+    }
   }
   return str;
 }
 
+function buildBlock(body) {
+  // Build the jscodeshift api 
+  let _ast = body.map(node => {
+
+    switch(node.type) {
+      case 'VariableDeclaration':
+        return variableDeclaration(node);
+
+      case 'ImportDeclaration':
+        return importDeclaration(node);
+
+      case 'ExpressionStatement':
+        return expressionStatement(node);
+
+      case 'IfStatement':
+        return ifStatement(node);
+
+      default:
+        console.log(node.type); // eslint-disable-line
+        return '';
+    }
+
+  });
+
+  return _ast.join(',');
+}
 function ifStatement(node) {
   let { test, consequent, alternate } = node;
   let str = '';
@@ -90,11 +163,19 @@ function ifStatement(node) {
   } else if(test.type === 'Identifier') {
     condition = `j.identifier(${test.name})`;
   }
-  str = `j.ifStatement(
+
+  if(alternate) {
+    str = `j.ifStatement(
   ${condition},
-  j.blockStatement([
-    j.expressionStatement(j.callExpression(j.memberExpression(j.identifier('console'),j.identifier('log')),[j.literal('hello')]))
-    ]))`;
+  j.blockStatement([${buildBlock(consequent.body)}]),
+  j.blockStatement([${buildBlock(alternate.body)}])
+  )`;
+  } else {
+    str = `j.ifStatement(
+  ${condition},
+  j.blockStatement([${buildBlock(consequent.body)}])
+  )`;
+  }
   return str;
 }
 
