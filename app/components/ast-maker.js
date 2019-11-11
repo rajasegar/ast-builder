@@ -1,56 +1,61 @@
 import Component from '@ember/component';
 import { parse, print } from 'recast';
+import { 
+  createVariableDeclaration,
+  createImportDeclaration
+} from '../utils/codeshift-api';
 
-const _code = `let a = 1;`;
-const _code1 = `/**
- ** Paste or drop some JavaScript here and explore
- ** the syntax tree created by chosen parser.
- ** You can use all the cool new features from ES6
- ** and even more. Enjoy!
- **/
+import builders from '../utils/recast-builders';
 
-let tips = [
-  "Click on any AST node with a '+' to expand it",
-
-  "Hovering over a node highlights the \
-  corresponding part in the source code",
-
-  "Shift click on an AST node expands the whole substree"
-];
-
-function printTips() {
-   tips.forEach((tip, i) => console.log(tip));
-}`;
+const _code = `let a = 1;
+import { foo as bar } from 'lib';
+`;
 
 export default Component.extend({
 
- code: _code,
+  code: _code,
+  jsonMode: { name: "javascript", json: true },
   actions: {
     convert() {
-    let ast = parse(this.get('code'));
-    console.log(parse(this.get('code')));
-      let _ast = '';
-      ast.program.body.forEach(node => {
-        if(node.type === 'VariableDeclaration') {
-          let str = `
-          j.variableDeclaration(
-          "${node.kind}",
-              [j.variableDeclarator(
-              j.identifier(${node.declarations[0].id.name}),
-                  j.bindExpression(null,j.memberExpression(j.thisExpression(),j.identifier('foo'),false))
-                  )]);`;
-          _ast += str;
+      let ast = parse(this.get('code'));
+      this.set('ast', JSON.stringify(ast));
+      const sampleCode = '';
+      const outputAst = parse(sampleCode);  
+      console.log(parse(this.get('code')));
+      let _ast = ast.program.body.map(node => {
+
+        switch(node.type) {
+          case 'VariableDeclaration':
+            return createVariableDeclaration(node);
+
+          case 'ImportDeclaration':
+            return createImportDeclaration(node);
+
+          default:
+            console.log(node.type); // eslint-disable-line
+            return '';
         }
 
       });
 
-      this.set('ast', _ast);
+      this.set('nodeApi', _ast.join('\n'));
+      let _outputNodes = ast.program.body.map(node => {
+        switch(node.type) {
+          case 'VariableDeclaration':
+            return builders.buildVariableDeclaration(node);
 
-      this.set('output', print(ast).code);
+          case 'ImportDeclaration':
+            return builders.buildImportDeclaration(node);
+        }
+      });
 
+      _outputNodes.forEach(n => outputAst.program.body.push(n));
+
+      const output = print(outputAst, { quote: 'single'}).code;
+
+      this.set('output', output);
 
     }
   }
-
 
 });
