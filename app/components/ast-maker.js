@@ -6,12 +6,19 @@ const j = types.builders; // eslint-disable-line
 
 // Sample code to test
 const _code = `let a = 1;
+let b = 'hello';
+let c = false;
+const d = 2;
+var e = true;
 import { foo as bar } from 'lib';
 hello(1, 'world', true, a);
 this.hello(1, 'world', true, a);
 hello.world(1, 'foo', true, a);
 foo.bar.baz();
 foo.bar.bax.baz(1, 'foo', true, a);
+if(a === 1) {
+console.log('true');
+}
 `;
 
 export default Component.extend({
@@ -34,13 +41,16 @@ export default Component.extend({
 
         switch(node.type) {
           case 'VariableDeclaration':
-            return jsc.createVariableDeclaration(node);
+            return jsc.variableDeclaration(node);
 
           case 'ImportDeclaration':
-            return jsc.createImportDeclaration(node);
+            return jsc.importDeclaration(node);
 
           case 'ExpressionStatement':
-            return jsc.createExpressionStatement(node);
+            return jsc.expressionStatement(node);
+
+          case 'IfStatement':
+            return jsc.ifStatement(node);
 
           default:
             console.log(node.type); // eslint-disable-line
