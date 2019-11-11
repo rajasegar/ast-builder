@@ -1,35 +1,46 @@
 import Component from '@ember/component';
-import { parse, print } from 'recast';
-import { 
-  createVariableDeclaration,
-  createImportDeclaration
-} from '../utils/codeshift-api';
+import { parse, print, types } from 'recast';
+import jsc from '../utils/codeshift-api';
 
-import builders from '../utils/recast-builders';
+const j = types.builders; // eslint-disable-line
 
+// Sample code to test
 const _code = `let a = 1;
 import { foo as bar } from 'lib';
+hello(1, 'world', true, a);
+this.hello(1, 'world', true, a);
+hello.world(1, 'foo', true, a);
+foo.bar.baz();
+foo.bar.bax.baz(1, 'foo', true, a);
 `;
 
 export default Component.extend({
 
   code: _code,
-  jsonMode: { name: "javascript", json: true },
+  init() {
+    this._super(...arguments);
+    this.set('jsonMode',{ name: "javascript", json: true });
+  },
   actions: {
     convert() {
       let ast = parse(this.get('code'));
       this.set('ast', JSON.stringify(ast));
       const sampleCode = '';
       const outputAst = parse(sampleCode);  
-      console.log(parse(this.get('code')));
+      console.log(ast.program.body);
+
+      // Build the jscodeshift api 
       let _ast = ast.program.body.map(node => {
 
         switch(node.type) {
           case 'VariableDeclaration':
-            return createVariableDeclaration(node);
+            return jsc.createVariableDeclaration(node);
 
           case 'ImportDeclaration':
-            return createImportDeclaration(node);
+            return jsc.createImportDeclaration(node);
+
+          case 'ExpressionStatement':
+            return jsc.createExpressionStatement(node);
 
           default:
             console.log(node.type); // eslint-disable-line
@@ -38,18 +49,10 @@ export default Component.extend({
 
       });
 
-      this.set('nodeApi', _ast.join('\n'));
-      let _outputNodes = ast.program.body.map(node => {
-        switch(node.type) {
-          case 'VariableDeclaration':
-            return builders.buildVariableDeclaration(node);
+      this.set('nodeApi', _ast.join('\n//-----------------------\n'));
 
-          case 'ImportDeclaration':
-            return builders.buildImportDeclaration(node);
-        }
-      });
-
-      _outputNodes.forEach(n => outputAst.program.body.push(n));
+      // Check the manifested api is working fine
+      _ast.forEach(n => outputAst.program.body.push(eval(n)));
 
       const output = print(outputAst, { quote: 'single'}).code;
 
