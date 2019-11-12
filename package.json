@@ -16,7 +16,7 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "deploy": "ember build --environment production && gh-pages -d dist"
+    "deploy": "git push && ember build --environment production && gh-pages -d dist"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.0",
