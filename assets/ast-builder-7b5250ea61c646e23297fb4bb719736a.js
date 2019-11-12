@@ -3,13 +3,14 @@ define("ast-builder/app",["exports","ast-builder/resolver","ember-load-initializ
 var r=Ember.Application.extend({modulePrefix:a.default.modulePrefix,podModulePrefix:a.default.podModulePrefix,Resolver:t.default});(0,n.default)(r,a.default.modulePrefix)
 var i=r
 e.default=i}),define("ast-builder/components/ast-maker",["exports","recast","ast-builder/utils/codeshift-api"],function(_exports,_recast,_codeshiftApi){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
-var j=_recast.types.builders,_code="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {}\n",_default=Ember.Component.extend({code:_code,ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
+var j=_recast.types.builders,_code="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n",_default=Ember.Component.extend({code:_code,ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
 return console.log(e.program.body),JSON.stringify(e)}),pseudoAst:Ember.computed("code",function(){return(0,_recast.parse)(this.get("code")).program.body.map(function(e){switch(e.type){case"VariableDeclaration":return _codeshiftApi.default.variableDeclaration(e)
 case"ImportDeclaration":return _codeshiftApi.default.importDeclaration(e)
 case"ExpressionStatement":return _codeshiftApi.default.expressionStatement(e)
 case"IfStatement":return _codeshiftApi.default.ifStatement(e)
 case"ExportDefaultDeclaration":return _codeshiftApi.default.exportDefaultDeclaration(e)
 case"ClassDeclaration":return _codeshiftApi.default.classDeclaration(e)
+case"FunctionDeclaration":return _codeshiftApi.default.functionDeclaration(e)
 default:return console.log(e.type),""}})}),nodeApi:Ember.computed("pseudoAst",function(){return this.get("pseudoAst").join("\n//-----------------------\n")}),output:Ember.computed("pseudoAst",function(){var sampleCode="",outputAst=(0,_recast.parse)(sampleCode)
 this.get("pseudoAst").forEach(function(n){return outputAst.program.body.push(eval(n))})
 var output=(0,_recast.print)(outputAst,{quote:"single"}).code
@@ -48,33 +49,38 @@ var a=n
 e.default=a}),define("ast-builder/routes/index",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.Route.extend({})
 e.default=t}),define("ast-builder/services/ajax",["exports","ember-ajax/services/ajax"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})}),define("ast-builder/services/code-mirror",["exports","ivy-codemirror/services/code-mirror"],function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})}),define("ast-builder/templates/application",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var t=Ember.HTMLBars.template({id:"vM9rjoe6",block:'{"symbols":[],"statements":[[7,"header"],[9],[0,"\\n  "],[7,"h1"],[9],[0,"ast-builder"],[10],[0,"\\n  "],[7,"p"],[9],[0,"Build your ASTs directly from code"],[10],[0,"\\n"],[10],[0,"\\n"],[7,"main"],[9],[0,"\\n  "],[1,[23,"outlet"],false],[0,"\\n"],[10],[0,"\\n"],[7,"footer"],[9],[0,"\\n  "],[7,"p"],[9],[7,"a"],[11,"href","https://github.com/rajasegar/ast-builder"],[9],[0,"Github"],[10],[10],[0,"\\n"],[10],[0,"\\n\\n"]],"hasEval":false}',meta:{moduleName:"ast-builder/templates/application.hbs"}})
+var t=Ember.HTMLBars.template({id:"QuWNhaL8",block:'{"symbols":[],"statements":[[7,"header"],[9],[0,"\\n  "],[7,"h1"],[9],[0,"ast-builder"],[10],[0,"\\n"],[10],[0,"\\n"],[7,"main"],[9],[0,"\\n  "],[1,[23,"outlet"],false],[0,"\\n"],[10],[0,"\\n"],[7,"footer"],[9],[0,"\\n  "],[7,"p"],[9],[0,"\\n  "],[7,"a"],[11,"href","https://github.com/rajasegar/ast-builder"],[9],[0,"Github"],[10],[0," |\\n  "],[7,"a"],[11,"href","https://github.com/rajasegar/ast-builder/issues"],[9],[0,"Report issues"],[10],[0," \\n  "],[10],[0,"\\n"],[10],[0,"\\n\\n"]],"hasEval":false}',meta:{moduleName:"ast-builder/templates/application.hbs"}})
 e.default=t}),define("ast-builder/templates/components/ast-maker",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.HTMLBars.template({id:"1xVrDTwG",block:'{"symbols":[],"statements":[[7,"div"],[11,"class","grid-row"],[9],[0,"\\n  "],[7,"div"],[11,"class","grid-col"],[9],[0,"\\n    "],[1,[29,"ivy-codemirror",null,[["value","options","valueUpdated"],[[25,["code"]],[29,"hash",null,[["lineNumbers","mode","theme"],[true,"javascript","ambiance"]]],[29,"action",[[24,0,[]],[29,"mut",[[25,["code"]]],null]],null]]]],false],[0,"\\n    "],[1,[29,"ivy-codemirror",null,[["value","options"],[[25,["ast"]],[29,"hash",null,[["mode","theme","foldGutter"],[[25,["jsonMode"]],"ambiance",true]]]]]],false],[0,"\\n  "],[10],[0,"\\n  "],[7,"div"],[11,"class","grid-col"],[9],[0,"\\n    "],[1,[29,"ivy-codemirror",null,[["value","options"],[[25,["nodeApi"]],[29,"hash",null,[["lineNumbers","mode","theme","autoIndent"],[true,"javascript","ambiance",true]]]]]],false],[0,"\\n    "],[1,[29,"ivy-codemirror",null,[["value","options"],[[25,["output"]],[29,"hash",null,[["lineNumbers","mode","theme"],[true,"javascript","ambiance"]]]]]],false],[0,"\\n  "],[10],[0,"\\n"],[10],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"ast-builder/templates/components/ast-maker.hbs"}})
 e.default=t}),define("ast-builder/templates/index",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t=Ember.HTMLBars.template({id:"yiLOP4+C",block:'{"symbols":[],"statements":[[5,"ast-maker",[],[[],[]],{"statements":[],"parameters":[]}],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"ast-builder/templates/index.hbs"}})
-e.default=t}),define("ast-builder/utils/codeshift-api",["exports"],function(e){function t(e){switch(e.type){case"Literal":return function(e){var t="string"==typeof e.value?"'".concat(e.value,"'"):e.value
-return"j.literal(".concat(t,")")}(e)
-case"ObjectExpression":return function(e){var n=e.properties.map(function(e){var n=e.key,a=e.value
-return'j.property("init", j.identifier(\''.concat(n.name,"'), ").concat(t(a),")")})
-return"j.objectExpression([".concat(n.join(","),"])")}(e)
-case"CallExpression":return a=(n=e).arguments,i=n.callee,"j.callExpression(\n        j.identifier('".concat(i.name,"'),\n        [").concat(r(a),"]\n      )")
-default:return console.log(e.type),""}var n,a,i}function n(e){var n=e.kind,a=e.declarations[0],r=a.id,i=t(a.init)
-return"j.variableDeclaration(\n  '".concat(n,"',\n      [j.variableDeclarator(\n      j.identifier('").concat(r.name,"'),\n        ").concat(i,"\n          )]);")}function a(e){var t=e.source,n=e.specifiers[0],a=n.imported,r=n.local
-return"j.importDeclaration(\n           [j.importSpecifier(j.identifier('".concat(a.name,"'),j.identifier('").concat(r.name,"'))],\n    j.literal('").concat(t.value,"')\n                  );")}function r(e){return e.map(function(e){switch(e.type){case"Literal":return"j.literal(".concat(e.raw,")")
+e.default=t}),define("ast-builder/utils/codeshift-api",["exports"],function(e){function t(e){var t="string"==typeof e.value?"'".concat(e.value,"'"):e.value
+return"j.literal(".concat(t,")")}function n(e){return e.map(function(e){switch(e.type){case"Literal":return t(e)
 case"Identifier":return"j.identifier('".concat(e.name,"')")
-default:return""}}).join(",")}function i(e){var t=e.expression,n=t.arguments,a=t.callee,i=t.extra
-return"MemberExpression"===a.type?"j.expressionStatement(\n    j.callExpression(\n    ".concat(function e(t){var n=t.object,a=t.property,r=""
-return r="ThisExpression"===n.type?"j.thisExpression()":"MemberExpression"===n.type?"".concat(e(n)):"j.identifier('".concat(n.name,"')"),"j.memberExpression(\n ".concat(r,",\n j.identifier('").concat(a.name,"')\n  )")}(a),",\n    [").concat(r(n),"]\n    ))"):i&&i.parenthesized?"j.expressionStatement(\n     j.parenthesizedExpression(\n    j.callExpression(\n        j.identifier('".concat(a.name,"'),\n        [").concat(r(n),"]\n      )))"):"j.expressionStatement(\n    j.callExpression(\n        j.identifier('".concat(a.name,"'),\n        [").concat(r(n),"]\n      ))")}function o(e){return e.map(function(e){switch(e.type){case"VariableDeclaration":return n(e)
-case"ImportDeclaration":return a(e)
-case"ExpressionStatement":return i(e)
-case"IfStatement":return l(e)
-default:return console.log(e.type),""}}).join(",")}function l(e){var t,n=e.test,a=e.consequent,r=e.alternate
-if("BinaryExpression"===n.type){var i=n.operator,l=n.left,s=n.right
-t="j.binaryExpression('".concat(i,"', j.identifier('").concat(l.name,"'), j.literal('").concat(s.value,"'))")}else"Identifier"===n.type&&(t="j.identifier(".concat(n.name,")"))
-return r?"j.ifStatement(\n  ".concat(t,",\n  j.blockStatement([").concat(o(a.body),"]),\n  j.blockStatement([").concat(o(r.body),"])\n  )"):"j.ifStatement(\n  ".concat(t,",\n  j.blockStatement([").concat(o(a.body),"])\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var s={classDeclaration:function(e){var t=e.id,n=e.superClass
+case"SpreadElement":return a=e.argument.name,"j.spreadElement(j.identifier('".concat(a,"'))")
+case"FunctionExpression":return function(e){var t="",a=e.id,r=e.body,i=e.params
+t=a?"j.functionExpression(\n  j.identifier('".concat(a.name,"'),\n  [").concat(n(i),"],\n  j.blockStatement([").concat(l(r.body),"])\n  )"):"j.functionExpression(\n  null,\n  [".concat(n(i),"],\n  j.blockStatement([").concat(l(r.body),"])\n  )")
+return t}(e)
+default:return""}var a}).join(",")}function a(e){switch(e.type){case"Literal":return t(e)
+case"ObjectExpression":return function(e){var t=e.properties.map(function(e){var t=e.key,n=e.value
+return'j.property("init", j.identifier(\''.concat(t.name,"'), ").concat(a(n),")")})
+return"j.objectExpression([".concat(t.join(","),"])")}(e)
+case"CallExpression":return i=(r=e).arguments,o=r.callee,"j.callExpression(\n        j.identifier('".concat(o.name,"'),\n        [").concat(n(i),"]\n      )")
+default:return console.log(e.type),""}var r,i,o}function r(e){var t=e.kind,n=e.declarations[0],r=n.id,i=a(n.init)
+return"j.variableDeclaration(\n  '".concat(t,"',\n      [j.variableDeclarator(\n      j.identifier('").concat(r.name,"'),\n        ").concat(i,"\n          )])")}function i(e){var t=e.source,n=e.specifiers[0],a=n.imported,r=n.local
+return"j.importDeclaration(\n           [j.importSpecifier(j.identifier('".concat(a.name,"'),j.identifier('").concat(r.name,"'))],\n    j.literal('").concat(t.value,"')\n                  );")}function o(e){var t=e.expression,a=t.arguments,r=t.callee,i=t.extra
+return"MemberExpression"===r.type?"j.expressionStatement(\n    j.callExpression(\n    ".concat(function e(t){var n=t.object,a=t.property,r=""
+return r="ThisExpression"===n.type?"j.thisExpression()":"MemberExpression"===n.type?"".concat(e(n)):"j.identifier('".concat(n.name,"')"),"j.memberExpression(\n ".concat(r,",\n j.identifier('").concat(a.name,"')\n  )")}(r),",\n    [").concat(n(a),"]\n    ))"):i&&i.parenthesized?"j.expressionStatement(\n     j.parenthesizedExpression(\n    j.callExpression(\n        j.identifier('".concat(r.name,"'),\n        [").concat(n(a),"]\n      )))"):"j.expressionStatement(\n    j.callExpression(\n        j.identifier('".concat(r.name,"'),\n        [").concat(n(a),"]\n      ))")}function l(e){return e.map(function(e){switch(e.type){case"VariableDeclaration":return r(e)
+case"ImportDeclaration":return i(e)
+case"ExpressionStatement":return o(e)
+case"IfStatement":return s(e)
+default:return console.log(e.type),""}}).join(",")}function s(e){var t,n=e.test,a=e.consequent,r=e.alternate
+if("BinaryExpression"===n.type){var i=n.operator,o=n.left,s=n.right
+t="j.binaryExpression('".concat(i,"', j.identifier('").concat(o.name,"'), j.literal('").concat(s.value,"'))")}else"Identifier"===n.type&&(t="j.identifier(".concat(n.name,")"))
+return r?"j.ifStatement(\n  ".concat(t,",\n  j.blockStatement([").concat(l(a.body),"]),\n  j.blockStatement([").concat(l(r.body),"])\n  )"):"j.ifStatement(\n  ".concat(t,",\n  j.blockStatement([").concat(l(a.body),"])\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var u={classDeclaration:function(e){var t=e.id,n=e.superClass
 return e.body,"j.classDeclaration(\n    j.identifier('".concat(t.name,"'),\n    j.classBody([]),\n    j.identifier('").concat(n.name,"')\n  )")},exportDefaultDeclaration:function(e){var t=e.declaration,n=t.id,a=t.superClass
-return t.body,"j.exportDefaultDeclaration(\n  j.classDeclaration(\n    j.identifier('".concat(n.name,"'),\n    j.classBody([]),\n    j.identifier('").concat(a.name,"')\n  )\n  )")},expressionStatement:i,ifStatement:l,importDeclaration:a,variableDeclaration:n}
-e.default=s}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+29a0c910"})
+return t.body,"j.exportDefaultDeclaration(\n  j.classDeclaration(\n    j.identifier('".concat(n.name,"'),\n    j.classBody([]),\n    j.identifier('").concat(a.name,"')\n  )\n  )")},expressionStatement:o,functionDeclaration:function(e){var t=e.id,a=e.body,r=e.params
+return"j.functionDeclaration(\n  j.identifier('".concat(t.name,"'),\n  [").concat(n(r),"],\n  j.blockStatement([").concat(l(a.body),"])\n  )")},ifStatement:s,importDeclaration:i,variableDeclaration:r}
+e.default=u}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+2a790a99"})
