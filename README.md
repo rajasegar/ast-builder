@@ -1,7 +1,14 @@
 # ast-builder
 
 Build your Abstract Syntax Trees (AST) directly by writing code.
-Simply type in your code and get the right jscodeshift api to build your AST.
+Simply type in your code and get the right [jscodeshift](https://github.com/facebook/jscodeshift) api to build your AST.
+
+This application is built in [Ember.js](https://emberjs.com/)
+
+## Motivation
+The reason this project is created is because, I am simply frustrated for looking up reference for writing codemods and the jscodeshift api is not very well documented.
+
+This is an interactive version of [jscodeshift-docs](https://github.com/rajasegar/jscodeshift-docs)
 
 ## Prerequisites
 
