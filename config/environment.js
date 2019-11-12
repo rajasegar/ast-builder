@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'ast-maker',
+    modulePrefix: 'ast-builder',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -45,7 +45,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.rootURL = '/ast-maker/';
+    ENV.rootURL = '/ast-builder/';
     ENV.locationType = 'hash';
   }
 

@@ -1,7 +1,7 @@
-# ast-maker
+# ast-builder
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Build your Abstract Syntax Trees (AST) directly by writing code.
+Simply type in your code and get the right jscodeshift api to build your AST.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ast-maker`
+* `cd ast-builder`
 * `npm install`
 
 ## Running / Development

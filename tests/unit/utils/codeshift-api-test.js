@@ -1,4 +1,4 @@
-import codeshiftApi from 'ast-maker/utils/codeshift-api';
+import codeshiftApi from 'ast-builder/utils/codeshift-api';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | codeshift-api', function() {

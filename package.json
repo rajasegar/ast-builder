@@ -1,8 +1,8 @@
 {
-  "name": "ast-maker",
+  "name": "ast-builder",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for ast-maker goes here",
+  "description": "Build your ASTs directly using code",
   "repository": "",
   "license": "MIT",
   "author": "",
