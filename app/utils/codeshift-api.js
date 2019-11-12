@@ -28,7 +28,7 @@ function spreadElement(name) {
 
 function unaryExpression(node) {
   let { argument, operator, prefix } = node;
-  return `j.unaryExpression(${operator}, ${literal(argument)}, ${prefix})`;
+  return `j.unaryExpression('${operator}', ${literal(argument)}, ${prefix})`;
 }
 
 function arrayExpression(node) {
@@ -62,7 +62,7 @@ function buildArgs(params) {
     }
   });
 
-  return str.length > 0 && str[0] !== '' ? str.join(',') : '';
+  return str.join(',');
 }
 function buildValue(node) {
   switch(node.type) {

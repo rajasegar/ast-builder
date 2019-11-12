@@ -47,7 +47,11 @@ module('Unit | Utility | codeshift-api', function() {
   });
 });
 
-let f = [1, "hello", true, 0];
+let f = [1, "hello", true, 0, -1];
+let a = () => { console.log('hello') }
+let a = () => console.log('hello')
+let a = () => log('hello')
+let a = () => 2
 `;
 
 const _code = '';
