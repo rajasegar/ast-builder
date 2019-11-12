@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 const j = types.builders; // eslint-disable-line
 
 // Sample code to test
-const _code = `let a = 1;
+const _code1 = `let a = 1;
 let b = 'hello';
 let c = false;
 const d = 2;
@@ -46,7 +46,11 @@ module('Unit | Utility | codeshift-api', function() {
     assert.ok(result);
   });
 });
+
+let f = [1, "hello", true, 0];
 `;
+
+const _code = '';
 
 export default Component.extend({
 
@@ -86,6 +90,9 @@ export default Component.extend({
 
         case 'FunctionDeclaration':
           return jsc.functionDeclaration(node);
+
+        case 'ArrowFunctionExpression':
+          return jsc.arrowFunctionExpression(node);
 
         default:
           console.log(node.type); // eslint-disable-line

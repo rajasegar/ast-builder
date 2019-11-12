@@ -4,10 +4,17 @@
 
 function callExpression(expression) {
   let { arguments: args, callee } = expression;
-  return `j.callExpression(
-        j.identifier('${callee.name}'),
-        [${buildArgs(args)}]
-      )`;
+  if(callee.type === 'MemberExpression') {
+    return `j.callExpression(
+          ${_memberExpression(callee)},
+          [${buildArgs(args)}]
+        )`;
+  } else {
+    return `j.callExpression(
+          j.identifier('${callee.name}'),
+          [${buildArgs(args)}]
+        )`;
+  }
 }
 
 function literal(node) {
@@ -19,11 +26,29 @@ function spreadElement(name) {
   return `j.spreadElement(j.identifier('${name}'))`;
 }
 
+function unaryExpression(node) {
+  let { argument, operator, prefix } = node;
+  return `j.unaryExpression(${operator}, ${literal(argument)}, ${prefix})`;
+}
+
+function arrayExpression(node) {
+  let { elements } = node;
+  let items = elements.map(e => {
+    switch(e.type) {
+      case 'Literal':
+        return literal(e);
+      case 'UnaryExpression':
+        return unaryExpression(e);
+    }
+  }).join(',');
+
+  return `j.arrayExpression([${items}])`;
+}
+
 function buildArgs(params) {
   let str = params.map(p => {
     switch(p.type) {
       case 'Literal':
-        //return  `j.literal(${p.raw})`;
         return  literal(p);
       case 'Identifier':
         return `j.identifier('${p.name}')`;
@@ -37,7 +62,7 @@ function buildArgs(params) {
     }
   });
 
-  return str.join(',');
+  return str.length > 0 && str[0] !== '' ? str.join(',') : '';
 }
 function buildValue(node) {
   switch(node.type) {
@@ -47,6 +72,10 @@ function buildValue(node) {
       return objectExpression(node);
     case "CallExpression":
       return callExpression(node);
+    case "ArrayExpression":
+      return arrayExpression(node);
+    case "ArrowFunctionExpression":
+      return arrowFunctionExpression(node);
     default:
       console.log(node.type); // eslint-disable-line
       return '';
@@ -155,6 +184,9 @@ function buildBlock(body) {
       case 'IfStatement':
         return ifStatement(node);
 
+      case 'FunctionDeclaration':
+        return functionDeclaration(node);
+
       default:
         console.log(node.type); // eslint-disable-line
         return '';
@@ -194,11 +226,19 @@ function classDeclaration(node) {
 
   let str = '';
   let { id, superClass, body } = node;
+  if(superClass) {
   str = `j.classDeclaration(
     j.identifier('${id.name}'),
     j.classBody([]),
     j.identifier('${superClass.name}')
   )`;
+  } else {
+str = `j.classDeclaration(
+    j.identifier('${id.name}'),
+    j.classBody([]),
+    null
+  )`;
+  }
   return str;
 }
 
@@ -247,7 +287,38 @@ function functionExpression(node) {
   return str;
 }
 
+function arrowFunctionExpression(node) {
+  let { params, body } = node;
+  let str = '';
+
+  switch(body.type) {
+    case 'BlockStatement':
+      str =  `j.arrowFunctionExpression(
+      [${buildArgs(params)}],
+      j.blockStatement([${buildBlock(body.body)}])
+      )`;
+      break;
+    case 'Literal':
+      str =  `j.arrowFunctionExpression(
+      [${buildArgs(params)}],
+      ${literal(body)}
+      )`;
+      break;
+
+    case 'CallExpression':
+      str =  `j.arrowFunctionExpression(
+      [${buildArgs(params)}],
+      ${callExpression(body)}
+      )`;
+      break;
+
+  }
+
+  return str;
+}
+
 export default {
+  arrowFunctionExpression,
   classDeclaration,
   exportDefaultDeclaration,
   expressionStatement,
