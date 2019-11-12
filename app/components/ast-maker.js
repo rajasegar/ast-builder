@@ -29,87 +29,77 @@ let a = {
 name: 'raja',
 action: hello()
 };
+
+export default class MyComponent extends ReactComponent {}
+class MyComponent extends ReactComponent {}
 `;
 
 export default Component.extend({
 
   code: _code,
+
   ast: computed('code', function() {
-  let ast = parse(this.get('code'));
-      return JSON.stringify(ast);
+    let ast = parse(this.get('code'));
+    console.log(ast.program.body); // eslint-disable-line
+    return JSON.stringify(ast);
   }),
-  nodeApi: computed('code', function() {
-  let ast = parse(this.get('code'));
 
-      // Build the jscodeshift api 
-      let _ast = ast.program.body.map(node => {
+  pseudoAst: computed('code', function() {
 
-        switch(node.type) {
-          case 'VariableDeclaration':
-            return jsc.variableDeclaration(node);
+    let ast = parse(this.get('code'));
 
-          case 'ImportDeclaration':
-            return jsc.importDeclaration(node);
+    // Build the jscodeshift api 
+    let _ast = ast.program.body.map(node => {
 
-          case 'ExpressionStatement':
-            return jsc.expressionStatement(node);
+      switch(node.type) {
+        case 'VariableDeclaration':
+          return jsc.variableDeclaration(node);
 
-          case 'IfStatement':
-            return jsc.ifStatement(node);
+        case 'ImportDeclaration':
+          return jsc.importDeclaration(node);
 
-          default:
-            console.log(node.type); // eslint-disable-line
-            return '';
-        }
+        case 'ExpressionStatement':
+          return jsc.expressionStatement(node);
 
-      });
+        case 'IfStatement':
+          return jsc.ifStatement(node);
 
-      return _ast.join('\n//-----------------------\n');
+        case 'ExportDefaultDeclaration':
+          return jsc.exportDefaultDeclaration(node);
 
+        case 'ClassDeclaration':
+          return jsc.classDeclaration(node);
 
-  }),
-  output: computed('code', function() {
-  let ast = parse(this.get('code'));
-      const sampleCode = '';
-      const outputAst = parse(sampleCode);  
-      // Build the jscodeshift api 
-      let _ast = ast.program.body.map(node => {
+        default:
+          console.log(node.type); // eslint-disable-line
+          return '';
+      }
 
-        switch(node.type) {
-          case 'VariableDeclaration':
-            return jsc.variableDeclaration(node);
+    });
 
-          case 'ImportDeclaration':
-            return jsc.importDeclaration(node);
-
-          case 'ExpressionStatement':
-            return jsc.expressionStatement(node);
-
-          case 'IfStatement':
-            return jsc.ifStatement(node);
-
-          default:
-            console.log(node.type); // eslint-disable-line
-            return '';
-        }
-
-      });
-
-
-      // Check the manifested api is working fine
-      _ast.forEach(n => outputAst.program.body.push(eval(n)));
-
-      const output = print(outputAst, { quote: 'single'}).code;
-
-      return  output;
-
-
+    return _ast;
 
   }),
+
+  nodeApi: computed('pseudoAst', function() {
+        return this.get('pseudoAst').join('\n//-----------------------\n');
+  }),
+
+  output: computed('pseudoAst', function() {
+    const sampleCode = '';
+    const outputAst = parse(sampleCode);  
+
+    // Check the manifested api is working fine
+    this.get('pseudoAst').forEach(n => outputAst.program.body.push(eval(n)));
+
+    const output = print(outputAst, { quote: 'single'}).code;
+
+    return  output;
+  }),
+
   init() {
     this._super(...arguments);
     this.set('jsonMode',{ name: "javascript", json: true });
   }
-
 
 });

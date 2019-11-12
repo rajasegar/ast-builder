@@ -179,9 +179,37 @@ function ifStatement(node) {
   return str;
 }
 
+function classDeclaration(node) {
+
+  let str = '';
+  let { id, superClass, body } = node;
+  str = `j.classDeclaration(
+    j.identifier('${id.name}'),
+    j.classBody([]),
+    j.identifier('${superClass.name}')
+  )`;
+  return str;
+}
+
+function exportDefaultDeclaration(node) {
+  let str = '';
+  let { declaration } = node;
+  let { id, superClass, body } = declaration;
+  str = `j.exportDefaultDeclaration(
+  j.classDeclaration(
+    j.identifier('${id.name}'),
+    j.classBody([]),
+    j.identifier('${superClass.name}')
+  )
+  )`;
+  return str;
+}
+
 export default {
-  variableDeclaration,
-  importDeclaration,
+  classDeclaration,
+  exportDefaultDeclaration,
   expressionStatement,
-  ifStatement
+  ifStatement,
+  importDeclaration,
+  variableDeclaration,
 }

@@ -45,7 +45,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.rootURL = '/ast-maker';
+    ENV.rootURL = '/ast-maker/';
     ENV.locationType = 'hash';
   }
 
