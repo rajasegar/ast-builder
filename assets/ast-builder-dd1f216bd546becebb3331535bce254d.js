@@ -3,7 +3,7 @@ define("ast-builder/app",["exports","ast-builder/resolver","ember-load-initializ
 var r=Ember.Application.extend({modulePrefix:a.default.modulePrefix,podModulePrefix:a.default.podModulePrefix,Resolver:t.default});(0,n.default)(r,a.default.modulePrefix)
 var o=r
 e.default=o}),define("ast-builder/components/ast-maker",["exports","recast","ast-builder/utils/codeshift-api"],function(_exports,_recast,_codeshiftApi){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
-var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n",_code="",_default=Ember.Component.extend({code:_code,ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
+var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0, -1];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n",_code="",_default=Ember.Component.extend({code:_code,ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
 return console.log(e.program.body),JSON.stringify(e)}),pseudoAst:Ember.computed("code",function(){return(0,_recast.parse)(this.get("code")).program.body.map(function(e){switch(e.type){case"VariableDeclaration":return _codeshiftApi.default.variableDeclaration(e)
 case"ImportDeclaration":return _codeshiftApi.default.importDeclaration(e)
 case"ExpressionStatement":return _codeshiftApi.default.expressionStatement(e)
@@ -58,15 +58,14 @@ var t=Ember.HTMLBars.template({id:"yiLOP4+C",block:'{"symbols":[],"statements":[
 e.default=t}),define("ast-builder/utils/codeshift-api",["exports"],function(e){function t(e){var t=e.arguments,n=e.callee
 return"MemberExpression"===n.type?"j.callExpression(\n          ".concat(s(n),",\n          [").concat(r(t),"]\n        )"):"j.callExpression(\n          j.identifier('".concat(n.name,"'),\n          [").concat(r(t),"]\n        )")}function n(e){var t="string"==typeof e.value?"'".concat(e.value,"'"):e.value
 return"j.literal(".concat(t,")")}function a(e){var t=e.elements.map(function(e){switch(e.type){case"Literal":return n(e)
-case"UnaryExpression":return a=(t=e).argument,r=t.operator,o=t.prefix,"j.unaryExpression(".concat(r,", ").concat(n(a),", ").concat(o,")")}var t,a,r,o}).join(",")
-return"j.arrayExpression([".concat(t,"])")}function r(e){var t=e.map(function(e){switch(e.type){case"Literal":return n(e)
+case"UnaryExpression":return a=(t=e).argument,r=t.operator,o=t.prefix,"j.unaryExpression('".concat(r,"', ").concat(n(a),", ").concat(o,")")}var t,a,r,o}).join(",")
+return"j.arrayExpression([".concat(t,"])")}function r(e){return e.map(function(e){switch(e.type){case"Literal":return n(e)
 case"Identifier":return"j.identifier('".concat(e.name,"')")
 case"SpreadElement":return t=e.argument.name,"j.spreadElement(j.identifier('".concat(t,"'))")
 case"FunctionExpression":return function(e){var t="",n=e.id,a=e.body,o=e.params
 t=n?"j.functionExpression(\n  j.identifier('".concat(n.name,"'),\n  [").concat(r(o),"],\n  j.blockStatement([").concat(u(a.body),"])\n  )"):"j.functionExpression(\n  null,\n  [".concat(r(o),"],\n  j.blockStatement([").concat(u(a.body),"])\n  )")
 return t}(e)
-default:return""}var t})
-return t.length>0&&""!==t[0]?t.join(","):""}function o(e){switch(e.type){case"Literal":return n(e)
+default:return""}var t}).join(",")}function o(e){switch(e.type){case"Literal":return n(e)
 case"ObjectExpression":return function(e){var t=e.properties.map(function(e){var t=e.key,n=e.value
 return'j.property("init", j.identifier(\''.concat(t.name,"'), ").concat(o(n),")")})
 return"j.objectExpression([".concat(t.join(","),"])")}(e)
@@ -96,4 +95,4 @@ var m={arrowFunctionExpression:p,classDeclaration:function(e){var t=e.id,n=e.sup
 return e.body,n?"j.classDeclaration(\n    j.identifier('".concat(t.name,"'),\n    j.classBody([]),\n    j.identifier('").concat(n.name,"')\n  )"):"j.classDeclaration(\n    j.identifier('".concat(t.name,"'),\n    j.classBody([]),\n    null\n  )")},exportDefaultDeclaration:function(e){var t=e.declaration,n=t.id,a=t.superClass
 return t.body,"j.exportDefaultDeclaration(\n  j.classDeclaration(\n    j.identifier('".concat(n.name,"'),\n    j.classBody([]),\n    j.identifier('").concat(a.name,"')\n  )\n  )")},expressionStatement:c,functionDeclaration:f,ifStatement:d,importDeclaration:l,variableDeclaration:i}
 e.default=m}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+1c676d1c"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+004f18c0"})
