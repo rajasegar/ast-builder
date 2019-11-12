@@ -15,6 +15,30 @@ function literal(node) {
   return `j.literal(${value})`;
 }
 
+function spreadElement(name) {
+  return `j.spreadElement(j.identifier('${name}'))`;
+}
+
+function buildArgs(params) {
+  let str = params.map(p => {
+    switch(p.type) {
+      case 'Literal':
+        //return  `j.literal(${p.raw})`;
+        return  literal(p);
+      case 'Identifier':
+        return `j.identifier('${p.name}')`;
+      case 'SpreadElement':
+        return spreadElement(p.argument.name);
+
+      case 'FunctionExpression':
+        return functionExpression(p);
+      default:  
+        return '';
+    }
+  });
+
+  return str.join(',');
+}
 function buildValue(node) {
   switch(node.type) {
     case "Literal":
@@ -47,7 +71,7 @@ function variableDeclaration(node) {
       [j.variableDeclarator(
       j.identifier('${id.name}'),
         ${value}
-          )]);`;
+          )])`;
 
             
   return str;
@@ -63,20 +87,7 @@ function importDeclaration(node) {
   return str;
 }
 
-function buildArgs(params) {
-  let str = params.map(p => {
-    switch(p.type) {
-      case 'Literal':
-        return  `j.literal(${p.raw})`;
-      case 'Identifier':
-        return `j.identifier('${p.name}')`;
-      default:  
-        return '';
-    }
-  });
 
-  return str.join(',');
-}
 
 function _memberExpression(node) {
   let str = '';
@@ -205,10 +216,42 @@ function exportDefaultDeclaration(node) {
   return str;
 }
 
+function functionDeclaration(node) {
+  let str = '';
+  let { id, body, params } = node;
+  str = `j.functionDeclaration(
+  j.identifier('${id.name}'),
+  [${buildArgs(params)}],
+  j.blockStatement([${buildBlock(body.body)}])
+  )`;
+  return str;
+}
+
+function functionExpression(node) {
+  let str = '';
+  let { id, body, params } = node;
+  if(id) {
+    str = `j.functionExpression(
+  j.identifier('${id.name}'),
+  [${buildArgs(params)}],
+  j.blockStatement([${buildBlock(body.body)}])
+  )`;
+  } else {
+
+    str = `j.functionExpression(
+  null,
+  [${buildArgs(params)}],
+  j.blockStatement([${buildBlock(body.body)}])
+  )`;
+  }
+  return str;
+}
+
 export default {
   classDeclaration,
   exportDefaultDeclaration,
   expressionStatement,
+  functionDeclaration,
   ifStatement,
   importDeclaration,
   variableDeclaration,

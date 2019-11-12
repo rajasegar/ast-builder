@@ -32,6 +32,20 @@ action: hello()
 
 export default class MyComponent extends ReactComponent {}
 class MyComponent extends ReactComponent {}
+
+function init() {
+this._super(...arguments);
+}
+
+module('Unit | Utility | codeshift-api', function() {
+
+  let a = 1;
+
+  test('it works', function(assert) {
+    let result = codeshiftApi();
+    assert.ok(result);
+  });
+});
 `;
 
 export default Component.extend({
@@ -69,6 +83,9 @@ export default Component.extend({
 
         case 'ClassDeclaration':
           return jsc.classDeclaration(node);
+
+        case 'FunctionDeclaration':
+          return jsc.functionDeclaration(node);
 
         default:
           console.log(node.type); // eslint-disable-line
