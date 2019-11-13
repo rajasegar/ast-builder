@@ -7,10 +7,10 @@ This application is built in [Ember.js](https://emberjs.com/)
 
 
 ## How to use it?
-TOP LEFT PANE => Source code
-TOP RIGHT PANE => AST
-BOTTOM LEFT PANE => Builder API
-BOTTOM RIGHT PANE => Verified Output (Source code)
+* TOP LEFT PANE => Source code
+* TOP RIGHT PANE => AST
+* BOTTOM LEFT PANE => Builder API
+* BOTTOM RIGHT PANE => Verified Output (Source code)
 
 ![screenshot](https://github.com/rajasegar/ast-builder/blob/master/public/screenshot.png)
 
