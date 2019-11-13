@@ -133,6 +133,6 @@ return"j.classDeclaration(\n    ".concat(a(t),",\n    j.classBody([").concat(b(r
 return"j.exportDefaultDeclaration(\n  j.classDeclaration(\n    j.identifier('".concat(n.name,"'),\n    j.classBody([").concat(b(r.body),"]),\n    j.identifier('").concat(a.name,"')\n  )\n  )")},expressionStatement:p,functionDeclaration:v,ifStatement:m,importDeclaration:u,variableDeclaration:c}
 e.default=x}),define("ast-builder/utils/template-recast-builders",["exports"],function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var t={textNode:function(e){return console.log(e.chars),"b.text('".concat(e.chars.replace("\n",""),"')")},elementNode:function(e){var t=e.selfClosing,n=e.tag
-return"b.element({name: '".concat(n,"', selfClosing: ").concat(t,"},{})")}}
+return"b.element({name: '".concat(n,"', selfClosing: ").concat(t,"},\n    {})")}}
 e.default=t}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+d2116381"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+c70fffd0"})
