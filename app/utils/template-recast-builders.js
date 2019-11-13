@@ -5,7 +5,8 @@ function textNode(node) {
 
 function elementNode(node) {
   let { selfClosing, tag } = node;
-  return `b.element({name: '${tag}', selfClosing: ${selfClosing}},{})`;
+  return `b.element({name: '${tag}', selfClosing: ${selfClosing}},
+    {})`;
 }
 
 export default {

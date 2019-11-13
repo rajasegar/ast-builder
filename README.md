@@ -5,6 +5,19 @@ Simply type in your code and get the right [jscodeshift](https://github.com/face
 
 This application is built in [Ember.js](https://emberjs.com/)
 
+
+## How to use it?
++-------------------------------------------------+
+|               |                                 |
+|  Source Code  |   AST                           |
+|               |                                 |
++-------------------------------------------------+
+|               |                                 |
+|  Builder API  |  Verified Output = Source Code  |
+|               |                                 |
++-------------------------------------------------+
+
+
 ## Motivation
 The reason this project is created is because, I am simply frustrated for looking up reference for writing codemods and the jscodeshift api is not very well documented.
 
