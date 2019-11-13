@@ -7,7 +7,7 @@ function callExpression(expression) {
         )`;
   } else {
     return `j.callExpression(
-          j.identifier('${callee.name}'),
+          ${identifier(callee)},
           [${buildArgs(args)}]
         )`;
   }
@@ -50,14 +50,21 @@ function buildArgs(params) {
     switch(p.type) {
       case 'Literal':
         return  literal(p);
+
       case 'Identifier':
         return `j.identifier('${p.name}')`;
+
       case 'SpreadElement':
         return spreadElement(p.argument.name);
 
       case 'FunctionExpression':
         return functionExpression(p);
+
+      case 'CallExpression':
+        return callExpression(p);
+
       default:  
+        console.log('buildArgs => ', p.type); // eslint-disable-line
         return '';
     }
   });
@@ -79,7 +86,7 @@ function buildValue(node) {
     case "Identifier":
       return identifier(node);
     default:
-      console.log(node.type); // eslint-disable-line
+      console.log('buildValue => ', node.type); // eslint-disable-line
       return '';
   }
 }
@@ -161,13 +168,28 @@ function _memberExpression(node) {
   let str = '';
   let { object, property } = node;
   let obj = '';
-  if(object.type === 'ThisExpression') {
-    obj = `j.thisExpression()`;
-  } else if(object.type === 'MemberExpression') {
-    obj = `${_memberExpression(object)}`;
-  } else {
-    obj = `j.identifier('${object.name}')`;
+  switch(object.type) {
+    case 'ThisExpression':
+      obj = `j.thisExpression()`;
+      break;
+
+    case 'MemberExpression':
+      obj = `${_memberExpression(object)}`;
+      break;
+
+    case 'Identifier':
+      obj = `j.identifier('${object.name}')`;
+      break;
+
+    case 'CallExpression':
+      obj = callExpression(object);
+      break;
+
+    default:
+      console.log('_memberExpression => ', object.type);  // eslint-disable-line
+      break;
   }
+
 str = `j.memberExpression(
  ${obj},
  j.identifier('${property.name}')
@@ -253,7 +275,7 @@ function buildBlock(body) {
         return functionDeclaration(node);
 
       default:
-        console.log(node.type); // eslint-disable-line
+        console.log('buildBlock => ', node.type); // eslint-disable-line
         return '';
     }
 

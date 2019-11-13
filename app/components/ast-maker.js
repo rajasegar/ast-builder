@@ -68,9 +68,7 @@ let a = [1,2,3];
 let [x,y,z] = a;
 this.a = a;
 this.b = 10;
-`;
 
-const _code = `
 export default class MyComponent extends ReactComponent {
   constructor(a,b) {
     this.a = a;
@@ -81,6 +79,10 @@ export default class MyComponent extends ReactComponent {
     console.log(x,y);
   }
 }
+`;
+
+const _code = `
+expect(currentRouteName()).to.not.equal('helpdesk.contacts.filters.show');
 `;
 
 export default Component.extend({

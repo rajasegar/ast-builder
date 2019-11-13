@@ -2,6 +2,20 @@ body {
   font-family: sans-serif;
 }
 
+header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+nav ul {
+  display:flex;
+}
+
+nav ul li {
+  list-style: none;
+  margin:0 10px;
+}
+
 a {
   text-decoration: none;
 }
