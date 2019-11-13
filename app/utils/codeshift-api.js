@@ -2,7 +2,7 @@ function callExpression(expression) {
   let { arguments: args, callee } = expression;
   if(callee.type === 'MemberExpression') {
     return `j.callExpression(
-          ${_memberExpression(callee)},
+          ${memberExpression(callee)},
           [${buildArgs(args)}]
         )`;
   } else {
@@ -62,6 +62,9 @@ function buildArgs(params) {
 
       case 'CallExpression':
         return callExpression(p);
+
+      case 'MemberExpression':
+        return memberExpression(p);
 
       default:  
         console.log('buildArgs => ', p.type); // eslint-disable-line
@@ -164,7 +167,7 @@ function importDeclaration(node) {
 
 
 
-function _memberExpression(node) {
+function memberExpression(node) {
   let str = '';
   let { object, property } = node;
   let obj = '';
@@ -174,7 +177,7 @@ function _memberExpression(node) {
       break;
 
     case 'MemberExpression':
-      obj = `${_memberExpression(object)}`;
+      obj = `${memberExpression(object)}`;
       break;
 
     case 'Identifier':
@@ -186,7 +189,7 @@ function _memberExpression(node) {
       break;
 
     default:
-      console.log('_memberExpression => ', object.type);  // eslint-disable-line
+      console.log('memberExpression => ', object.type);  // eslint-disable-line
       break;
   }
 
@@ -211,7 +214,7 @@ function assignmentExpression(node) {
     case 'MemberExpression':
       str = `j.assignmentExpression(
         '${operator}',
-        ${_memberExpression(left)},
+        ${memberExpression(left)},
         ${buildValue(right)}
       )`;
       break;
@@ -227,7 +230,7 @@ function expressionStatement(node) {
     case 'MemberExpression':
       str = `j.expressionStatement(
       j.callExpression(
-      ${_memberExpression(callee)},
+      ${memberExpression(callee)},
       [${buildArgs(args)}]
       ))`;
       break;

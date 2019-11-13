@@ -128,7 +128,7 @@ export default Component.extend({
           return jsc.arrowFunctionExpression(node);
 
         default:
-          console.log(node.type); // eslint-disable-line
+          console.log('pseudoAst => ', node.type); // eslint-disable-line
           return '';
       }
 
