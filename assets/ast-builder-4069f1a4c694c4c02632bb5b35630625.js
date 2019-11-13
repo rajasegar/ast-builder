@@ -20,7 +20,7 @@ case"ExportDefaultDeclaration":return _codeshiftApi.default.exportDefaultDeclara
 case"ClassDeclaration":return _codeshiftApi.default.classDeclaration(e)
 case"FunctionDeclaration":return _codeshiftApi.default.functionDeclaration(e)
 case"ArrowFunctionExpression":return _codeshiftApi.default.arrowFunctionExpression(e)
-default:return console.log(e.type),""}})}),nodeApi:Ember.computed("pseudoAst",function(){return this.get("pseudoAst").join("\n//-----------------------\n")}),output:Ember.computed("pseudoAst",function(){var sampleCode="",outputAst=(0,_recast.parse)(sampleCode)
+default:return console.log("pseudoAst => ",e.type),""}})}),nodeApi:Ember.computed("pseudoAst",function(){return this.get("pseudoAst").join("\n//-----------------------\n")}),output:Ember.computed("pseudoAst",function(){var sampleCode="",outputAst=(0,_recast.parse)(sampleCode)
 this.get("pseudoAst").forEach(function(n){return outputAst.program.body.push(eval(n))})
 var output=(0,_recast.print)(outputAst,{quote:"single"}).code
 return output}),init:function(){this._super.apply(this,arguments),this.set("jsonMode",{name:"javascript",json:!0})}})
@@ -78,6 +78,7 @@ case"Identifier":return"j.identifier('".concat(e.name,"')")
 case"SpreadElement":return a=e.argument.name,"j.spreadElement(j.identifier('".concat(a,"'))")
 case"FunctionExpression":return h(e)
 case"CallExpression":return t(e)
+case"MemberExpression":return d(e)
 default:return console.log("buildArgs => ",e.type),""}var a}).join(",")}function i(e){switch(e.type){case"Literal":return n(e)
 case"ObjectExpression":return function(e){var t=e.properties.map(function(e){var t=e.key,n=e.value
 return'j.property("init", j.identifier(\''.concat(t.name,"'), ").concat(i(n),")")})
@@ -103,7 +104,7 @@ case"Identifier":r="j.identifier('".concat(n.name,"')")
 break
 case"CallExpression":r=t(n)
 break
-default:console.log("_memberExpression => ",n.type)}return"j.memberExpression(\n ".concat(r,",\n j.identifier('").concat(a.name,"')\n  )")}function p(e){var n=e.expression,r=n.arguments,s=n.callee,l=n.extra,c=""
+default:console.log("memberExpression => ",n.type)}return"j.memberExpression(\n ".concat(r,",\n j.identifier('").concat(a.name,"')\n  )")}function p(e){var n=e.expression,r=n.arguments,s=n.callee,l=n.extra,c=""
 switch(n.type){case"MemberExpression":c="j.expressionStatement(\n      j.callExpression(\n      ".concat(d(s),",\n      [").concat(o(r),"]\n      ))")
 break
 case"CallExpression":c=l&&l.parenthesized?"j.expressionStatement(\n       j.parenthesizedExpression(\n      j.callExpression(\n          j.identifier('".concat(s.name,"'),\n          [").concat(o(r),"]\n        )))"):"j.expressionStatement(\n        ".concat(t(n),"\n        )")
@@ -134,4 +135,4 @@ e.default=x}),define("ast-builder/utils/template-recast-builders",["exports"],fu
 var t={textNode:function(e){return console.log(e.chars),"b.text('".concat(e.chars.replace("\n",""),"')")},elementNode:function(e){var t=e.selfClosing,n=e.tag
 return"b.element({name: '".concat(n,"', selfClosing: ").concat(t,"},{})")}}
 e.default=t}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+7aad4ac8"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+d2116381"})
