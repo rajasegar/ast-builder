@@ -1,7 +1,3 @@
-//function decapitalize(s) {
-//  return s[0].toLowerCase() + s.slice(1);
-//}
-
 function callExpression(expression) {
   let { arguments: args, callee } = expression;
   if(callee.type === 'MemberExpression') {
@@ -179,34 +175,60 @@ str = `j.memberExpression(
   return str;
 }
 
+function assignmentExpression(node) {
+  let str = '';
+  let { operator, left, right } = node;
+  switch(left.type) {
+    case 'Identifier':
+      str = `j.assignmentExpression(
+        '${operator}',
+        ${identifier(left)},
+        ${buildValue(right)}
+      )`;
+      break;
+    case 'MemberExpression':
+      str = `j.assignmentExpression(
+        '${operator}',
+        ${_memberExpression(left)},
+        ${buildValue(right)}
+      )`;
+      break;
+  }
+  return str;
+}
+
 function expressionStatement(node) {
   let { expression } = node;
   let { arguments: args, callee, extra } = expression;
   let str = '';
-  if (callee.type === 'MemberExpression') { // Member Expression
-    str = `j.expressionStatement(
-    j.callExpression(
-    ${_memberExpression(callee)},
-    [${buildArgs(args)}]
-    ))`;
-  } else { // Call Expression
-
-    if(extra && extra.parenthesized) {
+  switch(expression.type) {
+    case 'MemberExpression':
       str = `j.expressionStatement(
-     j.parenthesizedExpression(
-    j.callExpression(
-        j.identifier('${callee.name}'),
-        [${buildArgs(args)}]
-      )))`;
-
-    } else {
-      str = `j.expressionStatement(
-    j.callExpression(
-        j.identifier('${callee.name}'),
-        [${buildArgs(args)}]
+      j.callExpression(
+      ${_memberExpression(callee)},
+      [${buildArgs(args)}]
       ))`;
-    }
+      break;
+    case 'CallExpression':
+      if(extra && extra.parenthesized) {
+        str = `j.expressionStatement(
+       j.parenthesizedExpression(
+      j.callExpression(
+          j.identifier('${callee.name}'),
+          [${buildArgs(args)}]
+        )))`;
+
+      } else {
+        str = `j.expressionStatement(
+        ${callExpression(expression)}
+        )`;
+      }
+      break;
+    case 'AssignmentExpression':
+      str = `j.expressionStatement(${assignmentExpression(expression)})`;      
+      break;
   }
+    
   return str;
 }
 
@@ -265,24 +287,31 @@ function ifStatement(node) {
   return str;
 }
 
+function buildClassBody(body) {
+  return body.map(b => {
+    switch(b.type) {
+      case 'MethodDefinition':
+        return `j.methodDefinition(
+          '${b.kind}',
+          ${identifier(b.key)},
+          ${functionExpression(b.value)},
+          ${b.static}
+        )`;
+    }
+
+  }).join(',');
+}
 function classDeclaration(node) {
 
   let str = '';
   let { id, superClass, body } = node;
-  if(superClass) {
+  let _super = superClass ? identifier(superClass) : null;
   str = `j.classDeclaration(
-    j.identifier('${id.name}'),
-    j.classBody([]),
-    j.identifier('${superClass.name}')
+    ${identifier(id)},
+    j.classBody([${buildClassBody(body.body)}]),
+    ${_super}
   )`;
-  } else {
-str = `j.classDeclaration(
-    j.identifier('${id.name}'),
-    j.classBody([]),
-    null
-  )`;
-  }
-  return str;
+     return str;
 }
 
 function exportDefaultDeclaration(node) {
@@ -292,7 +321,7 @@ function exportDefaultDeclaration(node) {
   str = `j.exportDefaultDeclaration(
   j.classDeclaration(
     j.identifier('${id.name}'),
-    j.classBody([]),
+    j.classBody([${buildClassBody(body.body)}]),
     j.identifier('${superClass.name}')
   )
   )`;

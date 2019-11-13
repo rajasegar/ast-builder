@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 const j = types.builders; // eslint-disable-line
 
 // Sample code to test
-const _code = `let a = 1;
+const _code1 = `let a = 1;
 let b = 'hello';
 let c = false;
 const d = 2;
@@ -32,7 +32,16 @@ action: hello()
 };
 
 export default class MyComponent extends ReactComponent {}
-class MyComponent extends ReactComponent {}
+class MyComponent extends ReactComponent {
+  constructor(a,b) {
+    this.a = a;
+    this.b = b;
+  }
+
+  hello(x,y) {
+    console.log(x,y);
+  }
+}
 
 function init() {
 this._super(...arguments);
@@ -57,9 +66,22 @@ let a = () => 2
 let { name, age } = a; 
 let a = [1,2,3];
 let [x,y,z] = a;
+this.a = a;
+this.b = 10;
 `;
 
-const _code1 = '';
+const _code = `
+export default class MyComponent extends ReactComponent {
+  constructor(a,b) {
+    this.a = a;
+    this.b = b;
+  }
+
+  hello(x,y) {
+    console.log(x,y);
+  }
+}
+`;
 
 export default Component.extend({
 
