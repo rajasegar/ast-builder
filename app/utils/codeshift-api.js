@@ -22,6 +22,10 @@ function literal(node) {
   return `j.literal(${value})`;
 }
 
+function identifier(node) {
+  return `j.identifier('${node.name}')`;
+}
+
 function spreadElement(name) {
   return `j.spreadElement(j.identifier('${name}'))`;
 }
@@ -76,6 +80,8 @@ function buildValue(node) {
       return arrayExpression(node);
     case "ArrowFunctionExpression":
       return arrowFunctionExpression(node);
+    case "Identifier":
+      return identifier(node);
     default:
       console.log(node.type); // eslint-disable-line
       return '';
@@ -90,19 +96,56 @@ function objectExpression(node) {
   });
   return `j.objectExpression([${str.join(',')}])`;
 }
+
+function property(node) {
+    let { key, value } = node;
+    return `j.property("init", j.identifier('${key.name}'), ${buildValue(value)})`;
+}
+
+function buildProperties(props) {
+  return props.map(p => {
+    return property(p);
+  }).join(',');
+}
+
+function buildElements(elements) {
+  return elements.map(e => {
+    return identifier(e);
+  }).join(',');
+}
+
+function variableDeclarator(node) {
+  let str = '';
+  let { id, init}  = node;
+  switch(id.type) {
+    case 'Identifier':
+      str = `j.variableDeclarator(
+      j.identifier('${id.name}'),
+        ${buildValue(init)}
+          )`;
+      break;
+    case 'ObjectPattern':
+      str = `j.variableDeclarator(
+      j.objectPattern([${buildProperties(id.properties)}]),
+        ${buildValue(init)}
+          )`;
+      break;
+    case 'ArrayPattern':
+      str = `j.variableDeclarator(
+      j.arrayPattern([${buildElements(id.elements)}]),
+        ${buildValue(init)}
+          )`;
+      break;
+  }
+  return str;
+}
 function variableDeclaration(node) {
   let { kind, declarations } = node;
-  let { id, init}  = declarations[0];
-  let value = buildValue(init);
   
   let str = `j.variableDeclaration(
   '${kind}',
-      [j.variableDeclarator(
-      j.identifier('${id.name}'),
-        ${value}
-          )])`;
-
-            
+      [${variableDeclarator(declarations[0])}])`;
+           
   return str;
 }
 function importDeclaration(node) {

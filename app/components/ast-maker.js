@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 const j = types.builders; // eslint-disable-line
 
 // Sample code to test
-const _code1 = `let a = 1;
+const _code = `let a = 1;
 let b = 'hello';
 let c = false;
 const d = 2;
@@ -27,6 +27,7 @@ foo.baz();
 
 let a = {
 name: 'raja',
+age: 35,
 action: hello()
 };
 
@@ -52,9 +53,13 @@ let a = () => { console.log('hello') }
 let a = () => console.log('hello')
 let a = () => log('hello')
 let a = () => 2
+
+let { name, age } = a; 
+let a = [1,2,3];
+let [x,y,z] = a;
 `;
 
-const _code = '';
+const _code1 = '';
 
 export default Component.extend({
 
