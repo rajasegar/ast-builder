@@ -5,10 +5,12 @@
       options=(hash lineNumbers=true mode="javascript" theme="ambiance")
       valueUpdated=(action (mut code))
     }}
-    {{ivy-codemirror value=ast options=(hash mode=jsonMode theme="ambiance" foldGutter=true)}}
+    {{ivy-codemirror 
+      value=ast 
+      options=(hash mode=jsonMode theme="ambiance" foldGutter=true readOnly=true)}}
   </div>
   <div class="grid-col">
-    {{ivy-codemirror value=nodeApi options=(hash lineNumbers=true mode="javascript" theme="ambiance" autoIndent=true)}}
-    {{ivy-codemirror value=output options=(hash lineNumbers=true mode="javascript" theme="ambiance")}}
+    {{ivy-codemirror value=nodeApi options=(hash lineNumbers=true mode="javascript" theme="ambiance" autoIndent=true readOnly=true)}}
+    {{ivy-codemirror value=output options=(hash lineNumbers=true mode="javascript" theme="ambiance" readOnly=true)}}
   </div>
 </div>

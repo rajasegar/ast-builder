@@ -81,9 +81,7 @@ export default class MyComponent extends ReactComponent {
 }
 `;
 
-const _code = `
-expect(currentRouteName()).to.not.equal('helpdesk.contacts.filters.show');
-`;
+const _code = ` `;
 
 export default Component.extend({
 
