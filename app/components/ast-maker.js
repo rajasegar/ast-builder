@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { parse, print, types } from 'recast';
 import jsc from '../utils/codeshift-api';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 const j = types.builders; // eslint-disable-line
 
@@ -85,8 +86,9 @@ const _code = ` `;
 
 export default Component.extend({
 
+  customize: service(),
   code: _code,
-
+  theme: computed.reads('customize.theme'),
   ast: computed('code', function() {
     let ast = parse(this.get('code'));
     console.log(ast.program.body); // eslint-disable-line

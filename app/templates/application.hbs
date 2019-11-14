@@ -10,6 +10,9 @@
       </li>
     </ul>
   </nav>
+  <div id="options">
+    <p>DarkMode: <Input @type="checkbox" @click={{action "toggleDarkMode"}}/></p>
+  </div>
 </header>
 <main>
   {{outlet}}

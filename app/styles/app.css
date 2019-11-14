@@ -1,11 +1,17 @@
+@import 'normalize.css';
+
 body {
   font-family: sans-serif;
 }
 
 header {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px 1fr 200px;
 }
+
+h1 {
+    margin: .25em 0;
+  }
 
 nav ul {
   display:flex;
@@ -16,8 +22,14 @@ nav ul li {
   margin:0 10px;
 }
 
+nav ul li a.active {
+  background: #000;
+  color: #fff;
+}
+
 a {
   text-decoration: none;
+  padding: .25em;
 }
 
 footer p {

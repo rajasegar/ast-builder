@@ -13,8 +13,9 @@ module.exports = function(defaults) {
       }
     },
     codemirror: {
-      themes: ['ambiance'],
-      modes: ['javascript'],
+      themes: ['solarized'],
+      modes: ['javascript', 'handlebars'],
+      addonFiles: ['fold/foldcode.js', 'fold/foldgutter.js']
     }
   });
 

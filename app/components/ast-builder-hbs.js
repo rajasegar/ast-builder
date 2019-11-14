@@ -1,7 +1,8 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { parse, print, builders } from 'ember-template-recast';
-import recast from '../utils/template-recast-builders';
+import { inject as service } from '@ember/service';
+import glimmer from '../utils/template-recast-builders';
 const b = builders; // eslint-disable-line
 
 const _code = `hello
@@ -12,8 +13,10 @@ const _code = `hello
   </div>
 </div>`;
 export default Component.extend({
+  customize: service(),
   code: _code,
 
+  theme: computed.reads('customize.theme'),
   ast: computed('code', function() {
     let ast = parse(this.get('code'));
     console.log(ast.body); // eslint-disable-line
@@ -23,25 +26,7 @@ export default Component.extend({
   pseudoAst: computed('code', function() {
 
     let ast = parse(this.get('code'));
-
-    // Build the jscodeshift api 
-    let _ast = ast.body.map(node => {
-
-      switch(node.type) {
-        case 'TextNode':
-          return recast.textNode(node);
-
-        case 'ElementNode':
-          return recast.elementNode(node);
-
-        default:
-          console.log(node.type); // eslint-disable-line
-          return '';
-      }
-
-    });
-
-    return _ast;
+    return glimmer.buildAST(ast);
 
   }),
 
@@ -64,6 +49,9 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.set('jsonMode',{ name: "javascript", json: true });
+    this.set('hbsMode',{ name: "handlebars", base: "text/html" });
+    this.set('gutters', ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]);
+    this.set('extraKeys',   {"Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }});
   }
 
 });
