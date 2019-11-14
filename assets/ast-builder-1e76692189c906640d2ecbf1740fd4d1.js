@@ -3,10 +3,13 @@ define("ast-builder/app",["exports","ast-builder/resolver","ember-load-initializ
 var r=Ember.Application.extend({modulePrefix:a.default.modulePrefix,podModulePrefix:a.default.podModulePrefix,Resolver:t.default});(0,n.default)(r,a.default.modulePrefix)
 var o=r
 e.default=o}),define("ast-builder/components/ast-builder-hbs",["exports","ember-template-recast","ast-builder/utils/template-recast-builders"],function(_exports,_emberTemplateRecast,_templateRecastBuilders){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
-var b=_emberTemplateRecast.builders,_code='hello\n<div class="entry">\n  <h1>{{title}}</h1>\n  <div class="body">\n    {{body}}\n  </div>\n</div>',_default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_emberTemplateRecast.parse)(this.get("code"))
+var b=_emberTemplateRecast.builders,_code='<BsButton @onClick={{action "submit"}}>\nButton\n  </BsButton>\n\n<BsButtonGroup @value={{buttonGroupValue}} @type="checkbox" @onChange={{action (mut buttonGroupValue)}} as |bg|>\n          <bg.button @value={{1}}>1</bg.button>\n          <bg.button @value={{2}}>2</bg.button>\n          <bg.button @value={{3}}>3</bg.button>\n        </BsButtonGroup>\n <MyComponent @prop1={{true}} @prop2={{false}} />\n <XFoo @data-foo={{true}} />\n        <XFoo @data-test-selector={{true}} />\n        <XFoo @data-test-selector={{post.id}} />\n        <XFoo @label="hi" @data-test-selector={{true}} />\n  '
+_code="\n{{#common/accordion-component data-test-accordion as |accordion|}}\n          block\n        {{/common/accordion-component}}\n"
+var _default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_emberTemplateRecast.parse)(this.get("code"))
 return console.log(e.body),JSON.stringify(e)}),pseudoAst:Ember.computed("code",function(){var e=(0,_emberTemplateRecast.parse)(this.get("code"))
-return _templateRecastBuilders.default.buildAST(e)}),nodeApi:Ember.computed("pseudoAst",function(){return this.get("pseudoAst").join("\n//-----------------------\n")}),output:Ember.computed("pseudoAst",function(){var sampleCode="",outputAst=(0,_emberTemplateRecast.parse)(sampleCode)
-this.get("pseudoAst").forEach(function(n){return outputAst.body.push(eval(n))})
+return _templateRecastBuilders.default.buildAST(e)}),nodeApi:Ember.computed("code",function(){var e=(0,_emberTemplateRecast.parse)(this.get("code"))
+return _templateRecastBuilders.default.buildAST(e).join("\n//-----------------------\n")}),output:Ember.computed("code",function(){var sampleCode="",outputAst=(0,_emberTemplateRecast.parse)(sampleCode),ast=(0,_emberTemplateRecast.parse)(this.get("code"))
+_templateRecastBuilders.default.buildAST(ast).forEach(function(n){outputAst.body.push(eval(n))})
 var output=(0,_emberTemplateRecast.print)(outputAst,{quote:"single"})
 return output}),init:function(){this._super.apply(this,arguments),this.set("jsonMode",{name:"javascript",json:!0}),this.set("hbsMode",{name:"handlebars",base:"text/html"}),this.set("gutters",["CodeMirror-linenumbers","CodeMirror-foldgutter"]),this.set("extraKeys",{"Ctrl-Q":function(e){e.foldCode(e.getCursor())}})}})
 _exports.default=_default}),define("ast-builder/components/ast-maker",["exports","recast","ast-builder/utils/codeshift-api"],function(_exports,_recast,_codeshiftApi){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
@@ -138,14 +141,26 @@ case"CallExpression":i="j.arrowFunctionExpression(\n      [".concat(o(a),"],\n  
 var x={arrowFunctionExpression:y,classDeclaration:function(e){var t=e.id,n=e.superClass,r=e.body,o=n?a(n):null
 return"j.classDeclaration(\n    ".concat(a(t),",\n    j.classBody([").concat(b(r.body),"]),\n    ").concat(o,"\n  )")},exportDefaultDeclaration:function(e){var t=e.declaration,n=t.id,a=t.superClass,r=t.body
 return"j.exportDefaultDeclaration(\n  j.classDeclaration(\n    j.identifier('".concat(n.name,"'),\n    j.classBody([").concat(b(r.body),"]),\n    j.identifier('").concat(a.name,"')\n  )\n  )")},expressionStatement:p,functionDeclaration:v,ifStatement:m,importDeclaration:u,variableDeclaration:c}
-e.default=x}),define("ast-builder/utils/template-recast-builders",["exports"],function(e){function t(e){return"b.text('".concat(e.chars.replace("\n",""),"')")}function n(e){var a,r=e.selfClosing,o=e.tag,i=e.attributes,s=(e.blockParams,e.children)
-return"b.element({name: '".concat(o,"', selfClosing: ").concat(r,"},\n    {\n    attrs: [").concat((a=i,a.map(function(e){switch(e.value.type){case"TextNode":return"b.attr('".concat(e.name,"', b.text('").concat(e.value.chars,"'))")
-default:return console.log("buildAttributes => ",e.value.type),""}}).join(",")),"],\n    children: [").concat(function(e){return e.map(function(e){switch(e.type){case"TextNode":return t(e)
-case"ElementNode":return n(e)
-case"MustacheStatement":return"b.mustache('".concat(e.path.original,"')")
-default:return console.log("buildchildren => ",e.type),""}}).join(",")}(s),"]\n    }\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var a={textNode:t,elementNode:n,buildAST:function(e){return e.body.map(function(e){switch(e.type){case"TextNode":return t(e)
-case"ElementNode":return n(e)
-default:return console.log("buildAST => ",e.type),""}})}}
-e.default=a}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+a081809b"})
+e.default=x}),define("ast-builder/utils/template-recast-builders",["exports"],function(e){function t(e){var t=e.chars.replace(/\n/g,"\\n")
+return'b.text("'.concat(t,'")')}function n(e){return e.map(function(e){switch(e.type){case"SubExpression":return function e(t){var n=t.params.map(function(t){return"SubExpression"===t.type?e(t):"StringLiteral"===t.type?'"'.concat(t.original,'"'):t.original}),a=[]
+t.hash.pairs.length>0&&(a=t.hash.pairs.map(function(t){if("SubExpression"===t.value.type){var n=e(t.value)
+return"".concat(t.key,"=").concat(n)}return"StringLiteral"===t.value.type?"".concat(t.key,'="').concat(t.value.original,'"'):"".concat(t.key,"=").concat(t.value.original)}))
+var r=n.concat(a)
+return"(".concat(t.path.original," ").concat(r.join(" "),")")}(e)
+case"StringLiteral":return'"'.concat(e.original,'"')
+case"NullLiteral":return"null"
+case"UndefinedLiteral":return"undefined"
+default:return console.log("buildParams => ",e.type),e.original}}).join(" ")}function a(e){return e.params.length>0?"b.mustache(b.path('".concat(e.path.original," ").concat(n(e.params),"'))"):"b.mustache('".concat(e.path.original,"')")}function r(e){return e.map(function(e){switch(e.type){case"TextNode":return t(e)
+case"ElementNode":return o(e)
+case"MustacheStatement":return a(e)
+default:return console.log("buildchildren => ",e.type),""}}).join(",")}function o(e){var n,o=e.selfClosing,i=e.tag,s=e.attributes,l=e.children
+return"b.element({name: '".concat(i,"', selfClosing: ").concat(o,"},\n    {\n    attrs: [").concat((n=s,n.map(function(e){switch(e.value.type){case"TextNode":return"b.attr('".concat(e.name,"', ").concat(t(e.value),")")
+case"MustacheStatement":return"b.attr('".concat(e.name,"', ").concat(a(e.value),")")
+default:return console.log("buildAttributes => ",e.value.type),""}}).join(",")),"],\n    children: [").concat(r(l),"]\n    }\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var i={textNode:t,elementNode:o,buildAST:function(e){return e.body.map(function(e){switch(e.type){case"TextNode":return t(e)
+case"ElementNode":return o(e)
+case"BlockStatement":return function(e){var t=e.path,n=e.program,a=e.params
+return"b.program([\n      b.block(\n        b.path('".concat(t.original,"'),\n        [").concat(function(e){return e.map(function(e){return"b.path('".concat(e.original,"')")}).join(",")}(a),"],\n        b.hash([b.path('lskdf'),'laskjdf']),\n        b.blockItself([").concat(r(n.body),"])\n      ),\n    ])")}(e)
+default:console.log("buildAST => ",e.type)}})}}
+e.default=i}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+954f166c"})
