@@ -1,1 +1,0 @@
-body{font-family:sans-serif}header{display:grid;grid-template-columns:200px 1fr}nav ul{display:flex}nav ul li{list-style:none;margin:0 10px}a{text-decoration:none}footer p{text-align:center}.grid-row{display:grid;grid-template-rows:1fr 1fr;grid-row-gap:5px}.grid-col{display:grid;grid-template-columns:1fr 1fr;grid-column-gap:5px}
