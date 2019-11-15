@@ -169,8 +169,10 @@ function importDeclaration(node) {
 
 function memberExpression(node) {
   let str = '';
-  let { object, property } = node;
+  let { object, property, computed } = node;
   let obj = '';
+
+  // Constructing object of a MemberExpression
   switch(object.type) {
     case 'ThisExpression':
       obj = `j.thisExpression()`;
@@ -193,9 +195,26 @@ function memberExpression(node) {
       break;
   }
 
+  let prop = '';
+  // Constructing property of a MemberExpression
+  switch(property.type) {
+    case 'Identifier':
+      prop = identifier(property);
+      break;
+
+    case 'Literal':
+      prop = literal(property);
+      break;
+
+    default:
+      console.log('memberExpression.property => ', property.type); // eslint-disable-line
+      break;
+  }
+
 str = `j.memberExpression(
  ${obj},
- j.identifier('${property.name}')
+ ${prop},
+ ${computed}
   )`;
   return str;
 }

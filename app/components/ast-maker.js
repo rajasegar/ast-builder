@@ -82,7 +82,9 @@ export default class MyComponent extends ReactComponent {
 }
 `;
 
-const _code = ` `;
+const _code = `
+ expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);
+`;
 
 export default Component.extend({
 
