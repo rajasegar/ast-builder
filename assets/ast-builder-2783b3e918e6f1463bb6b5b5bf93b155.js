@@ -13,7 +13,7 @@ _templateRecastBuilders.default.buildAST(ast).forEach(function(n){outputAst.body
 var output=(0,_emberTemplateRecast.print)(outputAst,{quote:"single"})
 return output}),init:function(){this._super.apply(this,arguments),this.set("jsonMode",{name:"javascript",json:!0}),this.set("hbsMode",{name:"handlebars",base:"text/html"}),this.set("gutters",["CodeMirror-linenumbers","CodeMirror-foldgutter"]),this.set("extraKeys",{"Ctrl-Q":function(e){e.foldCode(e.getCursor())}})}})
 _exports.default=_default}),define("ast-builder/components/ast-maker",["exports","recast","ast-builder/utils/codeshift-api"],function(_exports,_recast,_codeshiftApi){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
-var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\nage: 35,\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0, -1];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n\nlet { name, age } = a; \nlet a = [1,2,3];\nlet [x,y,z] = a;\nthis.a = a;\nthis.b = 10;\n\nexport default class MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n",_code=" ",_default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
+var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\nage: 35,\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0, -1];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n\nlet { name, age } = a; \nlet a = [1,2,3];\nlet [x,y,z] = a;\nthis.a = a;\nthis.b = 10;\n\nexport default class MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n",_code="\n expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);\n",_default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
 return console.log(e.program.body),JSON.stringify(e)}),pseudoAst:Ember.computed("code",function(){return(0,_recast.parse)(this.get("code")).program.body.map(function(e){switch(e.type){case"VariableDeclaration":return _codeshiftApi.default.variableDeclaration(e)
 case"ImportDeclaration":return _codeshiftApi.default.importDeclaration(e)
 case"ExpressionStatement":return _codeshiftApi.default.expressionStatement(e)
@@ -105,16 +105,21 @@ case"ObjectPattern":n="j.variableDeclarator(\n      j.objectPattern([".concat(s(
 break
 case"ArrayPattern":n="j.variableDeclarator(\n      j.arrayPattern([".concat((t=r.elements,t.map(function(e){return a(e)}).join(",")),"]),\n        ").concat(i(o),"\n          )")}return n}function c(e){var t=e.kind,n=e.declarations
 return"j.variableDeclaration(\n  '".concat(t,"',\n      [").concat(l(n[0]),"])")}function u(e){var t=e.source,n=e.specifiers[0],a=n.imported,r=n.local
-return"j.importDeclaration(\n           [j.importSpecifier(j.identifier('".concat(a.name,"'),j.identifier('").concat(r.name,"'))],\n    j.literal('").concat(t.value,"')\n                  );")}function d(e){var n=e.object,a=e.property,r=""
-switch(n.type){case"ThisExpression":r="j.thisExpression()"
+return"j.importDeclaration(\n           [j.importSpecifier(j.identifier('".concat(a.name,"'),j.identifier('").concat(r.name,"'))],\n    j.literal('").concat(t.value,"')\n                  );")}function d(e){var r=e.object,o=e.property,i=e.computed,s=""
+switch(r.type){case"ThisExpression":s="j.thisExpression()"
 break
-case"MemberExpression":r="".concat(d(n))
+case"MemberExpression":s="".concat(d(r))
 break
-case"Identifier":r="j.identifier('".concat(n.name,"')")
+case"Identifier":s="j.identifier('".concat(r.name,"')")
 break
-case"CallExpression":r=t(n)
+case"CallExpression":s=t(r)
 break
-default:console.log("memberExpression => ",n.type)}return"j.memberExpression(\n ".concat(r,",\n j.identifier('").concat(a.name,"')\n  )")}function p(e){var n=e.expression,r=n.arguments,s=n.callee,l=n.extra,c=""
+default:console.log("memberExpression => ",r.type)}var l=""
+switch(o.type){case"Identifier":l=a(o)
+break
+case"Literal":l=n(o)
+break
+default:console.log("memberExpression.property => ",o.type)}return"j.memberExpression(\n ".concat(s,",\n ").concat(l,",\n ").concat(i,"\n  )")}function p(e){var n=e.expression,r=n.arguments,s=n.callee,l=n.extra,c=""
 switch(n.type){case"MemberExpression":c="j.expressionStatement(\n      j.callExpression(\n      ".concat(d(s),",\n      [").concat(o(r),"]\n      ))")
 break
 case"CallExpression":c=l&&l.parenthesized?"j.expressionStatement(\n       j.parenthesizedExpression(\n      j.callExpression(\n          j.identifier('".concat(s.name,"'),\n          [").concat(o(r),"]\n        )))"):"j.expressionStatement(\n        ".concat(t(n),"\n        )")
@@ -163,4 +168,4 @@ case"BlockStatement":return function(e){var t=e.path,n=e.program,a=e.params
 return"b.program([\n      b.block(\n        b.path('".concat(t.original,"'),\n        [").concat(function(e){return e.map(function(e){return"b.path('".concat(e.original,"')")}).join(",")}(a),"],\n        b.hash([b.path('lskdf'),'laskjdf']),\n        b.blockItself([").concat(r(n.body),"])\n      ),\n    ])")}(e)
 default:console.log("buildAST => ",e.type)}})}}
 e.default=i}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+954f166c"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+5bf94c61"})
