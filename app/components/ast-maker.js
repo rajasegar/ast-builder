@@ -101,42 +101,7 @@ export default Component.extend({
 
     let ast = parse(this.get('code'));
 
-    // Build the jscodeshift api 
-    let _ast = ast.program.body.map(node => {
-
-      switch(node.type) {
-        case 'VariableDeclaration':
-          return jsc.variableDeclaration(node);
-
-        case 'ImportDeclaration':
-          return jsc.importDeclaration(node);
-
-        case 'ExpressionStatement':
-          return jsc.expressionStatement(node);
-
-        case 'IfStatement':
-          return jsc.ifStatement(node);
-
-        case 'ExportDefaultDeclaration':
-          return jsc.exportDefaultDeclaration(node);
-
-        case 'ClassDeclaration':
-          return jsc.classDeclaration(node);
-
-        case 'FunctionDeclaration':
-          return jsc.functionDeclaration(node);
-
-        case 'ArrowFunctionExpression':
-          return jsc.arrowFunctionExpression(node);
-
-        default:
-          console.log('pseudoAst => ', node.type); // eslint-disable-line
-          return '';
-      }
-
-    });
-
-    return _ast;
+    return jsc.buildAST(ast);
 
   }),
 

@@ -88,6 +88,8 @@ function buildValue(node) {
       return arrowFunctionExpression(node);
     case "Identifier":
       return identifier(node);
+    case "MemberExpression":
+      return memberExpression(node);
     default:
       console.log('buildValue => ', node.type); // eslint-disable-line
       return '';
@@ -243,36 +245,53 @@ function assignmentExpression(node) {
 
 function expressionStatement(node) {
   let { expression } = node;
-  let { arguments: args, callee, extra } = expression;
+  let { extra } = expression;
   let str = '';
   switch(expression.type) {
     case 'MemberExpression':
-      str = `j.expressionStatement(
-      j.callExpression(
-      ${memberExpression(callee)},
-      [${buildArgs(args)}]
-      ))`;
+      str = `j.expressionStatement(${memberExpression(expression)})`;
       break;
+
     case 'CallExpression':
       if(extra && extra.parenthesized) {
         str = `j.expressionStatement(
        j.parenthesizedExpression(
-      j.callExpression(
-          j.identifier('${callee.name}'),
-          [${buildArgs(args)}]
-        )))`;
-
+       ${callExpression(expression)}
+       ))`;
       } else {
-        str = `j.expressionStatement(
-        ${callExpression(expression)}
-        )`;
+        str = `j.expressionStatement(${callExpression(expression)})`;
       }
       break;
+
     case 'AssignmentExpression':
       str = `j.expressionStatement(${assignmentExpression(expression)})`;      
       break;
+
+    default:
+      console.log('expressionStatement => ', expression.type); // eslint-disable-line
+      break;
   }
     
+  return str;
+}
+
+function returnStatement(node) {
+  let { argument: arg } = node;
+  let str = '';
+  switch(arg.type) {
+    case 'CallExpression':
+      str = `j.returnStatement(${callExpression(arg)})`;
+      break;
+
+    case 'Identifier':
+      str = `j.returnStatement(${identifier(arg)})`;
+      break;
+
+    default:
+      console.log('returnStatement => ', arg.type); // eslint-disable-line
+      break;
+  }
+
   return str;
 }
 
@@ -295,6 +314,9 @@ function buildBlock(body) {
 
       case 'FunctionDeclaration':
         return functionDeclaration(node);
+
+      case 'ReturnStatement':
+        return returnStatement(node);
 
       default:
         console.log('buildBlock => ', node.type); // eslint-disable-line
@@ -361,14 +383,20 @@ function classDeclaration(node) {
 function exportDefaultDeclaration(node) {
   let str = '';
   let { declaration } = node;
-  let { id, superClass, body } = declaration;
-  str = `j.exportDefaultDeclaration(
-  j.classDeclaration(
-    j.identifier('${id.name}'),
-    j.classBody([${buildClassBody(body.body)}]),
-    j.identifier('${superClass.name}')
-  )
-  )`;
+  switch(declaration.type) {
+    case 'FunctionDeclaration':
+      str = `j.exportDefaultDeclaration(${functionDeclaration(declaration)})` ;
+      break;
+
+    case 'ClassDeclaration':
+      str = `j.exportDefaultDeclaration(${classDeclaration(declaration)})` ;
+      break;
+
+    default:
+      console.log('exportDefaultDeclaration =>', declaration.type); // eslint-disable-line
+  }
+
+
   return str;
 }
 
@@ -433,6 +461,50 @@ function arrowFunctionExpression(node) {
   return str;
 }
 
+function buildAST(ast) {
+
+    // Build the jscodeshift api 
+    let _ast = ast.program.body.map(node => {
+
+      switch(node.type) {
+        case 'VariableDeclaration':
+          return variableDeclaration(node);
+
+        case 'ImportDeclaration':
+          return importDeclaration(node);
+
+        case 'ExpressionStatement':
+          return expressionStatement(node);
+
+        case 'IfStatement':
+          return ifStatement(node);
+
+        case 'ExportDefaultDeclaration':
+          return exportDefaultDeclaration(node);
+
+        case 'ClassDeclaration':
+          return classDeclaration(node);
+
+        case 'FunctionDeclaration':
+          return functionDeclaration(node);
+
+        case 'ArrowFunctionExpression':
+          return arrowFunctionExpression(node);
+
+        case 'ReturnStatement':
+          return returnStatement(node);
+
+        default:
+          console.log('buildAST => ', node.type); // eslint-disable-line
+          return '';
+      }
+
+    });
+
+    return _ast;
+}
+
+
 export default {
   arrowFunctionExpression,
   classDeclaration,
@@ -442,4 +514,5 @@ export default {
   ifStatement,
   importDeclaration,
   variableDeclaration,
+  buildAST
 }
