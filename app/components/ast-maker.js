@@ -97,9 +97,6 @@ try {
 } finally {
   bar();
 }
-`;
-
-const _code = `
 try {
     throw new Error('oops');
   }
@@ -110,6 +107,18 @@ try {
   finally {
     console.log('finally');
 }
+var text = "";
+
+for (var i = 0; i < 10; i++) {
+  if (i === 3) {
+    continue;
+  }
+  text = text + i;
+}
+`;
+
+const _code = `
+
 `;
 
 export default Component.extend({

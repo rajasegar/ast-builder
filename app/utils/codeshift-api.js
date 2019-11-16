@@ -14,8 +14,9 @@ function callExpression(expression) {
 }
 
 function literal(node) {
-  let value = typeof node.value === 'string' ? `'${node.value}'` : node.value;
-  return `j.literal(${value})`;
+  //let value = typeof node.value === 'string'  ? `'${node.value}'` : node.value;
+  //return `j.literal(${value})`;
+  return `j.literal(${node.value || '""'})`;
 }
 
 function identifier(node) {
@@ -90,6 +91,8 @@ function buildValue(node) {
       return identifier(node);
     case "MemberExpression":
       return memberExpression(node);
+    case 'BinaryExpression':
+      return binaryExpression(node);
     default:
       console.log('buildValue => ', node.type); // eslint-disable-line
       return '';
@@ -243,6 +246,21 @@ function assignmentExpression(node) {
   return str;
 }
 
+function buildCallee(node) {
+  let str = '';
+  switch(node.type) {
+    case 'Identifier':
+      str = identifier(node);
+      break;
+
+    default:
+      console.log('buildCallee => ', node.type); // eslint-disable-line
+      break;
+  }
+
+  return str;
+}
+
 function expressionStatement(node) {
   let { expression } = node;
   let { extra } = expression;
@@ -269,6 +287,10 @@ function expressionStatement(node) {
 
     case 'Identifier':
       str = `j.expressionStatement(${identifier(expression)})`;
+      break;
+
+    case 'BinaryExpression':
+      str = binaryExpression(expression);
       break;
 
     default:
@@ -302,10 +324,38 @@ function returnStatement(node) {
 function breakStatement() {
   return `j.breakStatement()`;
 }
-function throwStatement(node) {
-  return `j.throwStatement(
-  ${expressionStatement(node.argument)}
+
+function newExpression(node) {
+  let { callee, arguments: args } = node;
+  return `j.newExpression(
+  ${buildCallee(callee)},
+  [${buildArgs(args)}]
   )`;
+}
+function throwStatement(node) {
+  let { argument } = node;
+  let arg = '';
+  switch(argument.type) {
+    case 'NewExpression':
+      arg = newExpression(argument);
+      break;
+
+    case 'Identifier':
+      arg = identifier(argument);
+      break;
+
+    default:
+      console.log('thowStatement => ', argument.type); // eslint-disable-line
+      break;
+      
+  }
+  return `j.throwStatement(
+  ${arg}
+  )`;
+}
+
+function continueStatement() {
+  return `j.continueStatement()`;
 }
 
 function buildBlock(body) {
@@ -337,6 +387,9 @@ function buildBlock(body) {
       case 'ThrowStatement':
         return throwStatement(node);
 
+      case 'ContinueStatement':
+        return continueStatement();
+
       default:
         console.log('buildBlock => ', node.type); // eslint-disable-line
         return '';
@@ -345,6 +398,48 @@ function buildBlock(body) {
   });
 
   return _ast.join(',');
+}
+
+function binaryExpression(node) {
+  let { operator, left, right } = node;
+
+  let _left = '';
+  let _right = '';
+
+  switch(left.type) {
+    case 'Identifier':
+      _left = identifier(left);
+      break;
+
+    default:
+      console.log('binaryExpression::left => ', left.type); // eslint-disable-line
+      break;
+  }
+
+  switch(right.type) {
+    case 'Literal':
+      _right = literal(right);
+      break;
+
+    case 'BinaryExpression':
+      _right = binaryExpression(right);
+      break;
+
+    case 'Identifier':
+      _right = identifier(right);
+      break;
+
+    default:
+      console.log('binaryExpression::right => ', right.type); // eslint-disable-line
+      break;
+    
+  }
+
+  return  `j.binaryExpression(
+    '${operator}', 
+    ${_left},
+    ${_right}
+  )`;
 }
 function ifStatement(node) {
   let { test, consequent, alternate } = node;
@@ -537,11 +632,68 @@ function tryStatement(node) {
   str = `j.tryStatement(
     ${blockStatement(block.body)},
     ${catchClause(handler)},
-    ${blockStatemen(finalizer.body)}
+    ${blockStatement(finalizer.body)}
   )`;
   return str;
 }
 
+function updateExpression(node) {
+  let { operator, argument, prefix } = node;
+  return `j.updateExpression(
+  '${operator}', 
+  ${identifier(argument)},
+  ${prefix}
+  )`;
+}
+
+function forStatement(node) {
+  let { init, test, update, body } = node;
+  let str = '';
+  let _init = '';
+  let _test = '';
+  let _update = '';
+
+  // Building for init
+  switch(init.type) {
+    case 'VariableDeclaration':
+      _init = variableDeclaration(init);
+      break;
+
+    default:
+      console.log('forStatement::init =>', init.type); // eslint-disable-line
+      break;
+  }
+
+  // Building for test
+  switch(test.type) {
+    case 'BinaryExpression':
+      _test = binaryExpression(test);
+      break;
+
+    default:
+      console.log('forStatement::test => ', test.type); // eslint-disable-line
+      break;
+  }
+
+  // Building for update
+  switch(update.type) {
+    case 'UpdateExpression':
+      _update = updateExpression(update);
+      break;
+
+    default:
+      console.log('forStatement::test => ', update.type); // eslint-disable-line
+      break;
+  }
+
+  str = `j.forStatement(
+    ${_init},
+    ${_test},
+    ${_update},
+    ${blockStatement(body.body)}
+  )`;
+  return str;
+}
 function buildAST(ast) {
 
     // Build the jscodeshift api 
@@ -580,6 +732,9 @@ function buildAST(ast) {
 
         case 'TryStatement':
           return tryStatement(node);
+
+        case 'ForStatement':
+          return forStatement(node);
 
         default:
           console.log('buildAST => ', node.type); // eslint-disable-line
