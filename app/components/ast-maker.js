@@ -80,10 +80,18 @@ export default class MyComponent extends ReactComponent {
     console.log(x,y);
   }
 }
+
+expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);
 `;
 
 const _code = `
- expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);
+switch(a) {
+  case "hello":
+    console.log("hello");
+    break;
+  default:
+    break;
+}
 `;
 
 export default Component.extend({

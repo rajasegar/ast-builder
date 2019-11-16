@@ -267,6 +267,10 @@ function expressionStatement(node) {
       str = `j.expressionStatement(${assignmentExpression(expression)})`;      
       break;
 
+    case 'Identifier':
+      str = `j.expressionStatement(${identifier(expression)})`;
+      break;
+
     default:
       console.log('expressionStatement => ', expression.type); // eslint-disable-line
       break;
@@ -295,6 +299,10 @@ function returnStatement(node) {
   return str;
 }
 
+function breakStatement() {
+  return `j.breakStatement()`;
+}
+
 function buildBlock(body) {
   // Build the jscodeshift api 
   let _ast = body.map(node => {
@@ -317,6 +325,9 @@ function buildBlock(body) {
 
       case 'ReturnStatement':
         return returnStatement(node);
+
+      case 'BreakStatement':
+        return breakStatement();
 
       default:
         console.log('buildBlock => ', node.type); // eslint-disable-line
@@ -461,6 +472,45 @@ function arrowFunctionExpression(node) {
   return str;
 }
 
+function buildSwitchCases(cases) {
+  return cases.map(c => {
+    let { test, consequent } = c;
+    let str = '';
+    if(test) {
+    switch(test.type) {
+      case 'Literal':
+        str = `j.switchCase(${literal(test)}, [${buildBlock(consequent)}])`; 
+        break;
+
+      default:
+        console.log('buildSwitchCases => ', test.type); // eslint-disable-line
+        break;
+    }
+    } else {
+        str =  `j.switchCase(null, [${buildBlock(consequent)}])`; 
+    }
+    return str;
+  }).join(',');
+}
+
+function switchStatement(node) {
+  let str = '';
+  let { cases, discriminant } = node;
+  let d = '';
+  switch(discriminant.type) {
+    case 'Identifier':
+      d = identifier(discriminant);
+      break;
+
+    default:
+      console.log('switchStatement::discriminant => ', discriminant.type); // eslint-disable-line
+      break;
+      
+  }
+  str = `j.switchStatement(${d},[${buildSwitchCases(cases)}])`;
+  return str;
+}
+
 function buildAST(ast) {
 
     // Build the jscodeshift api 
@@ -493,6 +543,9 @@ function buildAST(ast) {
 
         case 'ReturnStatement':
           return returnStatement(node);
+
+        case 'SwitchStatement':
+          return switchStatement(node);
 
         default:
           console.log('buildAST => ', node.type); // eslint-disable-line
