@@ -82,15 +82,33 @@ export default class MyComponent extends ReactComponent {
 }
 
 expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);
-`;
-
-const _code = `
 switch(a) {
   case "hello":
     console.log("hello");
     break;
   default:
     break;
+}
+
+try {
+  hello();
+} catch(ex) {
+  foo();
+} finally {
+  bar();
+}
+`;
+
+const _code = `
+try {
+    throw new Error('oops');
+  }
+  catch (ex) {
+      console.error('inner', ex.message);
+      throw ex;
+    }
+  finally {
+    console.log('finally');
 }
 `;
 

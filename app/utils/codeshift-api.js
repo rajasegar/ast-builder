@@ -302,6 +302,11 @@ function returnStatement(node) {
 function breakStatement() {
   return `j.breakStatement()`;
 }
+function throwStatement(node) {
+  return `j.throwStatement(
+  ${expressionStatement(node.argument)}
+  )`;
+}
 
 function buildBlock(body) {
   // Build the jscodeshift api 
@@ -328,6 +333,9 @@ function buildBlock(body) {
 
       case 'BreakStatement':
         return breakStatement();
+
+      case 'ThrowStatement':
+        return throwStatement(node);
 
       default:
         console.log('buildBlock => ', node.type); // eslint-disable-line
@@ -511,6 +519,29 @@ function switchStatement(node) {
   return str;
 }
 
+function catchClause(node) {
+  let { param, guard, body } = node;
+  return `j.catchClause(
+  ${identifier(param)},
+  null,
+  ${blockStatement(body.body)}
+  )`;
+}
+
+function blockStatement(node) {
+  return `j.blockStatement([${buildBlock(node)}])`;
+}
+function tryStatement(node) {
+  let str = '';
+  let { block, handler, finalizer } = node;
+  str = `j.tryStatement(
+    ${blockStatement(block.body)},
+    ${catchClause(handler)},
+    ${blockStatemen(finalizer.body)}
+  )`;
+  return str;
+}
+
 function buildAST(ast) {
 
     // Build the jscodeshift api 
@@ -546,6 +577,9 @@ function buildAST(ast) {
 
         case 'SwitchStatement':
           return switchStatement(node);
+
+        case 'TryStatement':
+          return tryStatement(node);
 
         default:
           console.log('buildAST => ', node.type); // eslint-disable-line
