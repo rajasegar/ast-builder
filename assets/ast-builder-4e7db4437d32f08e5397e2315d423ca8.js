@@ -13,7 +13,7 @@ _templateRecastBuilders.default.buildAST(ast).forEach(function(n){outputAst.body
 var output=(0,_emberTemplateRecast.print)(outputAst,{quote:"single"})
 return output}),init:function(){this._super.apply(this,arguments),this.set("jsonMode",{name:"javascript",json:!0}),this.set("hbsMode",{name:"handlebars",base:"text/html"}),this.set("gutters",["CodeMirror-linenumbers","CodeMirror-foldgutter"]),this.set("extraKeys",{"Ctrl-Q":function(e){e.foldCode(e.getCursor())}})}})
 _exports.default=_default}),define("ast-builder/components/ast-maker",["exports","recast","ast-builder/utils/codeshift-api"],function(_exports,_recast,_codeshiftApi){Object.defineProperty(_exports,"__esModule",{value:!0}),_exports.default=void 0
-var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\nage: 35,\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0, -1];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n\nlet { name, age } = a; \nlet a = [1,2,3];\nlet [x,y,z] = a;\nthis.a = a;\nthis.b = 10;\n\nexport default class MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n",_code="\n expect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);\n",_default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
+var j=_recast.types.builders,_code1="let a = 1;\nlet b = 'hello';\nlet c = false;\nconst d = 2;\nvar e = true;\nimport { foo as bar } from 'lib';\nhello(1, 'world', true, a);\nthis.hello(1, 'world', true, a);\nhello.world(1, 'foo', true, a);\nfoo.bar.baz();\nfoo.bar.bax.baz(1, 'foo', true, a);\nif(a === 1) {\nconsole.log('true');\nfoo.bar();\n} else {\nconsole.log('false');\nfoo.baz();\n}\n\nlet a = {\nname: 'raja',\nage: 35,\naction: hello()\n};\n\nexport default class MyComponent extends ReactComponent {}\nclass MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n\nfunction init() {\nthis._super(...arguments);\n}\n\nmodule('Unit | Utility | codeshift-api', function() {\n\n  let a = 1;\n\n  test('it works', function(assert) {\n    let result = codeshiftApi();\n    assert.ok(result);\n  });\n});\n\nlet f = [1, \"hello\", true, 0, -1];\nlet a = () => { console.log('hello') }\nlet a = () => console.log('hello')\nlet a = () => log('hello')\nlet a = () => 2\n\nlet { name, age } = a; \nlet a = [1,2,3];\nlet [x,y,z] = a;\nthis.a = a;\nthis.b = 10;\n\nexport default class MyComponent extends ReactComponent {\n  constructor(a,b) {\n    this.a = a;\n    this.b = b;\n  }\n\n  hello(x,y) {\n    console.log(x,y);\n  }\n}\n\nexpect(find(cfPage.fieldPositionOne).textContent.trim()).to.be.contains(fieldOrder[0]);\nswitch(a) {\n  case \"hello\":\n    console.log(\"hello\");\n    break;\n  default:\n    break;\n}\n\ntry {\n  hello();\n} catch(ex) {\n  foo();\n} finally {\n  bar();\n}\n",_code="\ntry {\n    throw new Error('oops');\n  }\n  catch (ex) {\n      console.error('inner', ex.message);\n      throw ex;\n    }\n  finally {\n    console.log('finally');\n}\n",_default=Ember.Component.extend({customize:Ember.inject.service(),code:_code,theme:Ember.computed.reads("customize.theme"),ast:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
 return console.log(e.program.body),JSON.stringify(e)}),pseudoAst:Ember.computed("code",function(){var e=(0,_recast.parse)(this.get("code"))
 return _codeshiftApi.default.buildAST(e)}),nodeApi:Ember.computed("pseudoAst",function(){return this.get("pseudoAst").join("\n//-----------------------\n")}),output:Ember.computed("pseudoAst",function(){var sampleCode="",outputAst=(0,_recast.parse)(sampleCode)
 this.get("pseudoAst").forEach(function(n){return outputAst.program.body.push(eval(n))})
@@ -92,13 +92,13 @@ case"ArrowFunctionExpression":return g(e)
 case"Identifier":return a(e)
 case"MemberExpression":return d(e)
 default:return console.log("buildValue => ",e.type),""}}function s(e){return e.map(function(e){return n=(t=e).key,a=t.value,'j.property("init", j.identifier(\''.concat(n.name,"'), ").concat(i(a),")")
-var t,n,a}).join(",")}function l(e){var t,n="",r=e.id,o=e.init
+var t,n,a}).join(",")}function c(e){var t,n="",r=e.id,o=e.init
 switch(r.type){case"Identifier":n="j.variableDeclarator(\n      j.identifier('".concat(r.name,"'),\n        ").concat(i(o),"\n          )")
 break
 case"ObjectPattern":n="j.variableDeclarator(\n      j.objectPattern([".concat(s(r.properties),"]),\n        ").concat(i(o),"\n          )")
 break
-case"ArrayPattern":n="j.variableDeclarator(\n      j.arrayPattern([".concat((t=r.elements,t.map(function(e){return a(e)}).join(",")),"]),\n        ").concat(i(o),"\n          )")}return n}function c(e){var t=e.kind,n=e.declarations
-return"j.variableDeclaration(\n  '".concat(t,"',\n      [").concat(l(n[0]),"])")}function u(e){var t=e.source,n=e.specifiers[0],a=n.imported,r=n.local
+case"ArrayPattern":n="j.variableDeclarator(\n      j.arrayPattern([".concat((t=r.elements,t.map(function(e){return a(e)}).join(",")),"]),\n        ").concat(i(o),"\n          )")}return n}function l(e){var t=e.kind,n=e.declarations
+return"j.variableDeclaration(\n  '".concat(t,"',\n      [").concat(c(n[0]),"])")}function u(e){var t=e.source,n=e.specifiers[0],a=n.imported,r=n.local
 return"j.importDeclaration(\n           [j.importSpecifier(j.identifier('".concat(a.name,"'),j.identifier('").concat(r.name,"'))],\n    j.literal('").concat(t.value,"')\n                  );")}function d(e){var r=e.object,o=e.property,i=e.computed,s=""
 switch(r.type){case"ThisExpression":s="j.thisExpression()"
 break
@@ -108,12 +108,12 @@ case"Identifier":s="j.identifier('".concat(r.name,"')")
 break
 case"CallExpression":s=t(r)
 break
-default:console.log("memberExpression => ",r.type)}var l=""
-switch(o.type){case"Identifier":l=a(o)
+default:console.log("memberExpression => ",r.type)}var c=""
+switch(o.type){case"Identifier":c=a(o)
 break
-case"Literal":l=n(o)
+case"Literal":c=n(o)
 break
-default:console.log("memberExpression.property => ",o.type)}return"j.memberExpression(\n ".concat(s,",\n ").concat(l,",\n ").concat(i,"\n  )")}function p(e){var n=e.expression,r=n.extra,o=""
+default:console.log("memberExpression.property => ",o.type)}return"j.memberExpression(\n ".concat(s,",\n ").concat(c,",\n ").concat(i,"\n  )")}function p(e){var n=e.expression,r=n.extra,o=""
 switch(n.type){case"MemberExpression":o="j.expressionStatement(".concat(d(n),")")
 break
 case"CallExpression":o=r&&r.parenthesized?"j.expressionStatement(\n       j.parenthesizedExpression(\n       ".concat(t(n),"\n       ))"):"j.expressionStatement(".concat(t(n),")")
@@ -123,17 +123,21 @@ switch(r.type){case"Identifier":t="j.assignmentExpression(\n        '".concat(n,
 break
 case"MemberExpression":t="j.assignmentExpression(\n        '".concat(n,"',\n        ").concat(d(r),",\n        ").concat(i(o),"\n      )")}return t}(n),")")
 break
+case"Identifier":o="j.expressionStatement(".concat(a(n),")")
+break
 default:console.log("expressionStatement => ",n.type)}return o}function f(e){var n=e.argument,r=""
 switch(n.type){case"CallExpression":r="j.returnStatement(".concat(t(n),")")
 break
 case"Identifier":r="j.returnStatement(".concat(a(n),")")
 break
-default:console.log("returnStatement => ",n.type)}return r}function m(e){return e.map(function(e){switch(e.type){case"VariableDeclaration":return c(e)
+default:console.log("returnStatement => ",n.type)}return r}function m(e){return e.map(function(e){switch(e.type){case"VariableDeclaration":return l(e)
 case"ImportDeclaration":return u(e)
 case"ExpressionStatement":return p(e)
 case"IfStatement":return b(e)
 case"FunctionDeclaration":return y(e)
 case"ReturnStatement":return f(e)
+case"BreakStatement":return"j.breakStatement()"
+case"ThrowStatement":return function(e){return"j.throwStatement(\n  ".concat(p(e.argument),"\n  )")}(e)
 default:return console.log("buildBlock => ",e.type),""}}).join(",")}function b(e){var t,n=e.test,a=e.consequent,r=e.alternate
 if("BinaryExpression"===n.type){var o=n.operator,i=n.left,s=n.right
 t="j.binaryExpression('".concat(o,"', j.identifier('").concat(i.name,"'), j.literal('").concat(s.value,"'))")}else"Identifier"===n.type&&(t="j.identifier(".concat(n.name,")"))
@@ -150,8 +154,17 @@ switch(r.type){case"BlockStatement":i="j.arrowFunctionExpression(\n      [".conc
 break
 case"Literal":i="j.arrowFunctionExpression(\n      [".concat(o(a),"],\n      ").concat(n(r),"\n      )")
 break
-case"CallExpression":i="j.arrowFunctionExpression(\n      [".concat(o(a),"],\n      ").concat(t(r),"\n      )")}return i}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-var j={arrowFunctionExpression:g,classDeclaration:v,exportDefaultDeclaration:h,expressionStatement:p,functionDeclaration:y,ifStatement:b,importDeclaration:u,variableDeclaration:c,buildAST:function(e){return e.program.body.map(function(e){switch(e.type){case"VariableDeclaration":return c(e)
+case"CallExpression":i="j.arrowFunctionExpression(\n      [".concat(o(a),"],\n      ").concat(t(r),"\n      )")}return i}function j(e){var t=e.cases,r=e.discriminant,o=""
+switch(r.type){case"Identifier":o=a(r)
+break
+default:console.log("switchStatement::discriminant => ",r.type)}return"j.switchStatement(".concat(o,",[").concat(function(e){return e.map(function(e){var t=e.test,a=e.consequent,r=""
+if(t)switch(t.type){case"Literal":r="j.switchCase(".concat(n(t),", [").concat(m(a),"])")
+break
+default:console.log("buildSwitchCases => ",t.type)}else r="j.switchCase(null, [".concat(m(a),"])")
+return r}).join(",")}(t),"])")}function _(e){return"j.blockStatement([".concat(m(e),"])")}function E(e){var t=e.block,n=e.handler,r=e.finalizer
+return"j.tryStatement(\n    ".concat(_(t.body),",\n    ").concat(function(e){var t=e.param,n=(e.guard,e.body)
+return"j.catchClause(\n  ".concat(a(t),",\n  null,\n  ").concat(_(n.body),"\n  )")}(n),",\n    ").concat(blockStatemen(r.body),"\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var k={arrowFunctionExpression:g,classDeclaration:v,exportDefaultDeclaration:h,expressionStatement:p,functionDeclaration:y,ifStatement:b,importDeclaration:u,variableDeclaration:l,buildAST:function(e){return e.program.body.map(function(e){switch(e.type){case"VariableDeclaration":return l(e)
 case"ImportDeclaration":return u(e)
 case"ExpressionStatement":return p(e)
 case"IfStatement":return b(e)
@@ -160,8 +173,10 @@ case"ClassDeclaration":return v(e)
 case"FunctionDeclaration":return y(e)
 case"ArrowFunctionExpression":return g(e)
 case"ReturnStatement":return f(e)
+case"SwitchStatement":return j(e)
+case"TryStatement":return E(e)
 default:return console.log("buildAST => ",e.type),""}})}}
-e.default=j}),define("ast-builder/utils/template-recast-builders",["exports"],function(e){function t(e){var t=e.chars.replace(/\n/g,"\\n")
+e.default=k}),define("ast-builder/utils/template-recast-builders",["exports"],function(e){function t(e){var t=e.chars.replace(/\n/g,"\\n")
 return'b.text("'.concat(t,'")')}function n(e){return e.map(function(e){switch(e.type){case"SubExpression":return function e(t){var n=t.params.map(function(t){return"SubExpression"===t.type?e(t):"StringLiteral"===t.type?'"'.concat(t.original,'"'):t.original}),a=[]
 t.hash.pairs.length>0&&(a=t.hash.pairs.map(function(t){if("SubExpression"===t.value.type){var n=e(t.value)
 return"".concat(t.key,"=").concat(n)}return"StringLiteral"===t.value.type?"".concat(t.key,'="').concat(t.value.original,'"'):"".concat(t.key,"=").concat(t.value.original)}))
@@ -173,14 +188,14 @@ case"UndefinedLiteral":return"undefined"
 default:return console.log("buildParams => ",e.type),e.original}}).join(" ")}function a(e){return e.params.length>0?"b.mustache(b.path('".concat(e.path.original," ").concat(n(e.params),"'))"):"b.mustache('".concat(e.path.original,"')")}function r(e){return e.map(function(e){switch(e.type){case"TextNode":return t(e)
 case"ElementNode":return o(e)
 case"MustacheStatement":return a(e)
-default:return console.log("buildchildren => ",e.type),""}}).join(",")}function o(e){var n,o=e.selfClosing,i=e.tag,s=e.attributes,l=e.children
+default:return console.log("buildchildren => ",e.type),""}}).join(",")}function o(e){var n,o=e.selfClosing,i=e.tag,s=e.attributes,c=e.children
 return"b.element({name: '".concat(i,"', selfClosing: ").concat(o,"},\n    {\n    attrs: [").concat((n=s,n.map(function(e){switch(e.value.type){case"TextNode":return"b.attr('".concat(e.name,"', ").concat(t(e.value),")")
 case"MustacheStatement":return"b.attr('".concat(e.name,"', ").concat(a(e.value),")")
-default:return console.log("buildAttributes => ",e.value.type),""}}).join(",")),"],\n    children: [").concat(r(l),"]\n    }\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+default:return console.log("buildAttributes => ",e.value.type),""}}).join(",")),"],\n    children: [").concat(r(c),"]\n    }\n  )")}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var i={textNode:t,elementNode:o,buildAST:function(e){return e.body.map(function(e){switch(e.type){case"TextNode":return t(e)
 case"ElementNode":return o(e)
 case"BlockStatement":return function(e){var t=e.path,n=e.program,a=e.params
 return"b.program([\n      b.block(\n        b.path('".concat(t.original,"'),\n        [").concat(function(e){return e.map(function(e){return"b.path('".concat(e.original,"')")}).join(",")}(a),"],\n        b.hash([b.path('lskdf'),'laskjdf']),\n        b.blockItself([").concat(r(n.body),"])\n      ),\n    ])")}(e)
 default:console.log("buildAST => ",e.type)}})}}
 e.default=i}),define("ast-builder/config/environment",[],function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),n={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+163a0dbe"})
+return Object.defineProperty(n,"__esModule",{value:!0}),n}catch(a){throw new Error('Could not read config from meta tag with name "'+e+'".')}}),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+5fe8f777"})
