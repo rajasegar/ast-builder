@@ -118,7 +118,12 @@ for (var i = 0; i < 10; i++) {
 `;
 
 const _code = `
-
+for (var i = 0; i < 10; i++) {
+  if (i === 3) {
+    continue;
+  }
+  text = text + i;
+}
 `;
 
 export default Component.extend({
