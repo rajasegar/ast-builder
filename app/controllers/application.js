@@ -44,6 +44,9 @@ export default Controller.extend({
   emberVersion: computed(function() {
     return ENV.pkg.devDependencies['ember-source'];
   }),
+  nodeBuilderVersion: computed(function() {
+    return ENV.pkg.dependencies['ast-node-builder'];
+  }),
   mode: computed('language', function() {
    return modes[this.get('language')]; 
   }),
