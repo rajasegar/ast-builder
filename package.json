@@ -30,7 +30,6 @@
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-eslint": "^5.1.0",
     "ember-cli-htmlbars": "^4.0.8",
-    "ember-cli-htmlbars-inline-precompile": "^3.0.1",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-template-lint": "^1.0.0-beta.1",
@@ -54,7 +53,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "ast-node-builder": "^1.0.9",
+    "ast-node-builder": "^1.0.12",
     "ember-template-recast": "^3.2.8",
     "recast": "^0.18.5"
   }
