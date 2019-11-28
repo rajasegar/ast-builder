@@ -1,24 +1,26 @@
 <header>
   <h1>ast-builder</h1>
-  <nav>
-    <ul>
-      <li>
-        {{#link-to "index"}}Javascript{{/link-to}}
-      </li>
-      <li>
-        {{#link-to "handlebars"}}Handlebars{{/link-to}}
-      </li>
-    </ul>
-  </nav>
+
+  <div class="parser_wrapper">
+    <PowerSelect @selected={{language}} @options={{languages}} @onChange={{action (mut language)}} as |lang|>
+      {{lang}}
+    </PowerSelect>
+    <span class="label-text">Parser:</span>
+    <PowerSelect @selected={{parser}} @options={{parsers}} @onChange={{action (mut parser)}} as |parser|>
+      {{parser}}
+    </PowerSelect>
+  </div>
   <div id="options">
     <p>DarkMode: <Input @type="checkbox" @click={{action "toggleDarkMode"}}/></p>
   </div>
+  <span class="label-text">{{parser}}: "{{parserInfo}}"</span>
 </header>
 <main>
-  {{outlet}}
+  <AstMaker @mode={{mode}} @code={{sampleCode}}></AstMaker>
 </main>
 <footer>
   <p>
+    Built with <a href="https://emberjs.com">Ember {{emberVersion}}</a> |
     <a href="https://github.com/rajasegar/ast-builder">Github</a> |
     <a href="https://github.com/rajasegar/ast-builder/issues">Report issues</a> 
   </p>

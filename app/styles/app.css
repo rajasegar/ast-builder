@@ -6,7 +6,15 @@ body {
 
 header {
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: 200px 1fr 150px 300px;
+}
+
+.parser_wrapper {
+  display: flex;
+}
+
+.label-text {
+  line-height: 50px;
 }
 
 h1 {
@@ -47,4 +55,14 @@ footer p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5px;
+}
+
+.ember-power-select-trigger {
+  max-height: 30px;
+  margin: 10px;
+  width: 200px;
+}
+
+#options {
+  margin-right: 10px;
 }

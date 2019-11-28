@@ -2,7 +2,7 @@
   <div class="grid-col">
     {{ivy-codemirror 
       value=code 
-      options=(hash lineNumbers=true mode="javascript" theme=theme)
+      options=(hash lineNumbers=true mode=mode theme=theme)
       valueUpdated=(action (mut code))
     }}
     {{ivy-codemirror 
@@ -11,6 +11,6 @@
   </div>
   <div class="grid-col">
     {{ivy-codemirror value=nodeApi options=(hash lineNumbers=true mode="javascript" theme=theme autoIndent=true )}}
-    {{ivy-codemirror value=output options=(hash lineNumbers=true mode="javascript" theme=theme )}}
+    {{ivy-codemirror value=output options=(hash lineNumbers=true mode=mode theme=theme )}}
   </div>
 </div>
