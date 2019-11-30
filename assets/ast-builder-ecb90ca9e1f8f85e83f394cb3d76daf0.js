@@ -98,4 +98,4 @@ case"BlockStatement":return function(e){var t=e.path,r=e.program,n=e.params
 return"b.program([\n      b.block(\n        b.path('".concat(t.original,"'),\n        [").concat(function(e){return e.map((function(e){return"b.path('".concat(e.original,"')")})).join(",")}(n),"],\n        b.hash([b.path('lskdf'),'laskjdf']),\n        b.blockItself([").concat(o(r.body),"])\n      ),\n    ])")}(e)
 default:console.log("buildAST => ",e.type)}}))}}
 e.default=u})),define("ast-builder/config/environment",[],(function(){try{var e="ast-builder/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),r={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(r,"__esModule",{value:!0}),r}catch(n){throw new Error('Could not read config from meta tag with name "'+e+'".')}})),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+612b0110"})
+return Object.defineProperty(r,"__esModule",{value:!0}),r}catch(n){throw new Error('Could not read config from meta tag with name "'+e+'".')}})),runningTests||require("ast-builder/app").default.create({name:"ast-builder",version:"0.0.0+82baaf90"})
