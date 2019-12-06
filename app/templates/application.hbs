@@ -16,7 +16,10 @@
   <span class="label-text">{{parser}}: "{{parserInfo}}"</span>
 </header>
 <main>
-  <AstMaker @mode={{mode}} @code={{sampleCode}}></AstMaker>
+  <AstMaker 
+  @mode={{mode}} 
+  @code={{sampleCode}}
+  @parser={{parser}}></AstMaker>
 </main>
 <footer>
   <p>
