@@ -6,6 +6,9 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
     autoImport: {
+          alias: {
+            'recastBabel': 'recast/parsers/babel'
+          },
       webpack: { 
         node: { 
           path: true 

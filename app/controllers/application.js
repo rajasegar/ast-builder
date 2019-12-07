@@ -4,18 +4,16 @@ import { computed } from '@ember/object';
 import ENV from 'ast-builder/config/environment';
 
 const PARSERS = {
-  'Javascript': ['recast', 'babylon7'],
+  'Javascript': ['recast', 'babel', 'flow', 'typescript','babylon7'],
   'Handlebars': ['handlebars', 'glimmer', 'ember-template-recast']
 };
 
 // Sample code to test
 const jscode = `
-for (var i = 0; i < 10; i++) {
-  if (i === 3) {
-    continue;
-  }
-  text = text + i;
-}
+const profile = <div>
+    <img src="avatar.png" className="profile" />
+    <h3>{[user.firstName, user.lastName].join(' ')}</h3>
+  </div>;
 `;
 
 const hbscode = `
