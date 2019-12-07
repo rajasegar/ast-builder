@@ -6,6 +6,7 @@ import { computed } from "@ember/object";
 import { inject as service } from "@ember/service";
 import hbsBuilder from "../utils/template-recast-builders";
 import recastBabel from "recastBabel";
+import recastBabylon from "recastBabylon";
 
 const j = recast.types.builders; // eslint-disable-line
 const b = etr.builders; // eslint-disable-line
@@ -18,12 +19,13 @@ export default Component.extend({
     let parse = recast.parse;
     let _parser = this.get("parser");
     switch (_parser) {
-      case "babylon7":
+      case "babylon":
+        parse = recastBabylon.parse;
+        break;
+      case "babel":
         parse = recastBabel.parse;
         break;
 
-      case "handlebars":
-      case "glimmer":
       case "ember-template-recast":
         parse = etr.parse;
         break;
@@ -36,17 +38,33 @@ export default Component.extend({
     try {
       ast = parse(this.get("code"));
     } catch (error) {
-      console.error(error);
+      console.error(error); // eslint-disable-line
       ast = {};
     }
     return JSON.stringify(ast);
   }),
+
+  astBuilder: computed("ast", "mode", function() {
+    let _builder = buildAST;
+    let _mode = this.get("mode");
+    switch (_mode) {
+      case "handlebars":
+        _builder = hbsBuilder.buildAST;
+        break;
+    }
+    return _builder;
+  }),
   pseudoAst: computed("ast", "parser", function() {
     let ast = JSON.parse(this.get("ast"));
-    let astBuilder =
-      this.get("mode") === "javascript" ? buildAST : hbsBuilder.buildAST;
-
-    return ast && ast.program ? astBuilder(ast) : [];
+    let _astBuilder = this.get("astBuilder");
+    let _pseudo = [];
+    try {
+      _pseudo = _astBuilder(ast);
+    } catch (err) {
+      console.error(err); // eslint-disable-line
+      _pseudo = [];
+    }
+    return _pseudo;
   }),
 
   nodeApi: computed("pseudoAst", function() {
@@ -54,10 +72,21 @@ export default Component.extend({
     return recast.prettyPrint(recast.parse(str)).code || "";
   }),
 
+  print: computed('pseudoAst', 'mode', function() {
+    let _print = recast.print;
+    let _mode = this.get('mode');
+    switch(_mode) {
+      case 'handlebars':
+	_print = etr.print;
+	break;
+    }
+    return _print;
+  }),
+
   output: computed("pseudoAst", function() {
     const sampleCode = "";
-    let parse = this.get("mode") === "javascript" ? recast.parse : etr.parse;
-    let print = this.get("mode") === "javascript" ? recast.print : etr.print;
+    let parse = this.get("parse");
+    let print = this.get("print");
     const outputAst = parse(sampleCode);
     let output = "";
 

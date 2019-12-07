@@ -1,34 +1,34 @@
 function textNode(node) {
   // To escape newline characters inside template literals
-  let t = node.chars.replace(/\n/g,'\\n');
+  let t = node.chars.replace(/\n/g, "\\n");
   return `b.text("${t}")`;
 }
 
 // Build element attributes
 function buildAttributes(attrs) {
   let _attrs = attrs.map(a => {
-    switch(a.value.type) {
-      case 'TextNode':
-        return `b.attr('${a.name}', ${textNode(a.value)})`; 
+    switch (a.value.type) {
+      case "TextNode":
+        return `b.attr('${a.name}', ${textNode(a.value)})`;
 
-      case 'MustacheStatement':
+      case "MustacheStatement":
         return `b.attr('${a.name}', ${mustacheStatement(a.value)})`;
 
       default:
-        console.log('buildAttributes => ', a.value.type); // eslint-disable-line
-        return '';
+        console.log("buildAttributes => ", a.value.type); // eslint-disable-line
+        return "";
     }
   });
 
-  return _attrs.join(',');
+  return _attrs.join(",");
 }
 
 // Extracted from ember-angle-brackets-codemod transform
 function transformNestedSubExpression(subExpression) {
   let positionalArgs = subExpression.params.map(param => {
-    if (param.type === 'SubExpression') {
+    if (param.type === "SubExpression") {
       return transformNestedSubExpression(param);
-    } else if (param.type === 'StringLiteral') {
+    } else if (param.type === "StringLiteral") {
       return `"${param.original}"`;
     } else {
       return param.original;
@@ -38,11 +38,11 @@ function transformNestedSubExpression(subExpression) {
   let namedArgs = [];
   if (subExpression.hash.pairs.length > 0) {
     namedArgs = subExpression.hash.pairs.map(pair => {
-      if (pair.value.type === 'SubExpression') {
+      if (pair.value.type === "SubExpression") {
         let nestedValue = transformNestedSubExpression(pair.value);
         return `${pair.key}=${nestedValue}`;
       } else {
-        if (pair.value.type === 'StringLiteral') {
+        if (pair.value.type === "StringLiteral") {
           return `${pair.key}="${pair.value.original}"`;
         }
         return `${pair.key}=${pair.value.original}`;
@@ -51,7 +51,7 @@ function transformNestedSubExpression(subExpression) {
   }
 
   let args = positionalArgs.concat(namedArgs);
-  return `(${subExpression.path.original} ${args.join(' ')})`;
+  return `(${subExpression.path.original} ${args.join(" ")})`;
 }
 
 // Build Params for Mustache Statements
@@ -59,62 +59,64 @@ function transformNestedSubExpression(subExpression) {
 function buildParams(params) {
   return params
     .map(p => {
-      switch(p.type) {
-        case 'SubExpression': 
+      switch (p.type) {
+        case "SubExpression":
           return transformNestedSubExpression(p);
 
-        case 'StringLiteral':
+        case "StringLiteral":
           return `"${p.original}"`;
 
-        case 'NullLiteral':
-          return 'null';
+        case "NullLiteral":
+          return "null";
 
-        case 'UndefinedLiteral':
-          return 'undefined';
+        case "UndefinedLiteral":
+          return "undefined";
 
         default:
-          console.log('buildParams => ', p.type); // eslint-disable-line
+          console.log("buildParams => ", p.type); // eslint-disable-line
           return p.original;
       }
     })
-    .join(' ');
-
-
+    .join(" ");
 }
 
 // Build Params for Block Statements
 function buildBlockParams(params) {
-  return params.map(p => {
-    return `b.path('${p.original}')`;
-  }).join(',');
+  return params
+    .map(p => {
+      return `b.path('${p.original}')`;
+    })
+    .join(",");
 }
 
 function mustacheStatement(node) {
-  if(node.params.length > 0) {
-  return `b.mustache(b.path('${node.path.original} ${buildParams(node.params)}'))`;
+  if (node.params.length > 0) {
+    return `b.mustache(b.path('${node.path.original} ${buildParams(
+      node.params
+    )}'))`;
   } else {
-  return `b.mustache('${node.path.original}')`;
+    return `b.mustache('${node.path.original}')`;
   }
 }
 function buildChildren(children) {
-  return children.map(child => {
-
-      switch(child.type) {
-        case 'TextNode':
+  return children
+    .map(child => {
+      switch (child.type) {
+        case "TextNode":
           return textNode(child);
 
-        case 'ElementNode':
+        case "ElementNode":
           return elementNode(child);
 
-        case 'MustacheStatement':
+        case "MustacheStatement":
           return mustacheStatement(child);
 
         default:
-          console.log('buildchildren => ', child.type); // eslint-disable-line
-          return '';
+          console.log("buildchildren => ", child.type); // eslint-disable-line
+          return "";
       }
-
-  }).join(',');
+    })
+    .join(",");
 }
 function elementNode(node) {
   let { selfClosing, tag, attributes, children } = node;
@@ -138,32 +140,29 @@ function blockStatement(node) {
     ])`;
 }
 function buildAST(ast) {
-
-  // Build the Glimmer template api 
-  let _ast = ast.body.map(node => {
-
-    switch(node.type) {
-      case 'TextNode':
+  // Build the Glimmer template api
+  let _body = ast && ast.body ? ast.body : [];
+  let _ast = _body.map(node => {
+    switch (node.type) {
+      case "TextNode":
         return textNode(node);
 
-      case 'ElementNode':
+      case "ElementNode":
         return elementNode(node);
 
-      case 'BlockStatement':
+      case "BlockStatement":
         return blockStatement(node);
 
       default:
-        console.log('buildAST => ', node.type); // eslint-disable-line
+        console.log("buildAST => ", node.type); // eslint-disable-line
     }
-
   });
 
   return _ast;
-
 }
 
 export default {
   textNode,
   elementNode,
   buildAST
-}
+};
