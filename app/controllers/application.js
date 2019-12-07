@@ -23,7 +23,7 @@ const modes = {
 
 export default Controller.extend({
   customize: service(),
-  language: "Handlebars",
+  language: "Javascript",
   parser: computed("language", function() {
     return Object.keys(PARSERS[this.get("language")])[0];
   }),
