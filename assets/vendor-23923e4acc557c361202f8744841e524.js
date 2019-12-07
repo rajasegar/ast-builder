@@ -7744,26 +7744,7 @@ e&&Object.keys(e).forEach((function(t){this.updateCodeMirrorOption(t,e[t])}),thi
 e!==this._codeMirror.getValue()&&this._codeMirror.setValue(e||"")},willDestroyElement:function(){this._super.apply(this,arguments),this._codeMirror.toTextArea(),this.get("codeMirror").unregisterInstance(this.get("elementId")),delete this._codeMirror}})})),define("ivy-codemirror/services/code-mirror",["exports","codemirror"],(function(e,t){"use strict"
 function r(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t]
 return r}return Array.from(e)}Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Service.extend({init:function(){this._super.apply(this,arguments),this._instances=Object.create(null)},fromTextArea:function(e,r){return this.registerInstance(e,t.default.fromTextArea(r))},instanceFor:function(e){return this._instances[e]},registerInstance:function(e,t){return this._instances[e]=t,t},signal:function(e,n){for(var i=arguments.length,s=Array(i>2?i-2:0),a=2;a<i;a++)s[a-2]=arguments[a]
-t.default.signal.apply(t.default,[e,n].concat(r(s)))},unregisterInstance:function(e){delete this._instances[e]}})}))
-var __ember_auto_import__=function(e){function t(t){for(var n,a,o=t[0],l=t[1],u=t[2],h=0,p=[];h<o.length;h++)a=o[h],i[a]&&p.push(i[a][0]),i[a]=0
-for(n in l)Object.prototype.hasOwnProperty.call(l,n)&&(e[n]=l[n])
-for(c&&c(t);p.length;)p.shift()()
-return s.push.apply(s,u||[]),r()}function r(){for(var e,t=0;t<s.length;t++){for(var r=s[t],n=!0,o=1;o<r.length;o++){var l=r[o]
-0!==i[l]&&(n=!1)}n&&(s.splice(t--,1),e=a(a.s=r[0]))}return e}var n={},i={0:0},s=[]
-function a(t){if(n[t])return n[t].exports
-var r=n[t]={i:t,l:!1,exports:{}}
-return e[t].call(r.exports,r,r.exports,a),r.l=!0,r.exports}a.m=e,a.c=n,a.d=function(e,t,r){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e
-if(4&t&&"object"==typeof e&&e&&e.__esModule)return e
-var r=Object.create(null)
-if(a.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)a.d(r,n,function(t){return e[t]}.bind(null,n))
-return r},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e}
-return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p=""
-var o=window.webpackJsonp_ember_auto_import_=window.webpackJsonp_ember_auto_import_||[],l=o.push.bind(o)
-o.push=t,o=o.slice()
-for(var u=0;u<o.length;u++)t(o[u])
-var c=l
-return s.push([38,2]),r()}({11:function(e,t){window._eai_r=require,window._eai_d=define},38:function(e,t,r){r(11),e.exports=r(39)},39:function(e,t,r){var n,i,s
-"undefined"!=typeof document&&(r.p=(n=document.querySelectorAll("script"))[n.length-1].src.replace(/\/[^/]*$/,"/")),e.exports=(i=_eai_d,s=_eai_r,window.emberAutoImportDynamic=function(e){return s("_eai_dyn_"+e)},i("ast-node-builder",[],(function(){return r(40)})),i("ember-template-recast",[],(function(){return r(43)})),i("recast",[],(function(){return r(66)})),void i("recastBabel",[],(function(){return r(96)})))},67:function(e,t){}});(window.webpackJsonp_ember_auto_import_=window.webpackJsonp_ember_auto_import_||[]).push([[2],[function(e,t,r){"use strict"
+t.default.signal.apply(t.default,[e,n].concat(r(s)))},unregisterInstance:function(e){delete this._instances[e]}})})),(window.webpackJsonp_ember_auto_import_=window.webpackJsonp_ember_auto_import_||[]).push([[2],[function(e,t,r){"use strict"
 function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i,s=this&&this.__extends||(i=function(e,t){return(i=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r])})(e,t)},function(e,t){function r(){this.constructor=e}i(e,t),e.prototype=null===t?Object.create(t):(r.prototype=t.prototype,new r)})
 Object.defineProperty(t,"__esModule",{value:!0})
 var a=Object.prototype,o=a.toString,l=a.hasOwnProperty,u=function(){function e(){}return e.prototype.assert=function(e,t){if(!this.check(e,t)){var r=v(e)
@@ -7923,10 +7904,10 @@ return"declaration"===e.getName()&&m(t)?t:null},t.isTrailingCommaEnabled=functio
 return"object"===n(r)?!!r[t]:!!r}},function(e,t,r){"use strict"
 var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
 Object.defineProperty(t,"__esModule",{value:!0})
-var i=n(r(68)),s=n(r(15)),a=n(r(26)),o=n(r(7)),l=n(r(72)),u=n(r(27)),c=n(r(73)),h=n(r(74)),p=n(r(75)),d=n(r(76)),f=r(77)
+var i=n(r(69)),s=n(r(15)),a=n(r(26)),o=n(r(7)),l=n(r(73)),u=n(r(27)),c=n(r(74)),h=n(r(75)),p=n(r(76)),d=n(r(77)),f=r(78)
 t.namedTypes=f.namedTypes
 var m=i.default([s.default,a.default,o.default,l.default,u.default,c.default,h.default,p.default,d.default]),y=m.astNodesAreEquivalent,v=m.builders,g=m.builtInTypes,b=m.defineMethod,x=m.eachField,E=m.finalize,w=m.getBuilderName,k=m.getFieldNames,S=m.getFieldValue,_=m.getSupertypeNames,T=m.namedTypes,A=m.NodePath,C=m.Path,P=m.PathVisitor,D=m.someField,O=m.Type,N=m.use,R=m.visit
-t.astNodesAreEquivalent=y,t.builders=v,t.builtInTypes=g,t.defineMethod=b,t.eachField=x,t.finalize=E,t.getBuilderName=w,t.getFieldNames=k,t.getFieldValue=S,t.getSupertypeNames=_,t.NodePath=A,t.Path=C,t.PathVisitor=P,t.someField=D,t.Type=O,t.use=N,t.visit=R,Object.assign(f.namedTypes,T)},function(e,t,r){"use strict";(function(t){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i=r(79)
+t.astNodesAreEquivalent=y,t.builders=v,t.builtInTypes=g,t.defineMethod=b,t.eachField=x,t.finalize=E,t.getBuilderName=w,t.getFieldNames=k,t.getFieldValue=S,t.getSupertypeNames=_,t.NodePath=A,t.Path=C,t.PathVisitor=P,t.someField=D,t.Type=O,t.use=N,t.visit=R,Object.assign(f.namedTypes,T)},function(e,t,r){"use strict";(function(t){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i=r(80)
 
 ;/*!
  * The buffer module from node.js, for the browser.
@@ -7935,7 +7916,7 @@ t.astNodesAreEquivalent=y,t.builders=v,t.builtInTypes=g,t.defineMethod=b,t.eachF
  * @license  MIT
  */function s(e,t){if(e===t)return 0
 for(var r=e.length,n=t.length,i=0,s=Math.min(r,n);i<s;++i)if(e[i]!==t[i]){r=e[i],n=t[i]
-break}return r<n?-1:n<r?1:0}function a(e){return t.Buffer&&"function"==typeof t.Buffer.isBuffer?t.Buffer.isBuffer(e):!(null==e||!e._isBuffer)}var o=r(80),l=Object.prototype.hasOwnProperty,u=Array.prototype.slice,c="foo"===function(){}.name
+break}return r<n?-1:n<r?1:0}function a(e){return t.Buffer&&"function"==typeof t.Buffer.isBuffer?t.Buffer.isBuffer(e):!(null==e||!e._isBuffer)}var o=r(81),l=Object.prototype.hasOwnProperty,u=Array.prototype.slice,c="foo"===function(){}.name
 function h(e){return Object.prototype.toString.call(e)}function p(e){return!a(e)&&"function"==typeof t.ArrayBuffer&&("function"==typeof ArrayBuffer.isView?ArrayBuffer.isView(e):!!e&&(e instanceof DataView||!!(e.buffer&&e.buffer instanceof ArrayBuffer)))}var d=e.exports=b,f=/\s*function\s+([^\(\s]*)\s*/
 function m(e){if(o.isFunction(e)){if(c)return e.name
 var t=e.toString().match(f)
@@ -8015,7 +7996,7 @@ l>=0&&(n.path=n.path.substring(0,l+1))}t=o(s(n),t)}return a(t)}},function(e,t,r)
 function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i=this&&this.__assign||function(){return(i=Object.assign||function(e){for(var t,r=1,n=arguments.length;r<n;r++)for(var i in t=arguments[r])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])
 return e}).apply(this,arguments)},s=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
 Object.defineProperty(t,"__esModule",{value:!0})
-var a=s(r(6)),o=s(r(30)),l=r(16),u=r(4),c=s(r(92)),h=function(){function e(e,t){void 0===t&&(t=null),this.infos=e,this.mappings=[],this.cachedSourceMap=null,this.cachedTabWidth=void 0,a.default.ok(e.length>0),this.length=e.length,this.name=t||null,this.name&&this.mappings.push(new c.default(this,{start:this.firstPos(),end:this.lastPos()}))}return e.prototype.toString=function(e){return this.sliceString(this.firstPos(),this.lastPos(),e)},e.prototype.getSourceMap=function(e,t){if(!e)return null
+var a=s(r(6)),o=s(r(30)),l=r(16),u=r(4),c=s(r(93)),h=function(){function e(e,t){void 0===t&&(t=null),this.infos=e,this.mappings=[],this.cachedSourceMap=null,this.cachedTabWidth=void 0,a.default.ok(e.length>0),this.length=e.length,this.name=t||null,this.name&&this.mappings.push(new c.default(this,{start:this.firstPos(),end:this.lastPos()}))}return e.prototype.toString=function(e){return this.sliceString(this.firstPos(),this.lastPos(),e)},e.prototype.getSourceMap=function(e,t){if(!e)return null
 var r=this
 function n(r){return(r=r||{}).file=e,t&&(r.sourceRoot=t),r}if(r.cachedSourceMap)return n(r.cachedSourceMap.toJSON())
 var i=new o.default.SourceMapGenerator(n()),s={}
@@ -8109,7 +8090,7 @@ return i&&(p[e]=s),s}function b(e){return!/\S/.test(e)}function x(e,t,r){var n=e
 return void 0===r&&(r=o),t=Math.max(t,0),r=Math.min(r,o),(r=Math.max(r,t))<s?(s=r,i=n):i-=o-r,o=r,o-=t,t<s?s-=t:(t-=s,s=0,n+=t),a.default.ok(s>=0),a.default.ok(n<=i),a.default.strictEqual(o,s+i-n),e.indent===s&&e.sliceStart===n&&e.sliceEnd===i?e:{line:e.line,indent:s,locked:!1,sliceStart:n,sliceEnd:i}}t.fromString=g,t.concat=function(e){return E.join(e)}
 var E=g("")},function(e,t,r){"use strict"
 function n(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0
-var i=n(r(44)),s=n(r(20)),a=r(57),o=r(61),l=n(r(62)),u=n(r(21)),c=n(r(19)),h=i.default.create
+var i=n(r(45)),s=n(r(20)),a=r(58),o=r(62),l=n(r(63)),u=n(r(21)),c=n(r(19)),h=i.default.create
 function p(){var e=h()
 return e.compile=function(t,r){return o.compile(t,r,e)},e.precompile=function(t,r){return o.precompile(t,r,e)},e.AST=s.default,e.Compiler=o.Compiler,e.JavaScriptCompiler=l.default,e.Parser=a.parser,e.parse=a.parse,e.parseWithoutProcessing=a.parseWithoutProcessing,e}var d=p()
 d.create=p,c.default(d),d.Visitor=u.default,d.default=d,t.default=d,e.exports=t.default},,function(e,t){function r(e){var t="string"==typeof e.value?"'".concat(e.value,"'"):e.value
@@ -8129,7 +8110,7 @@ switch(e.type){case"Identifier":t=n(e)
 break
 default:console.log("buildCallee => ",e.type)}return t},buildElements:function(e){return e.map((function(e){return n(e)})).join(",")}}},function(e,t,r){"use strict"
 function n(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0,t.HandlebarsEnvironment=u
-var i=r(1),s=n(r(2)),a=r(18),o=r(52),l=n(r(54))
+var i=r(1),s=n(r(2)),a=r(18),o=r(53),l=n(r(55))
 function u(e,t,r){this.helpers=e||{},this.partials=t||{},this.decorators=r||{},a.registerDefaultHelpers(this),o.registerDefaultDecorators(this)}t.VERSION="4.5.1",t.COMPILER_REVISION=8,t.LAST_COMPATIBLE_COMPILER_REVISION=7,t.REVISION_CHANGES={1:"<= 1.0.rc.2",2:"== 1.0.0-rc.3",3:"== 1.0.0-rc.4",4:"== 1.x.x",5:"== 2.0.0-alpha.x",6:">= 2.0.0-beta.1",7:">= 4.0.0 <4.3.0",8:">= 4.3.0"},u.prototype={constructor:u,logger:l.default,log:l.default.log,registerHelper:function(e,t){if("[object Object]"===i.toString.call(e)){if(t)throw new s.default("Arg not supported with multiple helpers")
 i.extend(this.helpers,e)}else this.helpers[e]=t},unregisterHelper:function(e){delete this.helpers[e]},registerPartial:function(e,t){if("[object Object]"===i.toString.call(e))i.extend(this.partials,e)
 else{if(void 0===t)throw new s.default('Attempting to register a partial called "'+e+'" as undefined')
@@ -8157,7 +8138,7 @@ r("LogicalExpression").bases("Expression").build("operator","left","right").fiel
 return"Literal"===e||"MemberExpression"===e||"BinaryExpression"===e})),r("Pattern").bases("Node"),r("SwitchCase").bases("Node").build("test","consequent").field("test",n(r("Expression"),null)).field("consequent",[r("Statement")]),r("Identifier").bases("Expression","Pattern").build("name").field("name",String).field("optional",Boolean,o.false),r("Literal").bases("Expression").build("value").field("value",n(String,Boolean,null,Number,RegExp)).field("regex",n({pattern:String,flags:String},null),(function(){if(this.value instanceof RegExp){var e=""
 return this.value.ignoreCase&&(e+="i"),this.value.multiline&&(e+="m"),this.value.global&&(e+="g"),{pattern:this.value.source,flags:e}}return null})),r("Comment").bases("Printable").field("value",String).field("leading",Boolean,o.true).field("trailing",Boolean,o.false)},e.exports=t.default},function(e,t,r){"use strict"
 Object.defineProperty(t,"__esModule",{value:!0})
-var n={parser:r(83),tabWidth:4,useTabs:!1,reuseWhitespace:!0,lineTerminator:r(91).EOL||"\n",wrapColumn:74,sourceFileName:null,sourceMapName:null,sourceRoot:null,inputSourceMap:null,range:!1,tolerant:!0,quote:null,trailingComma:!1,arrayBracketSpacing:!1,objectCurlySpacing:!0,arrowParensAlways:!1,flowObjectCommas:!0,tokens:!0},i=n.hasOwnProperty
+var n={parser:r(84),tabWidth:4,useTabs:!1,reuseWhitespace:!0,lineTerminator:r(92).EOL||"\n",wrapColumn:74,sourceFileName:null,sourceMapName:null,sourceRoot:null,inputSourceMap:null,range:!1,tolerant:!0,quote:null,trailingComma:!1,arrayBracketSpacing:!1,objectCurlySpacing:!0,arrowParensAlways:!1,flowObjectCommas:!0,tokens:!0},i=n.hasOwnProperty
 t.normalize=function(e){var t=e||n
 function r(e){return i.call(t,e)?t[e]:n[e]}return{tabWidth:+r("tabWidth"),useTabs:!!r("useTabs"),reuseWhitespace:!!r("reuseWhitespace"),lineTerminator:r("lineTerminator"),wrapColumn:Math.max(r("wrapColumn"),0),sourceFileName:r("sourceFileName"),sourceMapName:r("sourceMapName"),sourceRoot:r("sourceRoot"),inputSourceMap:r("inputSourceMap"),parser:r("esprima")||r("parser"),range:r("range"),tolerant:r("tolerant"),quote:r("quote"),trailingComma:r("trailingComma"),arrayBracketSpacing:r("arrayBracketSpacing"),objectCurlySpacing:r("objectCurlySpacing"),arrowParensAlways:r("arrowParensAlways"),flowObjectCommas:r("flowObjectCommas"),tokens:!!r("tokens")}}},function(e,t,r){var n=r(12)
 function i(e){return"j.jsxIdentifier('".concat(e.name,"')")}function s(e){var t=e.name,r=e.value
@@ -8203,7 +8184,7 @@ default:console.log("JSX::buildChildren => ",e.type)}return t})).join(",")}funct
 return null!==r?"j.jsxElement(\n  ".concat(a(t),",\n  ").concat(function(e){var t=e.name
 return"j.jsxClosingElement(\n    ".concat(i(t),"\n  )")}(r),",\n  [").concat(u(n),"],\n  ").concat(o,"\n  )"):"j.jsxElement(\n  ".concat(a(t),",")+"null,"+"[".concat(u(n),"],\n  ").concat(o,"\n  )")}e.exports={attribute:s,element:c}},function(e,t,r){"use strict"
 function n(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0,t.registerDefaultHelpers=function(e){i.default(e),s.default(e),a.default(e),o.default(e),l.default(e),u.default(e),c.default(e)},t.moveHelperToHooks=function(e,t,r){e.helpers[t]&&(e.hooks[t]=e.helpers[t],r||delete e.helpers[t])}
-var i=n(r(45)),s=n(r(46)),a=n(r(47)),o=n(r(48)),l=n(r(49)),u=n(r(50)),c=n(r(51))},function(e,t,r){"use strict";(function(r){t.__esModule=!0,t.default=function(e){var t=void 0!==r?r:window,n=t.Handlebars
+var i=n(r(46)),s=n(r(47)),a=n(r(48)),o=n(r(49)),l=n(r(50)),u=n(r(51)),c=n(r(52))},function(e,t,r){"use strict";(function(r){t.__esModule=!0,t.default=function(e){var t=void 0!==r?r:window,n=t.Handlebars
 e.noConflict=function(){return t.Handlebars===e&&(t.Handlebars=n),e}},e.exports=t.default}).call(this,r(14))},function(e,t,r){"use strict"
 t.__esModule=!0
 var n={helpers:{helperExpression:function(e){return"SubExpression"===e.type||("MustacheStatement"===e.type||"BlockStatement"===e.type)&&!!(e.params&&e.params.length||e.hash)},scopedId:function(e){return/^\.|this\b/.test(e.original)},simpleId:function(e){return 1===e.parts.length&&!n.helpers.scopedId(e)&&!e.depth}}}
@@ -8230,7 +8211,7 @@ if(arguments.length>1)for(var r=1;r<arguments.length;r++)t[r-1]=arguments[r]
 u.push(new f(e,t)),1!==u.length||c||o(d)},f.prototype.run=function(){this.fun.apply(null,this.array)},i.title="browser",i.browser=!0,i.env={},i.argv=[],i.version="",i.versions={},i.on=m,i.addListener=m,i.once=m,i.off=m,i.removeListener=m,i.removeAllListeners=m,i.emit=m,i.prependListener=m,i.prependOnceListener=m,i.listeners=function(e){return[]},i.binding=function(e){throw new Error("process.binding is not supported")},i.cwd=function(){return"/"},i.chdir=function(e){throw new Error("process.chdir is not supported")},i.umask=function(){return 0}},function(e,t,r){"use strict"
 var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
 Object.defineProperty(t,"__esModule",{value:!0})
-var i=n(r(0)),s=n(r(25)),a=n(r(70))
+var i=n(r(0)),s=n(r(25)),a=n(r(71))
 t.default=function(e){var t=e.use(i.default),r=t.namedTypes,n=t.builders,o=t.builtInTypes.number,l=t.builtInTypes.array,u=e.use(s.default),c=e.use(a.default),h=function e(t,r,n){if(!(this instanceof e))throw new Error("NodePath constructor cannot be invoked without 'new'")
 u.call(this,t,r,n)},p=h.prototype=Object.create(u.prototype,{constructor:{value:h,enumerable:!1,writable:!0,configurable:!0}})
 function d(e){return r.BinaryExpression.check(e)||r.LogicalExpression.check(e)}Object.defineProperties(p,{node:{get:function(){return Object.defineProperty(this,"node",{configurable:!0,value:this._computeNode()}),this.node}},parent:{get:function(){return Object.defineProperty(this,"parent",{configurable:!0,value:this._computeParent()}),this.parent}},scope:{get:function(){return Object.defineProperty(this,"scope",{configurable:!0,value:this._computeScope()}),this.scope}}}),p.replace=function(){return delete this.node,delete this.parent,delete this.scope,u.prototype.replace.apply(this,arguments)},p.prune=function(){var e=this.parent
@@ -8364,7 +8345,7 @@ n("ObjectExpression").bases("Expression").build("properties").field("properties"
 var u=o(n("MethodDefinition"),n("VariableDeclarator"),n("ClassPropertyDefinition"),n("ClassProperty"),n("ClassPrivateProperty"),n("ClassMethod"),n("ClassPrivateMethod"))
 n("ClassBody").bases("Declaration").build("body").field("body",[u]),n("ClassMethod").bases("Declaration","Function").build("kind","key","params","body","computed","static").field("key",o(n("Literal"),n("Identifier"),n("Expression"))),n("ClassPrivateMethod").bases("Declaration","Function").build("key","params","body","kind","computed","static").field("key",n("PrivateName")),["ClassMethod","ClassPrivateMethod"].forEach((function(e){n(e).field("kind",o("get","set","method","constructor"),(function(){return"method"})).field("body",n("BlockStatement")).field("computed",Boolean,r.false).field("static",o(Boolean,null),r.null).field("abstract",o(Boolean,null),r.null).field("access",o("public","private","protected",null),r.null).field("accessibility",o("public","private","protected",null),r.null).field("decorators",o([n("Decorator")],null),r.null).field("optional",o(Boolean,null),r.null)})),n("ClassPrivateProperty").bases("ClassProperty").build("key","value").field("key",n("PrivateName")).field("value",o(n("Expression"),null),r.null),n("PrivateName").bases("Expression","Pattern").build("id").field("id",n("Identifier"))
 var c=o(n("Property"),n("PropertyPattern"),n("SpreadPropertyPattern"),n("SpreadProperty"),n("ObjectProperty"),n("RestProperty"))
-n("ObjectPattern").bases("Pattern").build("properties").field("properties",[c]).field("decorators",o([n("Decorator")],null),r.null),n("SpreadProperty").bases("Node").build("argument").field("argument",n("Expression")),n("RestProperty").bases("Node").build("argument").field("argument",n("Expression")),n("ForAwaitStatement").bases("Statement").build("left","right","body").field("left",o(n("VariableDeclaration"),n("Expression"))).field("right",n("Expression")).field("body",n("Statement")),n("Import").bases("Expression").build()},e.exports=t.default},function(e,t,r){t.SourceMapGenerator=r(31).SourceMapGenerator,t.SourceMapConsumer=r(86).SourceMapConsumer,t.SourceNode=r(89).SourceNode},function(e,t,r){var n=r(32),i=r(8),s=r(33).ArraySet,a=r(85).MappingList
+n("ObjectPattern").bases("Pattern").build("properties").field("properties",[c]).field("decorators",o([n("Decorator")],null),r.null),n("SpreadProperty").bases("Node").build("argument").field("argument",n("Expression")),n("RestProperty").bases("Node").build("argument").field("argument",n("Expression")),n("ForAwaitStatement").bases("Statement").build("left","right","body").field("left",o(n("VariableDeclaration"),n("Expression"))).field("right",n("Expression")).field("body",n("Statement")),n("Import").bases("Expression").build()},e.exports=t.default},function(e,t,r){t.SourceMapGenerator=r(31).SourceMapGenerator,t.SourceMapConsumer=r(87).SourceMapConsumer,t.SourceNode=r(90).SourceNode},function(e,t,r){var n=r(32),i=r(8),s=r(33).ArraySet,a=r(86).MappingList
 function o(e){e||(e={}),this._file=i.getArg(e,"file",null),this._sourceRoot=i.getArg(e,"sourceRoot",null),this._skipValidation=i.getArg(e,"skipValidation",!1),this._sources=new s,this._names=new s,this._mappings=new a,this._sourcesContents=null}o.prototype._version=3,o.fromSourceMap=function(e){var t=e.sourceRoot,r=new o({file:e.file,sourceRoot:t})
 return e.eachMapping((function(e){var n={generated:{line:e.generatedLine,column:e.generatedColumn}}
 null!=e.source&&(n.source=e.source,null!=t&&(n.source=i.relative(t,n.source)),n.original={line:e.originalLine,column:e.originalColumn},null!=e.name&&(n.name=e.name)),r.addMapping(n)})),e.sources.forEach((function(n){var s=n
@@ -8389,7 +8370,7 @@ e+=","}e+=n.encode(t.generatedColumn-a),a=t.generatedColumn,null!=t.source&&(s=t
 null!=t&&(e=i.relative(t,e))
 var r=i.toSetString(e)
 return Object.prototype.hasOwnProperty.call(this._sourcesContents,r)?this._sourcesContents[r]:null}),this)},o.prototype.toJSON=function(){var e={version:this._version,sources:this._sources.toArray(),names:this._names.toArray(),mappings:this._serializeMappings()}
-return null!=this._file&&(e.file=this._file),null!=this._sourceRoot&&(e.sourceRoot=this._sourceRoot),this._sourcesContents&&(e.sourcesContent=this._generateSourcesContent(e.sources,e.sourceRoot)),e},o.prototype.toString=function(){return JSON.stringify(this.toJSON())},t.SourceMapGenerator=o},function(e,t,r){var n=r(84)
+return null!=this._file&&(e.file=this._file),null!=this._sourceRoot&&(e.sourceRoot=this._sourceRoot),this._sourcesContents&&(e.sourcesContent=this._generateSourcesContent(e.sources,e.sourceRoot)),e},o.prototype.toString=function(){return JSON.stringify(this.toJSON())},t.SourceMapGenerator=o},function(e,t,r){var n=r(85)
 t.encode=function(e){var t,r="",i=function(e){return e<0?1+(-e<<1):0+(e<<1)}(e)
 do{t=31&i,(i>>>=5)>0&&(t|=32),r+=n.encode(t)}while(i>0)
 return r},t.decode=function(e,t,r){var i,s,a,o,l=e.length,u=0,c=0
@@ -9312,13 +9293,13 @@ this.reader.push(o)
 var l={type:s.TokenName[o.type],value:this.scanner.source.slice(o.start,o.end)}
 if(this.trackRange&&(l.range=[o.start,o.end]),this.trackLoc&&(a.end={line:this.scanner.lineNumber,column:this.scanner.index-this.scanner.lineStart},l.loc=a),9===o.type){var u=o.pattern,c=o.flags
 l.regex={pattern:u,flags:c}}this.buffer.push(l)}}return this.buffer.shift()},e}()
-t.Tokenizer=o}])},"object"===a(t)&&"object"===a(e)?e.exports=s():(n=[],void 0===(i="function"==typeof(r=s)?r.apply(t,n):r)||(e.exports=i))}).call(this,r(90)(e))},function(e,t,r){"use strict"
+t.Tokenizer=o}])},"object"===a(t)&&"object"===a(e)?e.exports=s():(n=[],void 0===(i="function"==typeof(r=s)?r.apply(t,n):r)||(e.exports=i))}).call(this,r(91)(e))},function(e,t,r){"use strict"
 var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}},i=this&&this.__importStar||function(e){if(e&&e.__esModule)return e
 var t={}
 if(null!=e)for(var r in e)Object.hasOwnProperty.call(e,r)&&(t[r]=e[r])
 return t.default=e,t}
 Object.defineProperty(t,"__esModule",{value:!0})
-var s=n(r(6)),a=i(r(5)),o=a.namedTypes,l=a.builtInTypes.array,u=a.builtInTypes.object,c=r(9),h=r(4),p=r(93).makeUniqueKey()
+var s=n(r(6)),a=i(r(5)),o=a.namedTypes,l=a.builtInTypes.array,u=a.builtInTypes.object,c=r(9),h=r(4),p=r(94).makeUniqueKey()
 function d(e,t,r){for(var n=function e(t,r,n){if(t){if(h.fixFaultyLocations(t,r),n){if(o.Node.check(t)&&o.SourceLocation.check(t.loc)){for(var i=n.length-1;i>=0&&!(h.comparePos(n[i].loc.end,t.loc.start)<=0);--i);return void n.splice(i+1,0,t)}}else if(t[p])return t[p]
 var s
 if(l.check(t))s=Object.keys(t)
@@ -9436,6 +9417,11 @@ else if(o.ConditionalExpression.check(t)&&"test"===r)s.default.strictEqual(t.tes
 else if(f(t)&&"left"===r)s.default.strictEqual(t.left,n)
 else{if(!o.UnaryExpression.check(t)||t.prefix||"argument"!==r)return!1
 s.default.strictEqual(t.argument,n)}}return!0},t.default=h},function(e,t,r){"use strict"
+var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
+Object.defineProperty(t,"__esModule",{value:!0})
+var i=n(r(97))
+t.parser=function(){try{return r(98)}catch(e){return r(99)}}(),t.parse=function(e,r){var n=i.default(r)
+return n.plugins.push("jsx","flow"),t.parser.parse(e,n)}},function(e,t,r){"use strict"
 function n(e,t){for(var r=0;r<t.length;r++){var n=t[r]
 n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function i(e){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}r.r(t),Object.freeze([]),new WeakMap,new WeakMap,new(function(){function e(t,r){(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")})(this,e),this._head=t,this._tail=r}return function(e,t,r){t&&n(e.prototype,t),r&&n(e,r)}(e,[{key:"forEachNode",value:function(e){for(var t=this._head;null!==t;)e(t),t=this.nextNode(t)}},{key:"head",value:function(){return this._head}},{key:"tail",value:function(){return this._tail}},{key:"toArray",value:function(){var e=[]
 return this.forEachNode((function(t){return e.push(t)})),e}},{key:"nextNode",value:function(e){return e===this._tail?null:e.next}}]),e}())(null,null)
@@ -9709,25 +9695,26 @@ var i=void 0
 var s=new Ne(e,i).acceptTemplate(t)
 if(r&&r.plugins&&r.plugins.ast)for(var o=0,l=r.plugins.ast.length;o<l;o++)fe(s,(0,r.plugins.ast[o])(a({},r,{syntax:Me},{plugins:void 0})).visitor)
 return s}var Ie=r(22)
-r.d(t,"preprocess",(function(){return Le})),r.d(t,"builders",(function(){return C})),r.d(t,"TraversalError",(function(){return ne})),r.d(t,"cannotRemoveNode",(function(){return ie})),r.d(t,"cannotReplaceNode",(function(){return se})),r.d(t,"cannotReplaceOrRemoveInKeyHandlerYet",(function(){return ae})),r.d(t,"traverse",(function(){return fe})),r.d(t,"Walker",(function(){return Se})),r.d(t,"print",(function(){return we})),r.d(t,"SyntaxError",(function(){return D})),r.d(t,"AST",(function(){return Ie})),r.d(t,"isLiteral",(function(){return R})),r.d(t,"printLiteral",(function(){return M}))},,,function(e,t,r){var n=r(41),i=n.blockStatement,s=n.callExpression,a=n.classDeclaration,o=n.exportDefaultDeclaration,l=n.expressionStatement,u=n.functionDeclaration,c=n.ifStatement,h=n.importDeclaration,p=n.variableDeclaration,d=n.returnStatement,f=n.switchStatement,m=n.tryStatement,y=n.forStatement,v=n.forInStatement,g=n.forOfStatement,b=n.arrowFunctionExpression,x=r(17)
+r.d(t,"preprocess",(function(){return Le})),r.d(t,"builders",(function(){return C})),r.d(t,"TraversalError",(function(){return ne})),r.d(t,"cannotRemoveNode",(function(){return ie})),r.d(t,"cannotReplaceNode",(function(){return se})),r.d(t,"cannotReplaceOrRemoveInKeyHandlerYet",(function(){return ae})),r.d(t,"traverse",(function(){return fe})),r.d(t,"Walker",(function(){return Se})),r.d(t,"print",(function(){return we})),r.d(t,"SyntaxError",(function(){return D})),r.d(t,"AST",(function(){return Ie})),r.d(t,"isLiteral",(function(){return R})),r.d(t,"printLiteral",(function(){return M}))},,,function(e,t,r){var n=r(42),i=n.blockStatement,s=n.callExpression,a=n.classDeclaration,o=n.exportDefaultDeclaration,l=n.exportNamedDeclaration,u=n.expressionStatement,c=n.functionDeclaration,h=n.ifStatement,p=n.importDeclaration,d=n.variableDeclaration,f=n.returnStatement,m=n.switchStatement,y=n.tryStatement,v=n.forStatement,g=n.forInStatement,b=n.forOfStatement,x=n.arrowFunctionExpression,E=r(17)
 e.exports={buildAST:function(e){var t=!(arguments.length>1&&void 0!==arguments[1])||arguments[1]
-return e.program.body.map((function(e){switch(e.type){case"VariableDeclaration":return p(e)
-case"ImportDeclaration":return h(e)
-case"ExpressionStatement":return t?l(e):s(e.expression)
-case"IfStatement":return c(e)
+return(e&&e.program?e.program.body:[]).map((function(e){switch(e.type){case"VariableDeclaration":return d(e)
+case"ImportDeclaration":return p(e)
+case"ExpressionStatement":return t?u(e):s(e.expression)
+case"IfStatement":return h(e)
 case"ExportDefaultDeclaration":return o(e)
+case"ExportNamedDeclaration":return l(e)
 case"ClassDeclaration":return a(e)
-case"FunctionDeclaration":return u(e)
-case"ArrowFunctionExpression":return b(e)
-case"ReturnStatement":return d(e)
-case"SwitchStatement":return f(e)
-case"TryStatement":return m(e)
-case"ForStatement":return y(e)
-case"ForInStatement":return v(e)
-case"ForOfStatement":return g(e)
+case"FunctionDeclaration":return c(e)
+case"ArrowFunctionExpression":return x(e)
+case"ReturnStatement":return f(e)
+case"SwitchStatement":return m(e)
+case"TryStatement":return y(e)
+case"ForStatement":return v(e)
+case"ForInStatement":return g(e)
+case"ForOfStatement":return b(e)
 case"BlockStatement":return i(e)
-case"JSXElement":return x.element(e)
-default:return console.log("buildAST => ",e.type),""}}))},core:n}},function(e,t,r){var n=r(12),i=n.literal,s=n.identifier,a=n.breakStatement,o=n.updateExpression,l=n.continueStatement,u=n.binaryExpression,c=n.unaryExpression,h=n.buildCallee,p=n.buildElements,d=r(42),f=d.spreadElement,m=d.templateLiteral,y=d.taggedTemplateExpression,v=r(17)
+case"JSXElement":return E.element(e)
+default:return console.log("buildAST => ",e.type),""}}))},core:n}},function(e,t,r){var n=r(12),i=n.literal,s=n.identifier,a=n.breakStatement,o=n.updateExpression,l=n.continueStatement,u=n.binaryExpression,c=n.unaryExpression,h=n.buildCallee,p=n.buildElements,d=r(43),f=d.spreadElement,m=d.templateLiteral,y=d.taggedTemplateExpression,v=r(17)
 function g(e){var t=e.params,r=e.body,n=""
 switch(r.type){case"BlockStatement":n="j.arrowFunctionExpression(\n      [".concat(b(t),"],\n      j.blockStatement([").concat(N(r.body),"])\n      )")
 break
@@ -9870,7 +9857,16 @@ case"ClassDeclaration":t="j.exportDefaultDeclaration(".concat(L(r),")")
 break
 case"ObjectExpression":t="j.exportDefaultDeclaration(".concat(k(r),")")
 break
-default:console.log("exportDefaultDeclaration =>",r.type)}return t},expressionStatement:P,functionDeclaration:I,ifStatement:R,importDeclaration:T,variableDeclaration:_,returnStatement:D,switchStatement:function(e){var t=e.cases,r=e.discriminant,n=""
+default:console.log("exportDefaultDeclaration =>",r.type)}return t},exportNamedDeclaration:function(e){var t="",r=e.declaration
+switch(r.type){case"FunctionDeclaration":t=I(r)
+break
+case"ClassDeclaration":t=L(r)
+break
+case"ObjectExpression":t=k(r)
+break
+case"VariableDeclaration":t=_(r)
+break
+default:console.log("exportNamedDeclaration =>",r.type)}return"j.exportNamedDeclaration(".concat(t,")")},expressionStatement:P,functionDeclaration:I,ifStatement:R,importDeclaration:T,variableDeclaration:_,returnStatement:D,switchStatement:function(e){var t=e.cases,r=e.discriminant,n=""
 switch(r.type){case"Identifier":n=s(r)
 break
 default:console.log("switchStatement::discriminant => ",r.type)}return"j.switchStatement(".concat(n,",[").concat(function(e){return e.map((function(e){var t=e.test,r=e.consequent,n=""
@@ -9892,7 +9888,7 @@ return"j.forOfStatement(\n  ".concat(_(t),",\n  ").concat(s(r),",\n  ").concat(F
 function i(e){var t=e.expressions,r=e.quasis,i=t.map((function(e){return n(e)})).join(","),s=r.map((function(e){return function(e){var t=e.value,r=e.tail
 return"j.templateElement(\n  ".concat(function(e){return'{cooked: "'.concat(e.cooked.replace("\n","\\n"),'", raw: "').concat(e.raw.replace("\n","\\n"),'"}')}(t),",\n  ").concat(r,"\n  )")}(e)})).join(",")
 return"j.templateLiteral(\n  [".concat(s,"],\n  [").concat(i,"]\n  )")}e.exports={spreadElement:function(e){return"j.spreadElement(".concat(n(e.argument),")")},templateLiteral:i,taggedTemplateExpression:function(e){var t=e.tag,r=e.quasi
-return"j.taggedTemplateExpression(\n  ".concat(n(t),",\n  ").concat(i(r),"\n  )")}}},function(e,t,r){var n=r(37),i=n.traverse,s=n.builders,a=n.Walker,o=r(64),l=new WeakMap
+return"j.taggedTemplateExpression(\n  ".concat(n(t),",\n  ").concat(i(r),"\n  )")}}},function(e,t,r){var n=r(38),i=n.traverse,s=n.builders,a=n.Walker,o=r(65),l=new WeakMap
 function u(e){var t=new o(e)
 return l.set(t.ast,t),t.ast}function c(e){return l.get(e).print()}e.exports={builders:s,parse:u,print:c,transform:function(e,t){var r
 r="string"==typeof e?u(e):e
@@ -9902,7 +9898,7 @@ function n(e){return e&&e.__esModule?e:{default:e}}function i(e){if(e&&e.__esMod
 var t={}
 if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r])
 return t.default=e,t}t.__esModule=!0
-var s=i(r(13)),a=n(r(55)),o=n(r(2)),l=i(r(1)),u=i(r(56)),c=n(r(19))
+var s=i(r(13)),a=n(r(56)),o=n(r(2)),l=i(r(1)),u=i(r(57)),c=n(r(19))
 function h(){var e=new s.HandlebarsEnvironment
 return l.extend(e,s),e.SafeString=a.default,e.Exception=o.default,e.Utils=l,e.escapeExpression=l.escapeExpression,e.VM=u,e.template=function(t){return u.template(t,e)},e}var p=h()
 p.create=h,c.default(p),p.default=p,t.default=p,e.exports=t.default},function(e,t,r){"use strict"
@@ -9943,7 +9939,7 @@ if(i.isEmpty(e))return t.inverse(this)
 var n=t.data
 return t.data&&t.ids&&((n=i.createFrame(t.data)).contextPath=i.appendContextPath(t.data.contextPath,t.ids[0])),r(e,{data:n,blockParams:i.blockParams([e],[n&&n.contextPath])})}))},e.exports=t.default},function(e,t,r){"use strict"
 t.__esModule=!0,t.registerDefaultDecorators=function(e){i.default(e)}
-var n,i=(n=r(53))&&n.__esModule?n:{default:n}},function(e,t,r){"use strict"
+var n,i=(n=r(54))&&n.__esModule?n:{default:n}},function(e,t,r){"use strict"
 t.__esModule=!0
 var n=r(1)
 t.default=function(e){e.registerDecorator("inline",(function(e,t,r,i){var s=e
@@ -9997,10 +9993,10 @@ return!a||t==a[0]||t===e.nullContext&&null===a[0]||(o=[t].concat(a)),r(e,t,e.hel
 t=e.decorator(t,o,r,n&&n[0],i,a,n),s.extend(t,o)}return t}},function(e,t,r){"use strict"
 function n(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0,t.parseWithoutProcessing=u,t.parse=function(e,t){var r=u(e,t)
 return new s.default(t).accept(r)}
-var i=n(r(58)),s=n(r(59)),a=function(e){if(e&&e.__esModule)return e
+var i=n(r(59)),s=n(r(60)),a=function(e){if(e&&e.__esModule)return e
 var t={}
 if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r])
-return t.default=e,t}(r(60)),o=r(1)
+return t.default=e,t}(r(61)),o=r(1)
 t.parser=i.default
 var l={}
 function u(e,t){return"Program"===e.type?e:(i.default.yy=l,l.locInfo=function(e){return new l.SourceLocation(t&&t.srcName,e)},i.default.parse(e))}o.extend(l,a)},function(e,t,r){"use strict"
@@ -10301,7 +10297,7 @@ this.opcode("pushId","BlockParam",r,n)}else(t=e.original||t).replace&&(t=t.repla
 return this.pushParams(i),this.opcode("pushProgram",t),this.opcode("pushProgram",r),e.hash?this.accept(e.hash):this.opcode("emptyHash",n),i},blockParamIndex:function(e){for(var t=0,r=this.options.blockParams.length;t<r;t++){var n=this.options.blockParams[t],i=n&&s.indexOf(n,e)
 if(n&&i>=0)return[t,i]}}}},function(e,t,r){"use strict"
 function n(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0
-var i=r(13),s=n(r(2)),a=r(1),o=n(r(63))
+var i=r(13),s=n(r(2)),a=r(1),o=n(r(64))
 function l(e){this.value=e}function u(){}u.prototype={nameLookup:function(e,t){var r=[this.aliasable("container.propertyIsEnumerable"),".call(",e,',"constructor")']
 return"constructor"===t?["(",r,"?",n()," : undefined)"]:n()
 function n(){return u.isValidJavaScriptVariableName(t)?[e,".",t]:[e,"[",JSON.stringify(t),"]"]}},depthedLookup:function(e){return[this.aliasable("container.lookup"),'(depths, "',e,'")']},compilerInfo:function(){var e=i.COMPILER_REVISION
@@ -10397,7 +10393,7 @@ return i.prepend("{"),i.add("}"),i},generateList:function(e){for(var t=this.empt
 return t},generateArray:function(e){var t=this.generateList(e)
 return t.prepend("["),t.add("]"),t}},t.default=a,e.exports=t.default},function(e,t,r){function n(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e)){var r=[],n=!0,i=!1,s=void 0
 try{for(var a,o=e[Symbol.iterator]();!(n=(a=o.next()).done)&&(r.push(a.value),!t||r.length!==t);n=!0);}catch(e){i=!0,s=e}finally{try{n||null==o.return||o.return()}finally{if(i)throw s}}return r}}(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}()}function i(e){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function s(e,t){for(var r=0;r<t.length;r++){var n=t[r]
-n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var a=r(37),o=a.preprocess,l=a.print,u=a.traverse,c=r(65).sortByLoc,h=/(.*?(?:\r\n?|\n|$))/gm,p=/(^\s+)/,d=/(^[^=]+)(\s+)?(=)?(\s+)?(\S+)?/,f=/(^[^=]+)(\s+)?=(\s+)?(\S+)/,m=new Set(["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"])
+n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var a=r(38),o=a.preprocess,l=a.print,u=a.traverse,c=r(66).sortByLoc,h=/(.*?(?:\r\n?|\n|$))/gm,p=/(^\s+)/,d=/(^[^=]+)(\s+)?(=)?(\s+)?(\S+)?/,f=/(^[^=]+)(\s+)?=(\s+)?(\S+)/,m=new Set(["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"])
 e.exports=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)
 var r=o(t,{mode:"codemod"})
 r=function(e){return u(e,{AttrNode:function(e){"TextNode"===e.value.type&&""===e.value.chars&&(e.loc.end.line=e.loc.start.line,e.loc.end.column=e.loc.start.column+e.name.length)},ConcatStatement:function(e){"TextNode"===e.parts[0].type&&e.parts[0].loc.start.column>e.loc.start.column+1&&(e.parts[0].loc.start.column=e.parts[0].loc.start.column-1)}}),e}(r),this.source=t.match(h).slice(0,-1),this._originalAst=r,this.nodeInfo=new Map,this.ancestor=new Map,this.dirtyFields=new Map,this.ast=this.wrapNode(null,r)}var t,r
@@ -10507,16 +10503,16 @@ var t={}
 if(null!=e)for(var r in e)Object.hasOwnProperty.call(e,r)&&(t[r]=e[r])
 return t.default=e,t}
 Object.defineProperty(t,"__esModule",{value:!0})
-var s=n(r(67)),a=i(r(5))
+var s=n(r(68)),a=i(r(5))
 t.types=a
-var o=r(78)
+var o=r(79)
 t.parse=o.parse
-var l=r(94),u=r(5)
+var l=r(95),u=r(5)
 function c(e,t){return new l.Printer(t).print(e)}function h(t){e.stdout.write(t)}t.visit=u.visit,t.print=c,t.prettyPrint=function(e,t){return new l.Printer(t).printGenerically(e)},t.run=function(t,r){return function(e,t,r){s.default.readFile(e,"utf-8",(function(e,n){e?console.error(e):function(e,t,r){var n=r&&r.writeback||h
 t(o.parse(e,r),(function(e){n(c(e,r).code)}))}(n,t,r)}))}(e.argv[2],t,r)}}).call(this,r(23))},,function(e,t,r){"use strict"
 var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
 Object.defineProperty(t,"__esModule",{value:!0})
-var i=n(r(0)),s=n(r(69)),a=n(r(71)),o=n(r(25)),l=n(r(24))
+var i=n(r(0)),s=n(r(70)),a=n(r(72)),o=n(r(25)),l=n(r(24))
 t.default=function(e){var t=function(){var e=[],t=[],r={use:function(n){var i=e.indexOf(n)
 return-1===i&&(i=e.length,e.push(n),t[i]=n(r)),t[i]}}
 return r}(),r=t.use(i.default)
@@ -10748,10 +10744,10 @@ return i.forEach((function(i){i.match(/^\d+$/)||s.push(d(e,t,r,n,i,!0))})),s}(e,
 if((l=Object.getOwnPropertyDescriptor(t,i)||{value:t[i]}).get?o=l.set?e.stylize("[Getter/Setter]","special"):e.stylize("[Getter]","special"):l.set&&(o=e.stylize("[Setter]","special")),P(n,i)||(a="["+i+"]"),o||(e.seen.indexOf(l.value)<0?(o=y(r)?h(e,l.value,null):h(e,l.value,r-1)).indexOf("\n")>-1&&(o=s?o.split("\n").map((function(e){return"  "+e})).join("\n").substr(2):"\n"+o.split("\n").map((function(e){return"   "+e})).join("\n")):o=e.stylize("[Circular]","special")),b(a)){if(s&&i.match(/^\d+$/))return o;(a=JSON.stringify(""+i)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(a=a.substr(1,a.length-2),a=e.stylize(a,"name")):(a=a.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),a=e.stylize(a,"string"))}return a+": "+o}function f(e){return Array.isArray(e)}function m(e){return"boolean"==typeof e}function y(e){return null===e}function v(e){return"number"==typeof e}function g(e){return"string"==typeof e}function b(e){return void 0===e}function x(e){return E(e)&&"[object RegExp]"===_(e)}function E(e){return"object"===n(e)&&null!==e}function w(e){return E(e)&&"[object Date]"===_(e)}function k(e){return E(e)&&("[object Error]"===_(e)||e instanceof Error)}function S(e){return"function"==typeof e}function _(e){return Object.prototype.toString.call(e)}function T(e){return e<10?"0"+e.toString(10):e.toString(10)}t.debuglog=function(r){if(b(a)&&(a=e.env.NODE_DEBUG||""),r=r.toUpperCase(),!o[r])if(new RegExp("\\b"+r+"\\b","i").test(a)){var n=e.pid
 o[r]=function(){var e=t.format.apply(t,arguments)
 console.error("%s %d: %s",r,n,e)}}else o[r]=function(){}
-return o[r]},t.inspect=l,l.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]},l.styles={special:"cyan",number:"yellow",boolean:"yellow",undefined:"grey",null:"bold",string:"green",date:"magenta",regexp:"red"},t.isArray=f,t.isBoolean=m,t.isNull=y,t.isNullOrUndefined=function(e){return null==e},t.isNumber=v,t.isString=g,t.isSymbol=function(e){return"symbol"===n(e)},t.isUndefined=b,t.isRegExp=x,t.isObject=E,t.isDate=w,t.isError=k,t.isFunction=S,t.isPrimitive=function(e){return null===e||"boolean"==typeof e||"number"==typeof e||"string"==typeof e||"symbol"===n(e)||void 0===e},t.isBuffer=r(81)
+return o[r]},t.inspect=l,l.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]},l.styles={special:"cyan",number:"yellow",boolean:"yellow",undefined:"grey",null:"bold",string:"green",date:"magenta",regexp:"red"},t.isArray=f,t.isBoolean=m,t.isNull=y,t.isNullOrUndefined=function(e){return null==e},t.isNumber=v,t.isString=g,t.isSymbol=function(e){return"symbol"===n(e)},t.isUndefined=b,t.isRegExp=x,t.isObject=E,t.isDate=w,t.isError=k,t.isFunction=S,t.isPrimitive=function(e){return null===e||"boolean"==typeof e||"number"==typeof e||"string"==typeof e||"symbol"===n(e)||void 0===e},t.isBuffer=r(82)
 var A=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 function C(){var e=new Date,t=[T(e.getHours()),T(e.getMinutes()),T(e.getSeconds())].join(":")
-return[e.getDate(),A[e.getMonth()],t].join(" ")}function P(e,t){return Object.prototype.hasOwnProperty.call(e,t)}t.log=function(){console.log("%s - %s",C(),t.format.apply(t,arguments))},t.inherits=r(82),t._extend=function(e,t){if(!t||!E(t))return e
+return[e.getDate(),A[e.getMonth()],t].join(" ")}function P(e,t){return Object.prototype.hasOwnProperty.call(e,t)}t.log=function(){console.log("%s - %s",C(),t.format.apply(t,arguments))},t.inherits=r(83),t._extend=function(e,t){if(!t||!E(t))return e
 for(var r=Object.keys(t),n=r.length;n--;)e[r[n]]=t[r[n]]
 return e}
 var D="undefined"!=typeof Symbol?Symbol("util.promisify.custom"):void 0
@@ -10776,7 +10772,7 @@ return Array.isArray(s.comments)||(s.comments=i),s}},function(e,t){var r="ABCDEF
 t.encode=function(e){if(0<=e&&e<r.length)return r[e]
 throw new TypeError("Must be between 0 and 63: "+e)},t.decode=function(e){return 65<=e&&e<=90?e-65:97<=e&&e<=122?e-97+26:48<=e&&e<=57?e-48+52:43==e?62:47==e?63:-1}},function(e,t,r){var n=r(8)
 function i(){this._array=[],this._sorted=!0,this._last={generatedLine:-1,generatedColumn:0}}i.prototype.unsortedForEach=function(e,t){this._array.forEach(e,t)},i.prototype.add=function(e){var t,r,i,s,a,o
-r=e,i=(t=this._last).generatedLine,s=r.generatedLine,a=t.generatedColumn,o=r.generatedColumn,s>i||s==i&&o>=a||n.compareByGeneratedPositionsInflated(t,r)<=0?(this._last=e,this._array.push(e)):(this._sorted=!1,this._array.push(e))},i.prototype.toArray=function(){return this._sorted||(this._array.sort(n.compareByGeneratedPositionsInflated),this._sorted=!0),this._array},t.MappingList=i},function(e,t,r){var n=r(8),i=r(87),s=r(33).ArraySet,a=r(32),o=r(88).quickSort
+r=e,i=(t=this._last).generatedLine,s=r.generatedLine,a=t.generatedColumn,o=r.generatedColumn,s>i||s==i&&o>=a||n.compareByGeneratedPositionsInflated(t,r)<=0?(this._last=e,this._array.push(e)):(this._sorted=!1,this._array.push(e))},i.prototype.toArray=function(){return this._sorted||(this._array.sort(n.compareByGeneratedPositionsInflated),this._sorted=!0),this._array},t.MappingList=i},function(e,t,r){var n=r(8),i=r(88),s=r(33).ArraySet,a=r(32),o=r(89).quickSort
 function l(e,t){var r=e
 return"string"==typeof e&&(r=n.parseSourceMapInput(e)),null!=r.sections?new h(r,t):new u(r,t)}function u(e,t){var r=e
 "string"==typeof e&&(r=n.parseSourceMapInput(e))
@@ -10919,7 +10915,7 @@ var t={}
 if(null!=e)for(var r in e)Object.hasOwnProperty.call(e,r)&&(t[r]=e[r])
 return t.default=e,t}
 Object.defineProperty(t,"__esModule",{value:!0})
-var a=i(r(6)),o=r(35),l=r(9),u=r(16),c=r(95),h=s(r(5)),p=h.namedTypes,d=h.builtInTypes.string,f=h.builtInTypes.object,m=i(r(36)),y=s(r(4)),v=function e(t,r){a.default.ok(this instanceof e),d.assert(t),this.code=t,r&&(f.assert(r),this.map=r)},g=!1
+var a=i(r(6)),o=r(35),l=r(9),u=r(16),c=r(96),h=s(r(5)),p=h.namedTypes,d=h.builtInTypes.string,f=h.builtInTypes.object,m=i(r(36)),y=s(r(4)),v=function e(t,r){a.default.ok(this instanceof e),d.assert(t),this.code=t,r&&(f.assert(r),this.map=r)},g=!1
 v.prototype.toString=function(){return g||(console.warn("Deprecation warning: recast.print now returns an object with a .code property. You appear to be treating the object as a string, which might still work but is strongly discouraged."),g=!0),this.code}
 var b=new v("")
 function x(e,t,r,i){a.default.ok(e instanceof m.default)
@@ -11323,11 +11319,6 @@ if(u||c){var d=[]
 u&&d.push(" "),d.push(l),c&&d.push(" "),l=a.concat(d)}s.replace(n.loc,l)}))
 var l=s.get(n).indentTail(-r.loc.indent)
 return e.needsParens()?a.concat(["(",l,")"]):l}}}},function(e,t,r){"use strict"
-var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}}
-Object.defineProperty(t,"__esModule",{value:!0})
-var i=n(r(97))
-t.parser=function(){try{return r(98)}catch(e){return r(99)}}(),t.parse=function(e,r){var n=i.default(r)
-return n.plugins.push("jsx","flow"),t.parser.parse(e,n)}},function(e,t,r){"use strict"
 Object.defineProperty(t,"__esModule",{value:!0})
 var n=r(4)
 t.default=function(e){return{sourceType:n.getOption(e,"sourceType","module"),strictMode:n.getOption(e,"strictMode",!1),allowImportExportEverywhere:!0,allowReturnOutsideFunction:!0,startLine:1,tokens:!0,plugins:["asyncGenerators","bigInt","classPrivateMethods","classPrivateProperties","classProperties","decorators-legacy","doExpressions","dynamicImport","exportDefaultFrom","exportExtensions","exportNamespaceFrom","functionBind","functionSent","importMeta","nullishCoalescingOperator","numericSeparator","objectRestSpread","optionalCatchBinding","optionalChaining",["pipelineOperator",{proposal:"minimal"}],"throwExpressions"]}}},function(e,t,r){"use strict"
@@ -11359,7 +11350,7 @@ function I(e,t){return L(e,t)||R.has(e)}function j(e){return M.has(e)}function F
 z=U=null
 var V=[0,11,2,25,2,18,2,1,2,14,3,13,35,122,70,52,268,28,4,48,48,31,14,29,6,37,11,29,3,35,5,7,2,4,43,157,19,35,5,35,5,39,9,51,157,310,10,21,11,7,153,5,3,0,2,43,2,1,4,0,3,22,11,22,10,30,66,18,2,1,11,21,11,25,71,55,7,1,65,0,16,3,2,2,2,28,43,28,4,28,36,7,2,27,28,53,11,21,11,18,14,17,111,72,56,50,14,50,14,35,477,28,11,0,9,21,155,22,13,52,76,44,33,24,27,35,30,0,12,34,4,0,13,47,15,3,22,0,2,0,36,17,2,24,85,6,2,0,2,3,2,14,2,9,8,46,39,7,3,1,3,21,2,6,2,1,2,4,4,0,19,0,13,4,159,52,19,3,21,0,33,47,21,1,2,0,185,46,42,3,37,47,21,0,60,42,14,0,72,26,230,43,117,63,32,0,161,7,3,38,17,0,2,0,29,0,11,39,8,0,22,0,12,45,20,0,35,56,264,8,2,36,18,0,50,29,113,6,2,1,2,37,22,0,26,5,2,1,2,31,15,0,328,18,270,921,103,110,18,195,2749,1070,4050,582,8634,568,8,30,114,29,19,47,17,3,32,20,6,18,689,63,129,74,6,0,67,12,65,1,2,0,29,6135,9,754,9486,286,50,2,18,3,9,395,2309,106,6,12,4,8,8,9,5991,84,2,70,2,1,3,0,3,1,3,3,2,11,2,0,2,6,2,64,2,3,3,7,2,6,2,27,2,3,2,4,2,0,4,6,2,339,3,24,2,24,2,30,2,24,2,30,2,24,2,30,2,24,2,30,2,24,2,7,2357,44,11,6,17,0,370,43,1301,196,60,67,8,0,1205,3,2,26,2,1,2,0,3,0,2,9,2,3,2,0,2,0,7,0,5,0,2,0,2,0,2,2,2,1,2,0,3,0,2,0,2,0,2,0,2,0,2,1,2,0,3,3,2,6,2,3,2,3,2,0,2,9,2,16,6,2,2,4,2,16,4421,42710,42,4148,12,221,3,5761,15,7472,3104,541],W=[509,0,227,0,150,4,294,9,1368,2,2,1,6,3,41,2,5,0,166,1,574,3,9,9,525,10,176,2,54,14,32,9,16,3,46,10,54,9,7,2,37,13,2,9,6,1,45,0,13,2,49,13,9,3,4,9,83,11,7,0,161,11,6,9,7,3,56,1,2,6,3,1,3,2,10,0,11,1,3,6,4,4,193,17,10,9,5,0,82,19,13,9,214,6,3,8,28,1,83,16,16,9,82,12,9,9,84,14,5,9,243,14,166,9,232,6,3,6,4,0,29,9,41,6,2,3,9,0,10,10,47,15,406,7,2,7,17,9,57,21,2,13,123,5,4,0,2,1,2,6,2,0,9,9,49,4,2,1,2,4,9,9,330,3,19306,9,135,4,60,6,26,9,1014,0,2,54,8,3,19723,1,5319,4,4,5,9,7,3,6,31,3,149,2,1418,49,513,54,5,49,9,0,15,0,23,4,2,14,1361,6,2,16,3,6,2,1,2,4,262,6,10,9,419,13,1495,6,110,6,6,9,792487,239]
 function G(e,t){for(var r=65536,n=0,i=t.length;n<i;n+=2){if((r+=t[n])>e)return!1
-if((r+=t[n+1])>=e)return!0}return!1}function K(e){return e<65?36===e:e<=90||(e<97?95===e:e<=122||(e<=65535?e>=170&&q.test(String.fromCharCode(e)):G(e,V)))}function X(e){return e<48?36===e:e<58||!(e<65)&&(e<=90||(e<97?95===e:e<=122||(e<=65535?e>=170&&H.test(String.fromCharCode(e)):G(e,V)||G(e,W))))}var Y=new Set(["_","any","bool","boolean","empty","extends","false","interface","mixed","null","number","static","string","true","typeof","void"])
+if((r+=t[n+1])>=e)return!0}return!1}function K(e){return e<65?36===e:e<=90||(e<97?95===e:e<=122||(e<=65535?e>=170&&q.test(String.fromCharCode(e)):G(e,V)))}function X(e){return e<48?36===e:e<58||!(e<65)&&(e<=90||(e<97?95===e:e<=122||(e<=65535?e>=170&&H.test(String.fromCharCode(e)):G(e,V)||G(e,W))))}var Y=["any","bool","boolean","empty","false","mixed","null","number","static","string","true","typeof","void","interface","extends","_"]
 function J(e){return"type"===e.importKind||"typeof"===e.importKind}function $(e){return(e.type===b.name||!!e.type.keyword)&&"from"!==e.value}var Q={const:"declare export var",let:"declare export var",type:"export type",interface:"export interface"},Z=/\*?\s*@((?:no)?flow)\b/,ee={quot:'"',amp:"&",apos:"'",lt:"<",gt:">",nbsp:" ",iexcl:"¡",cent:"¢",pound:"£",curren:"¤",yen:"¥",brvbar:"¦",sect:"§",uml:"¨",copy:"©",ordf:"ª",laquo:"«",not:"¬",shy:"­",reg:"®",macr:"¯",deg:"°",plusmn:"±",sup2:"²",sup3:"³",acute:"´",micro:"µ",para:"¶",middot:"·",cedil:"¸",sup1:"¹",ordm:"º",raquo:"»",frac14:"¼",frac12:"½",frac34:"¾",iquest:"¿",Agrave:"À",Aacute:"Á",Acirc:"Â",Atilde:"Ã",Auml:"Ä",Aring:"Å",AElig:"Æ",Ccedil:"Ç",Egrave:"È",Eacute:"É",Ecirc:"Ê",Euml:"Ë",Igrave:"Ì",Iacute:"Í",Icirc:"Î",Iuml:"Ï",ETH:"Ð",Ntilde:"Ñ",Ograve:"Ò",Oacute:"Ó",Ocirc:"Ô",Otilde:"Õ",Ouml:"Ö",times:"×",Oslash:"Ø",Ugrave:"Ù",Uacute:"Ú",Ucirc:"Û",Uuml:"Ü",Yacute:"Ý",THORN:"Þ",szlig:"ß",agrave:"à",aacute:"á",acirc:"â",atilde:"ã",auml:"ä",aring:"å",aelig:"æ",ccedil:"ç",egrave:"è",eacute:"é",ecirc:"ê",euml:"ë",igrave:"ì",iacute:"í",icirc:"î",iuml:"ï",eth:"ð",ntilde:"ñ",ograve:"ò",oacute:"ó",ocirc:"ô",otilde:"õ",ouml:"ö",divide:"÷",oslash:"ø",ugrave:"ù",uacute:"ú",ucirc:"û",uuml:"ü",yacute:"ý",thorn:"þ",yuml:"ÿ",OElig:"Œ",oelig:"œ",Scaron:"Š",scaron:"š",Yuml:"Ÿ",fnof:"ƒ",circ:"ˆ",tilde:"˜",Alpha:"Α",Beta:"Β",Gamma:"Γ",Delta:"Δ",Epsilon:"Ε",Zeta:"Ζ",Eta:"Η",Theta:"Θ",Iota:"Ι",Kappa:"Κ",Lambda:"Λ",Mu:"Μ",Nu:"Ν",Xi:"Ξ",Omicron:"Ο",Pi:"Π",Rho:"Ρ",Sigma:"Σ",Tau:"Τ",Upsilon:"Υ",Phi:"Φ",Chi:"Χ",Psi:"Ψ",Omega:"Ω",alpha:"α",beta:"β",gamma:"γ",delta:"δ",epsilon:"ε",zeta:"ζ",eta:"η",theta:"θ",iota:"ι",kappa:"κ",lambda:"λ",mu:"μ",nu:"ν",xi:"ξ",omicron:"ο",pi:"π",rho:"ρ",sigmaf:"ς",sigma:"σ",tau:"τ",upsilon:"υ",phi:"φ",chi:"χ",psi:"ψ",omega:"ω",thetasym:"ϑ",upsih:"ϒ",piv:"ϖ",ensp:" ",emsp:" ",thinsp:" ",zwnj:"‌",zwj:"‍",lrm:"‎",rlm:"‏",ndash:"–",mdash:"—",lsquo:"‘",rsquo:"’",sbquo:"‚",ldquo:"“",rdquo:"”",bdquo:"„",dagger:"†",Dagger:"‡",bull:"•",hellip:"…",permil:"‰",prime:"′",Prime:"″",lsaquo:"‹",rsaquo:"›",oline:"‾",frasl:"⁄",euro:"€",image:"ℑ",weierp:"℘",real:"ℜ",trade:"™",alefsym:"ℵ",larr:"←",uarr:"↑",rarr:"→",darr:"↓",harr:"↔",crarr:"↵",lArr:"⇐",uArr:"⇑",rArr:"⇒",dArr:"⇓",hArr:"⇔",forall:"∀",part:"∂",exist:"∃",empty:"∅",nabla:"∇",isin:"∈",notin:"∉",ni:"∋",prod:"∏",sum:"∑",minus:"−",lowast:"∗",radic:"√",prop:"∝",infin:"∞",ang:"∠",and:"∧",or:"∨",cap:"∩",cup:"∪",int:"∫",there4:"∴",sim:"∼",cong:"≅",asymp:"≈",ne:"≠",equiv:"≡",le:"≤",ge:"≥",sub:"⊂",sup:"⊃",nsub:"⊄",sube:"⊆",supe:"⊇",oplus:"⊕",otimes:"⊗",perp:"⊥",sdot:"⋅",lceil:"⌈",rceil:"⌉",lfloor:"⌊",rfloor:"⌋",lang:"〈",rang:"〉",loz:"◊",spades:"♠",clubs:"♣",hearts:"♥",diams:"♦"},te=/^[\da-fA-F]+$/,re=/^\d+$/
 function ne(e){return!!e&&("JSXOpeningFragment"===e.type||"JSXClosingFragment"===e.type)}function ie(e){if("JSXIdentifier"===e.type)return e.name
 if("JSXNamespacedName"===e.type)return e.namespace.name+":"+e.name.name
@@ -11370,7 +11361,7 @@ var se=function e(t){d(this,e),this.var=[],this.lexical=[],this.functions=[],thi
 if(8&t||16&t)this.checkRedeclarationInScope(n,e,t,r),16&t?n.functions.push(e):n.lexical.push(e),8&t&&this.maybeExportDefined(n,e)
 else if(4&t)for(var i=this.scopeStack.length-1;i>=0&&(n=this.scopeStack[i],this.checkRedeclarationInScope(n,e,t,r),n.var.push(e),this.maybeExportDefined(n,e),!(n.flags&k));--i);this.inModule&&1&n.flags&&this.undefinedExports.delete(e)}},{key:"maybeExportDefined",value:function(e,t){this.inModule&&1&e.flags&&this.undefinedExports.delete(t)}},{key:"checkRedeclarationInScope",value:function(e,t,r,n){this.isRedeclaredInScope(e,t,r)&&this.raise(n,"Identifier '".concat(t,"' has already been declared"))}},{key:"isRedeclaredInScope",value:function(e,t,r){return!!(1&r)&&(8&r?e.lexical.indexOf(t)>-1||e.functions.indexOf(t)>-1||e.var.indexOf(t)>-1:16&r?e.lexical.indexOf(t)>-1||!this.treatFunctionsAsVarInScope(e)&&e.var.indexOf(t)>-1:e.lexical.indexOf(t)>-1&&!(32&e.flags&&e.lexical[0]===t)||!this.treatFunctionsAsVarInScope(e)&&e.functions.indexOf(t)>-1)}},{key:"checkLocalExport",value:function(e){-1===this.scopeStack[0].lexical.indexOf(e.name)&&-1===this.scopeStack[0].var.indexOf(e.name)&&-1===this.scopeStack[0].functions.indexOf(e.name)&&this.undefinedExports.set(e.name,e.start)}},{key:"currentScope",value:function(){return this.scopeStack[this.scopeStack.length-1]}},{key:"currentVarScope",value:function(){for(var e=this.scopeStack.length-1;;e--){var t=this.scopeStack[e]
 if(t.flags&k)return t}}},{key:"currentThisScope",value:function(){for(var e=this.scopeStack.length-1;;e--){var t=this.scopeStack[e]
-if((t.flags&k||256&t.flags)&&!(16&t.flags))return t}}},{key:"inFunction",get:function(){return(this.currentVarScope().flags&x)>0}},{key:"inGenerator",get:function(){return(this.currentVarScope().flags&w)>0}},{key:"inAsync",get:function(){return(this.currentVarScope().flags&E)>0}},{key:"allowSuper",get:function(){return(64&this.currentThisScope().flags)>0}},{key:"allowDirectSuper",get:function(){return(128&this.currentThisScope().flags)>0}},{key:"inClass",get:function(){return(256&this.currentThisScope().flags)>0}},{key:"inNonArrowFunction",get:function(){return(this.currentThisScope().flags&x)>0}},{key:"treatFunctionsAsVar",get:function(){return this.treatFunctionsAsVarInScope(this.currentScope())}}]),e}(),oe=function(e){function t(){var e,r
+if((t.flags&k||256&t.flags)&&!(16&t.flags))return t}}},{key:"inFunction",get:function(){return(this.currentVarScope().flags&x)>0}},{key:"inGenerator",get:function(){return(this.currentVarScope().flags&w)>0}},{key:"inAsync",get:function(){return(this.currentVarScope().flags&E)>0}},{key:"allowSuper",get:function(){return(64&this.currentThisScope().flags)>0}},{key:"allowDirectSuper",get:function(){return(128&this.currentThisScope().flags)>0}},{key:"inNonArrowFunction",get:function(){return(this.currentThisScope().flags&x)>0}},{key:"treatFunctionsAsVar",get:function(){return this.treatFunctionsAsVarInScope(this.currentScope())}}]),e}(),oe=function(e){function t(){var e,r
 d(this,t)
 for(var n=arguments.length,i=new Array(n),s=0;s<n;s++)i[s]=arguments[s]
 return(r=l(this,(e=h(t)).call.apply(e,[this].concat(i)))).types=[],r.enums=[],r.constEnums=[],r.classes=[],r.exportOnlyBindings=[],r}return p(t,e),t}(se),le=function(e){function t(){return d(this,t),l(this,h(t).apply(this,arguments))}return p(t,e),o(t,[{key:"createScope",value:function(e){return new oe(e)}},{key:"declareName",value:function(e,r,n){var i=this.currentScope()
@@ -11442,7 +11433,7 @@ break
 case b.braceL:var a=this.startNode()
 this.next(),this.match(b.ellipsis)?n.push(this.jsxParseSpreadChild(a)):n.push(this.jsxParseExpressionContainer(a))
 break
-default:throw this.unexpected()}ne(i)&&!ne(s)?this.raise(s.start,"Expected corresponding JSX closing tag for <>"):!ne(i)&&ne(s)?this.raise(s.start,"Expected corresponding JSX closing tag for <"+ie(i.name)+">"):ne(i)||ne(s)||ie(s.name)!==ie(i.name)&&this.raise(s.start,"Expected corresponding JSX closing tag for <"+ie(i.name)+">")}if(ne(i)?(r.openingFragment=i,r.closingFragment=s):(r.openingElement=i,r.closingElement=s),r.children=n,this.isRelational("<"))throw this.raise(this.state.start,"Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?")
+default:throw this.unexpected()}ne(i)&&!ne(s)?this.raise(s.start,"Expected corresponding JSX closing tag for <>"):!ne(i)&&ne(s)?this.raise(s.start,"Expected corresponding JSX closing tag for <"+ie(i.name)+">"):ne(i)||ne(s)||ie(s.name)!==ie(i.name)&&this.raise(s.start,"Expected corresponding JSX closing tag for <"+ie(i.name)+">")}for(ne(i)?(r.openingFragment=i,r.closingFragment=s):(r.openingElement=i,r.closingElement=s),r.children=n;this.isRelational("<");)this.finishToken(b.jsxTagStart),this.raise(this.state.start,"Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?"),this.jsxParseElement()
 return ne(i)?this.finishNode(r,"JSXFragment"):this.finishNode(r,"JSXElement")}},{key:"jsxParseElement",value:function(){var e=this.state.start,t=this.state.startLoc
 return this.next(),this.jsxParseElementAt(e,t)}},{key:"parseExprAtom",value:function(e){return this.match(b.jsxText)?this.parseLiteral(this.state.value,"JSXText"):this.match(b.jsxTagStart)?this.jsxParseElement():this.isRelational("<")&&33!==this.input.charCodeAt(this.state.pos)?(this.finishToken(b.jsxTagStart),this.jsxParseElement()):c(h(t.prototype),"parseExprAtom",this).call(this,e)}},{key:"getTokenFromCode",value:function(e){if(this.state.inPropertyName)return c(h(t.prototype),"getTokenFromCode",this).call(this,e)
 var r=this.curContext()
@@ -11489,11 +11480,11 @@ if(this.match(b._const)||this.isLet()||(this.isContextual("type")||this.isContex
 this.unexpected(this.state.start,"`declare export ".concat(r,"` is not supported. Use `").concat(n,"` instead"))}if(this.match(b._var)||this.match(b._function)||this.match(b._class)||this.isContextual("opaque"))return e.declaration=this.flowParseDeclare(this.startNode()),e.default=!1,this.finishNode(e,"DeclareExportDeclaration")
 if(this.match(b.star)||this.match(b.braceL)||this.isContextual("interface")||this.isContextual("type")||this.isContextual("opaque"))return"ExportNamedDeclaration"===(e=this.parseExport(e)).type&&(e.type="ExportDeclaration",e.default=!1,delete e.exportKind),e.type="Declare"+e.type,e
 throw this.unexpected()}},{key:"flowParseDeclareModuleExports",value:function(e){return this.next(),this.expectContextual("exports"),e.typeAnnotation=this.flowParseTypeAnnotation(),this.semicolon(),this.finishNode(e,"DeclareModuleExports")}},{key:"flowParseDeclareTypeAlias",value:function(e){return this.next(),this.flowParseTypeAlias(e),e.type="DeclareTypeAlias",e}},{key:"flowParseDeclareOpaqueType",value:function(e){return this.next(),this.flowParseOpaqueType(e,!0),e.type="DeclareOpaqueType",e}},{key:"flowParseDeclareInterface",value:function(e){return this.next(),this.flowParseInterfaceish(e),this.finishNode(e,"DeclareInterface")}},{key:"flowParseInterfaceish",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1]
-if(e.id=this.flowParseRestrictedIdentifier(!t,!0),this.scope.declareName(e.id.name,t?17:9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.extends=[],e.implements=[],e.mixins=[],this.eat(b._extends))do{e.extends.push(this.flowParseInterfaceExtends())}while(!t&&this.eat(b.comma))
+if(e.id=this.flowParseRestrictedIdentifier(!t),this.scope.declareName(e.id.name,t?17:9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.extends=[],e.implements=[],e.mixins=[],this.eat(b._extends))do{e.extends.push(this.flowParseInterfaceExtends())}while(!t&&this.eat(b.comma))
 if(this.isContextual("mixins")){this.next()
 do{e.mixins.push(this.flowParseInterfaceExtends())}while(this.eat(b.comma))}if(this.isContextual("implements")){this.next()
 do{e.implements.push(this.flowParseInterfaceExtends())}while(this.eat(b.comma))}e.body=this.flowParseObjectType({allowStatic:t,allowExact:!1,allowSpread:!1,allowProto:t,allowInexact:!1})}},{key:"flowParseInterfaceExtends",value:function(){var e=this.startNode()
-return e.id=this.flowParseQualifiedTypeIdentifier(),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterInstantiation():e.typeParameters=null,this.finishNode(e,"InterfaceExtends")}},{key:"flowParseInterface",value:function(e){return this.flowParseInterfaceish(e),this.finishNode(e,"InterfaceDeclaration")}},{key:"checkNotUnderscore",value:function(e){"_"===e&&this.raise(this.state.start,"`_` is only allowed as a type argument to call or new")}},{key:"checkReservedType",value:function(e,t,r){Y.has(e)&&(r?this.raise(t,"Cannot overwrite reserved type ".concat(e)):this.raise(t,"Unexpected reserved type ".concat(e)))}},{key:"flowParseRestrictedIdentifier",value:function(e,t){return this.checkReservedType(this.state.value,this.state.start,t),this.parseIdentifier(e)}},{key:"flowParseTypeAlias",value:function(e){return e.id=this.flowParseRestrictedIdentifier(!1,!0),this.scope.declareName(e.id.name,9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.right=this.flowParseTypeInitialiser(b.eq),this.semicolon(),this.finishNode(e,"TypeAlias")}},{key:"flowParseOpaqueType",value:function(e,t){return this.expectContextual("type"),e.id=this.flowParseRestrictedIdentifier(!0,!0),this.scope.declareName(e.id.name,9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.supertype=null,this.match(b.colon)&&(e.supertype=this.flowParseTypeInitialiser(b.colon)),e.impltype=null,t||(e.impltype=this.flowParseTypeInitialiser(b.eq)),this.semicolon(),this.finishNode(e,"OpaqueType")}},{key:"flowParseTypeParameter",value:function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0],t=this.state.start,r=this.startNode(),n=this.flowParseVariance(),i=this.flowParseTypeAnnotatableIdentifier()
+return e.id=this.flowParseQualifiedTypeIdentifier(),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterInstantiation():e.typeParameters=null,this.finishNode(e,"InterfaceExtends")}},{key:"flowParseInterface",value:function(e){return this.flowParseInterfaceish(e),this.finishNode(e,"InterfaceDeclaration")}},{key:"checkNotUnderscore",value:function(e){"_"===e&&this.raise(this.state.start,"`_` is only allowed as a type argument to call or new")}},{key:"checkReservedType",value:function(e,t){Y.indexOf(e)>-1&&this.raise(t,"Cannot overwrite reserved type ".concat(e))}},{key:"flowParseRestrictedIdentifier",value:function(e){return this.checkReservedType(this.state.value,this.state.start),this.parseIdentifier(e)}},{key:"flowParseTypeAlias",value:function(e){return e.id=this.flowParseRestrictedIdentifier(),this.scope.declareName(e.id.name,9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.right=this.flowParseTypeInitialiser(b.eq),this.semicolon(),this.finishNode(e,"TypeAlias")}},{key:"flowParseOpaqueType",value:function(e,t){return this.expectContextual("type"),e.id=this.flowParseRestrictedIdentifier(!0),this.scope.declareName(e.id.name,9,e.id.start),this.isRelational("<")?e.typeParameters=this.flowParseTypeParameterDeclaration():e.typeParameters=null,e.supertype=null,this.match(b.colon)&&(e.supertype=this.flowParseTypeInitialiser(b.colon)),e.impltype=null,t||(e.impltype=this.flowParseTypeInitialiser(b.eq)),this.semicolon(),this.finishNode(e,"OpaqueType")}},{key:"flowParseTypeParameter",value:function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0],t=this.state.start,r=this.startNode(),n=this.flowParseVariance(),i=this.flowParseTypeAnnotatableIdentifier()
 return r.name=i.name,r.variance=n,r.bound=i.typeAnnotation,this.match(b.eq)?(this.eat(b.eq),r.default=this.flowParseType()):e&&this.raise(t,"Type parameter declaration needs a default, since a preceding type parameter declaration has a default."),this.finishNode(r,"TypeParameter")}},{key:"flowParseTypeParameterDeclaration",value:function(){var e=this.state.inType,t=this.startNode()
 t.params=[],this.state.inType=!0,this.isRelational("<")||this.match(b.jsxTagStart)?this.next():this.unexpected()
 var r=!1
@@ -11522,7 +11513,7 @@ if(this.eat(b.bracketL))null!=p&&this.unexpected(p),this.eat(b.bracketL)?(v&&thi
 else if(this.match(b.parenL)||this.isRelational("<"))null!=p&&this.unexpected(p),v&&this.unexpected(v.start),u.callProperties.push(this.flowParseObjectTypeCallProperty(f,h))
 else{var g,x="init"
 if(this.isContextual("get")||this.isContextual("set")){var E=this.lookahead()
-E.type!==b.name&&E.type!==b.string&&E.type!==b.num||(x=this.state.value,this.next())}var w=this.flowParseObjectTypeProperty(f,h,p,v,x,n,null!=(g=s)?g:!l)
+E.type!==b.name&&E.type!==b.string&&E.type!==b.num||(x=this.state.value,this.next())}var w=this.flowParseObjectTypeProperty(f,h,p,v,x,n,null!==(g=s)&&void 0!==g?g:!l)
 null===w?(c=!0,d=this.state.lastTokStart):u.properties.push(w)}this.flowObjectTypeSemicolon(),!d||this.match(b.braceR)||this.match(b.braceBarR)||this.raise(d,"Explicit inexact syntax must appear at the end of an inexact object")}this.expect(o),n&&(u.inexact=c)
 var k=this.finishNode(u,"ObjectTypeAnnotation")
 return this.state.inType=a,k}},{key:"flowParseObjectTypeProperty",value:function(e,t,r,n,i,s,a){if(this.eat(b.ellipsis))return this.match(b.comma)||this.match(b.semi)||this.match(b.braceR)||this.match(b.braceBarR)?(s?a||this.raise(this.state.lastTokStart,"Explicit inexact syntax cannot appear inside an explicit exact object type"):this.raise(this.state.lastTokStart,"Explicit inexact syntax cannot appear in class or interface definitions"),n&&this.raise(n.start,"Explicit inexact syntax cannot have variance"),null):(s||this.raise(this.state.lastTokStart,"Spread operator cannot appear in class or interface definitions"),null!=r&&this.unexpected(r),n&&this.raise(n.start,"Spread properties cannot have variance"),e.argument=this.flowParseType(),this.finishNode(e,"ObjectTypeSpreadProperty"))
@@ -11530,8 +11521,8 @@ e.key=this.flowParseObjectPropertyKey(),e.static=t,e.proto=null!=r,e.kind=i
 var o=!1
 return this.isRelational("<")||this.match(b.parenL)?(e.method=!0,null!=r&&this.unexpected(r),n&&this.unexpected(n.start),e.value=this.flowParseObjectTypeMethodish(this.startNodeAt(e.start,e.loc.start)),"get"!==i&&"set"!==i||this.flowCheckGetterSetterParams(e)):("init"!==i&&this.unexpected(),e.method=!1,this.eat(b.question)&&(o=!0),e.value=this.flowParseTypeInitialiser(),e.variance=n),e.optional=o,this.finishNode(e,"ObjectTypeProperty")}},{key:"flowCheckGetterSetterParams",value:function(e){var t="get"===e.kind?0:1,r=e.start
 e.value.params.length+(e.value.rest?1:0)!==t&&("get"===e.kind?this.raise(r,"getter must not have any formal parameters"):this.raise(r,"setter must have exactly one formal parameter")),"set"===e.kind&&e.value.rest&&this.raise(r,"setter function argument must not be a rest parameter")}},{key:"flowObjectTypeSemicolon",value:function(){this.eat(b.semi)||this.eat(b.comma)||this.match(b.braceR)||this.match(b.braceBarR)||this.unexpected()}},{key:"flowParseQualifiedTypeIdentifier",value:function(e,t,r){e=e||this.state.start,t=t||this.state.startLoc
-for(var n=r||this.flowParseRestrictedIdentifier(!0);this.eat(b.dot);){var i=this.startNodeAt(e,t)
-i.qualification=n,i.id=this.flowParseRestrictedIdentifier(!0),n=this.finishNode(i,"QualifiedTypeIdentifier")}return n}},{key:"flowParseGenericType",value:function(e,t,r){var n=this.startNodeAt(e,t)
+for(var n=r||this.parseIdentifier();this.eat(b.dot);){var i=this.startNodeAt(e,t)
+i.qualification=n,i.id=this.parseIdentifier(),n=this.finishNode(i,"QualifiedTypeIdentifier")}return n}},{key:"flowParseGenericType",value:function(e,t,r){var n=this.startNodeAt(e,t)
 return n.typeParameters=null,n.id=this.flowParseQualifiedTypeIdentifier(e,t,r),this.isRelational("<")&&(n.typeParameters=this.flowParseTypeParameterInstantiation()),this.finishNode(n,"GenericTypeAnnotation")}},{key:"flowParseTypeofType",value:function(){var e=this.startNode()
 return this.expect(b._typeof),e.argument=this.flowParsePrimaryType(),this.finishNode(e,"TypeofTypeAnnotation")}},{key:"flowParseTupleType",value:function(){var e=this.startNode()
 for(e.types=[],this.expect(b.bracketL);this.state.pos<this.length&&!this.match(b.bracketR)&&(e.types.push(this.flowParseType()),!this.match(b.bracketR));)this.expect(b.comma)
@@ -11614,7 +11605,7 @@ var e=this.parseMaybeAssign(),t=!this.match(b.colon)
 return this.state.noArrowParamsConversionAt.pop(),{consequent:e,failed:t}}},{key:"getArrowLikeExpressions",value:function(e,t){for(var r=this,n=[e],i=[];0!==n.length;){var s=n.pop()
 "ArrowFunctionExpression"===s.type?(s.typeParameters||!s.returnType?this.finishArrowValidation(s):i.push(s),n.push(s.body)):"ConditionalExpression"===s.type&&(n.push(s.consequent),n.push(s.alternate))}return t?(i.forEach((function(e){return r.finishArrowValidation(e)})),[i,[]]):function(e,t){for(var r=[],n=[],i=0;i<e.length;i++)(t(e[i])?r:n).push(e[i])
 return[r,n]}(i,(function(e){return e.params.every((function(e){return r.isAssignable(e,!0)}))}))}},{key:"finishArrowValidation",value:function(e){var r
-this.toAssignableList(e.params,!0,"arrow function parameters",null==(r=e.extra)?void 0:r.trailingComma),this.scope.enter(16|S(!1,!1)),c(h(t.prototype),"checkParams",this).call(this,e,!1,!0),this.scope.exit()}},{key:"forwardNoArrowParamsConversionAt",value:function(e,t){var r
+this.toAssignableList(e.params,!0,"arrow function parameters",null===(r=e.extra)||void 0===r?void 0:r.trailingComma),this.scope.enter(16|S(!1,!1)),c(h(t.prototype),"checkParams",this).call(this,e,!1,!0),this.scope.exit()}},{key:"forwardNoArrowParamsConversionAt",value:function(e,t){var r
 return-1!==this.state.noArrowParamsConversionAt.indexOf(e.start)?(this.state.noArrowParamsConversionAt.push(this.state.start),r=t(),this.state.noArrowParamsConversionAt.pop()):r=t(),r}},{key:"parseParenItem",value:function(e,r,n){if(e=c(h(t.prototype),"parseParenItem",this).call(this,e,r,n),this.eat(b.question)&&(e.optional=!0,this.resetEndLocation(e)),this.match(b.colon)){var i=this.startNodeAt(r,n)
 return i.expression=e,i.typeAnnotation=this.flowParseTypeAnnotation(),this.finishNode(i,"TypeCastExpression")}return e}},{key:"assertModuleNodeAllowed",value:function(e){"ImportDeclaration"===e.type&&("type"===e.importKind||"typeof"===e.importKind)||"ExportNamedDeclaration"===e.type&&"type"===e.exportKind||"ExportAllDeclaration"===e.type&&"type"===e.exportKind||c(h(t.prototype),"assertModuleNodeAllowed",this).call(this,e)}},{key:"parseExport",value:function(e){var r=c(h(t.prototype),"parseExport",this).call(this,e)
 return"ExportNamedDeclaration"!==r.type&&"ExportAllDeclaration"!==r.type||(r.exportKind=r.exportKind||"value"),r}},{key:"parseExportDeclaration",value:function(e){if(this.isContextual("type")){e.exportKind="type"
@@ -11646,7 +11637,7 @@ do{var n=this.startNode()
 n.id=this.flowParseRestrictedIdentifier(!0),this.isRelational("<")?n.typeParameters=this.flowParseTypeParameterInstantiation():n.typeParameters=null,r.push(this.finishNode(n,"ClassImplements"))}while(this.eat(b.comma))}}},{key:"parsePropertyName",value:function(e){var r=this.flowParseVariance(),n=c(h(t.prototype),"parsePropertyName",this).call(this,e)
 return e.variance=r,n}},{key:"parseObjPropValue",value:function(e,r,n,i,s,a,o,l){var u
 e.variance&&this.unexpected(e.variance.start),delete e.variance,this.isRelational("<")&&(u=this.flowParseTypeParameterDeclaration(),this.match(b.parenL)||this.unexpected()),c(h(t.prototype),"parseObjPropValue",this).call(this,e,r,n,i,s,a,o,l),u&&((e.value||e).typeParameters=u)}},{key:"parseAssignableListItemTypes",value:function(e){return this.eat(b.question)&&("Identifier"!==e.type&&this.raise(e.start,"A binding pattern parameter cannot be optional in an implementation signature."),e.optional=!0),this.match(b.colon)&&(e.typeAnnotation=this.flowParseTypeAnnotation()),this.resetEndLocation(e),e}},{key:"parseMaybeDefault",value:function(e,r,n){var i=c(h(t.prototype),"parseMaybeDefault",this).call(this,e,r,n)
-return"AssignmentPattern"===i.type&&i.typeAnnotation&&i.right.start<i.typeAnnotation.start&&this.raise(i.typeAnnotation.start,"Type annotations must come before default assignments, e.g. instead of `age = 25: number` use `age: number = 25`"),i}},{key:"shouldParseDefaultImport",value:function(e){return J(e)?$(this.state):c(h(t.prototype),"shouldParseDefaultImport",this).call(this,e)}},{key:"parseImportSpecifierLocal",value:function(e,t,r,n){t.local=J(e)?this.flowParseRestrictedIdentifier(!0,!0):this.parseIdentifier(),this.checkLVal(t.local,9,void 0,n),e.specifiers.push(this.finishNode(t,r))}},{key:"maybeParseDefaultImportSpecifier",value:function(e){e.importKind="value"
+return"AssignmentPattern"===i.type&&i.typeAnnotation&&i.right.start<i.typeAnnotation.start&&this.raise(i.typeAnnotation.start,"Type annotations must come before default assignments, e.g. instead of `age = 25: number` use `age: number = 25`"),i}},{key:"shouldParseDefaultImport",value:function(e){return J(e)?$(this.state):c(h(t.prototype),"shouldParseDefaultImport",this).call(this,e)}},{key:"parseImportSpecifierLocal",value:function(e,t,r,n){t.local=J(e)?this.flowParseRestrictedIdentifier(!0):this.parseIdentifier(),this.checkLVal(t.local,9,void 0,n),e.specifiers.push(this.finishNode(t,r))}},{key:"maybeParseDefaultImportSpecifier",value:function(e){e.importKind="value"
 var r=null
 if(this.match(b._typeof)?r="typeof":this.isContextual("type")&&(r="type"),r){var n=this.lookahead()
 "type"===r&&n.type===b.star&&this.unexpected(n.start),($(n)||n.type===b.braceL||n.type===b.star)&&(this.next(),e.importKind=r)}return c(h(t.prototype),"maybeParseDefaultImportSpecifier",this).call(this,e)}},{key:"parseImportSpecifier",value:function(e){var t=this.startNode(),r=this.state.start,n=this.parseIdentifier(!0),i=null
@@ -11655,7 +11646,7 @@ var s=!1
 if(this.isContextual("as")&&!this.isLookaheadContextual("as")){var a=this.parseIdentifier(!0)
 null===i||this.match(b.name)||this.state.type.keyword?(t.imported=n,t.importKind=null,t.local=this.parseIdentifier()):(t.imported=a,t.importKind=i,t.local=a.__clone())}else null!==i&&(this.match(b.name)||this.state.type.keyword)?(t.imported=this.parseIdentifier(!0),t.importKind=i,this.eatContextual("as")?t.local=this.parseIdentifier():(s=!0,t.local=t.imported.__clone())):(s=!0,t.imported=n,t.importKind=null,t.local=t.imported.__clone())
 var o=J(e),l=J(t)
-o&&l&&this.raise(r,"The `type` and `typeof` keywords on named imports can only be used on regular `import` statements. It cannot be used with `import type` or `import typeof` statements"),(o||l)&&this.checkReservedType(t.local.name,t.local.start,!0),!s||o||l||this.checkReservedWord(t.local.name,t.start,!0,!0),this.checkLVal(t.local,9,void 0,"import specifier"),e.specifiers.push(this.finishNode(t,"ImportSpecifier"))}},{key:"parseFunctionParams",value:function(e,r){var n=e.kind
+o&&l&&this.raise(r,"The `type` and `typeof` keywords on named imports can only be used on regular `import` statements. It cannot be used with `import type` or `import typeof` statements"),(o||l)&&this.checkReservedType(t.local.name,t.local.start),!s||o||l||this.checkReservedWord(t.local.name,t.start,!0,!0),this.checkLVal(t.local,9,void 0,"import specifier"),e.specifiers.push(this.finishNode(t,"ImportSpecifier"))}},{key:"parseFunctionParams",value:function(e,r){var n=e.kind
 "get"!==n&&"set"!==n&&this.isRelational("<")&&(e.typeParameters=this.flowParseTypeParameterDeclaration()),c(h(t.prototype),"parseFunctionParams",this).call(this,e,r)}},{key:"parseVarId",value:function(e,r){c(h(t.prototype),"parseVarId",this).call(this,e,r),this.match(b.colon)&&(e.id.typeAnnotation=this.flowParseTypeAnnotation(),this.resetEndLocation(e.id))}},{key:"parseAsyncArrowFromCallExpression",value:function(e,r){if(this.match(b.colon)){var n=this.state.noAnonFunctionType
 this.state.noAnonFunctionType=!0,e.returnType=this.flowParseTypeAnnotation(),this.state.noAnonFunctionType=n}return c(h(t.prototype),"parseAsyncArrowFromCallExpression",this).call(this,e,r)}},{key:"shouldParseAsyncArrow",value:function(){return this.match(b.colon)||c(h(t.prototype),"shouldParseAsyncArrow",this).call(this)}},{key:"parseMaybeAssign",value:function(e,r,n,i){var s,a=this,o=null
 if(this.hasPlugin("jsx")&&(this.match(b.jsxTagStart)||this.isRelational("<"))){if(o=this.state.clone(),!(s=this.tryParse((function(){return c(h(t.prototype),"parseMaybeAssign",a).call(a,e,r,n,i)}),o)).error)return s.node
@@ -11738,28 +11729,39 @@ case"none":switch(r){case"boolean":this.flowEnumErrorBooleanMemberNotInitialized
 break
 case"number":this.flowEnumErrorNumberMemberNotInitialized(l.pos,c)
 break
-default:i.defaultedMembers.push(this.finishNode(s,"EnumDefaultedMember"))}}this.match(b.braceR)||this.expect(b.comma)}}return i}},{key:"flowEnumStringMembers",value:function(e,t,r){var n=r.enumName
-if(0===e.length)return t
-if(0===t.length)return e
-if(t.length>e.length){for(var i=0;i<e.length;i++){var s=e[i]
-this.flowEnumErrorStringMemberInconsistentlyInitailized(s.start,{enumName:n})}return t}for(var a=0;a<t.length;a++){var o=t[a]
-this.flowEnumErrorStringMemberInconsistentlyInitailized(o.start,{enumName:n})}return e}},{key:"flowEnumParseExplicitType",value:function(e){var t=e.enumName
+default:i.defaultedMembers.push(this.finishNode(s,"EnumDefaultedMember"))}}this.match(b.braceR)||this.expect(b.comma)}}return i}},{key:"flowEnumStringBody",value:function(e,t,r,n){var i=n.enumName
+if(0===t.length)e.members=r
+else if(0===r.length)e.members=t
+else if(r.length>t.length){e.members=r
+for(var s=0;s<t.length;s++){var a=t[s]
+this.flowEnumErrorStringMemberInconsistentlyInitailized(a.start,{enumName:i})}}else{e.members=t
+for(var o=0;o<r.length;o++){var l=r[o]
+this.flowEnumErrorStringMemberInconsistentlyInitailized(l.start,{enumName:i})}}return this.finishNode(e,"EnumStringBody")}},{key:"flowEnumParseExplicitType",value:function(e){var t=e.enumName
 if(this.eatContextual("of")){if(!this.match(b.name))throw this.flowEnumErrorInvalidExplicitType(this.state.start,{enumName:t,suppliedType:null})
 var r=this.state.value
-return this.next(),"boolean"!==r&&"number"!==r&&"string"!==r&&"symbol"!==r&&this.flowEnumErrorInvalidExplicitType(this.state.start,{enumName:t,suppliedType:r}),r}return null}},{key:"flowEnumBody",value:function(e,t){var r=this,n=t.enumName,i=t.nameLoc,s=this.flowEnumParseExplicitType({enumName:n})
+return this.next(),"boolean"!==r&&"number"!==r&&"string"!==r&&"symbol"!==r&&this.flowEnumErrorInvalidExplicitType(this.state.start,{enumName:t,suppliedType:r}),r}return null}},{key:"flowParseEnumDeclaration",value:function(e){var t=this,r=this.parseIdentifier()
+e.id=r
+var n=r.name,i=this.flowEnumParseExplicitType({enumName:n})
 this.expect(b.braceL)
-var a=this.flowEnumMembers({enumName:n,explicitType:s})
-switch(s){case"boolean":return e.explicitType=!0,e.members=a.booleanMembers,this.expect(b.braceR),this.finishNode(e,"EnumBooleanBody")
-case"number":return e.explicitType=!0,e.members=a.numberMembers,this.expect(b.braceR),this.finishNode(e,"EnumNumberBody")
-case"string":return e.explicitType=!0,e.members=this.flowEnumStringMembers(a.stringMembers,a.defaultedMembers,{enumName:n}),this.expect(b.braceR),this.finishNode(e,"EnumStringBody")
-case"symbol":return e.members=a.defaultedMembers,this.expect(b.braceR),this.finishNode(e,"EnumSymbolBody")
-default:var o=function(){return e.members=[],r.expect(b.braceR),r.finishNode(e,"EnumStringBody")}
-e.explicitType=!1
+var s=this.startNode(),a=this.flowEnumMembers({enumName:n,explicitType:i})
+switch(i){case"boolean":s.explicitType=!0,s.members=a.booleanMembers,e.body=this.finishNode(s,"EnumBooleanBody")
+break
+case"number":s.explicitType=!0,s.members=a.numberMembers,e.body=this.finishNode(s,"EnumNumberBody")
+break
+case"string":s.explicitType=!0,e.body=this.flowEnumStringBody(s,a.stringMembers,a.defaultedMembers,{enumName:n})
+break
+case"symbol":s.members=a.defaultedMembers,e.body=this.finishNode(s,"EnumSymbolBody")
+break
+default:var o=function(){return s.members=[],t.finishNode(s,"EnumStringBody")}
+s.explicitType=!1
 var l=a.booleanMembers.length,u=a.numberMembers.length,c=a.stringMembers.length,h=a.defaultedMembers.length
-if(l||u||c||h){if(l||u){if(!u&&!c&&l>=h){for(var p=0,d=a.defaultedMembers;p<d.length;p++){var f=d[p]
-this.flowEnumErrorBooleanMemberNotInitialized(f.start,{enumName:n,memberName:f.id.name})}return e.members=a.booleanMembers,this.expect(b.braceR),this.finishNode(e,"EnumBooleanBody")}if(!l&&!c&&u>=h){for(var m=0,y=a.defaultedMembers;m<y.length;m++){var v=y[m]
-this.flowEnumErrorNumberMemberNotInitialized(v.start,{enumName:n,memberName:v.id.name})}return e.members=a.numberMembers,this.expect(b.braceR),this.finishNode(e,"EnumNumberBody")}return this.flowEnumErrorInconsistentMemberValues(i,{enumName:n}),o()}return e.members=this.flowEnumStringMembers(a.stringMembers,a.defaultedMembers,{enumName:n}),this.expect(b.braceR),this.finishNode(e,"EnumStringBody")}return o()}}},{key:"flowParseEnumDeclaration",value:function(e){var t=this.parseIdentifier()
-return e.id=t,e.body=this.flowEnumBody(this.startNode(),{enumName:t.name,nameLoc:t.start}),this.finishNode(e,"EnumDeclaration")}}]),t}(e)},typescript:function(e){return function(e){function t(){return d(this,t),l(this,h(t).apply(this,arguments))}return p(t,e),o(t,[{key:"getScopeHandler",value:function(){return le}},{key:"tsIsIdentifier",value:function(){return this.match(b.name)}},{key:"tsNextTokenCanFollowModifier",value:function(){return this.next(),!(this.hasPrecedingLineBreak()||this.match(b.parenL)||this.match(b.parenR)||this.match(b.colon)||this.match(b.eq)||this.match(b.question)||this.match(b.bang))}},{key:"tsParseModifier",value:function(e){if(this.match(b.name)){var t=this.state.value
+if(l||u||c||h)if(l||u)if(!u&&!c&&l>=h){s.members=a.booleanMembers,e.body=this.finishNode(s,"EnumBooleanBody")
+for(var p=0,d=a.defaultedMembers;p<d.length;p++){var f=d[p]
+this.flowEnumErrorBooleanMemberNotInitialized(f.start,{enumName:n,memberName:f.id.name})}}else if(!l&&!c&&u>=h){s.members=a.numberMembers,e.body=this.finishNode(s,"EnumNumberBody")
+for(var m=0,y=a.defaultedMembers;m<y.length;m++){var v=y[m]
+this.flowEnumErrorNumberMemberNotInitialized(v.start,{enumName:n,memberName:v.id.name})}}else e.body=o(),this.flowEnumErrorInconsistentMemberValues(r.start,{enumName:n})
+else e.body=this.flowEnumStringBody(s,a.stringMembers,a.defaultedMembers,{enumName:n})
+else e.body=o()}return this.expect(b.braceR),this.finishNode(e,"EnumDeclaration")}}]),t}(e)},typescript:function(e){return function(e){function t(){return d(this,t),l(this,h(t).apply(this,arguments))}return p(t,e),o(t,[{key:"getScopeHandler",value:function(){return le}},{key:"tsIsIdentifier",value:function(){return this.match(b.name)}},{key:"tsNextTokenCanFollowModifier",value:function(){return this.next(),!(this.hasPrecedingLineBreak()||this.match(b.parenL)||this.match(b.parenR)||this.match(b.colon)||this.match(b.eq)||this.match(b.question)||this.match(b.bang))}},{key:"tsParseModifier",value:function(e){if(this.match(b.name)){var t=this.state.value
 return-1!==e.indexOf(t)&&this.tsTryParse(this.tsNextTokenCanFollowModifier.bind(this))?t:void 0}}},{key:"tsParseModifiers",value:function(e){for(var t=Object.create(null);;){var r=this.state.start,n=this.tsParseModifier(e)
 if(!n)break
 Object.hasOwnProperty.call(t,n)&&this.raise(r,"Duplicate modifier: '".concat(n,"'")),t[n]=!0}return t}},{key:"tsIsListTerminator",value:function(e){switch(e){case"EnumMembers":case"TypeMembers":return this.match(b.braceR)
@@ -11805,15 +11807,14 @@ return this.expect(b.braceL),this.match(b.plusMin)?(e.readonly=this.state.value,
 t.elementTypes=this.tsParseBracketedList("TupleElementTypes",this.tsParseTupleElementType.bind(this),!0,!1)
 var r=!1
 return t.elementTypes.forEach((function(t){"TSOptionalType"===t.type?r=!0:r&&"TSRestType"!==t.type&&e.raise(t.start,"A required element cannot follow an optional element.")})),this.finishNode(t,"TSTupleType")}},{key:"tsParseTupleElementType",value:function(){if(this.match(b.ellipsis)){var e=this.startNode()
-return this.next(),e.typeAnnotation=this.tsParseType(),this.match(b.comma)&&93!==this.lookaheadCharCode()&&this.raiseRestNotLast(this.state.start),this.finishNode(e,"TSRestType")}var t=this.tsParseType()
+return this.next(),e.typeAnnotation=this.tsParseType(),this.checkCommaAfterRest(93),this.finishNode(e,"TSRestType")}var t=this.tsParseType()
 if(this.eat(b.question)){var r=this.startNodeAtNode(t)
 return r.typeAnnotation=t,this.finishNode(r,"TSOptionalType")}return t}},{key:"tsParseParenthesizedType",value:function(){var e=this.startNode()
 return this.expect(b.parenL),e.typeAnnotation=this.tsParseType(),this.expect(b.parenR),this.finishNode(e,"TSParenthesizedType")}},{key:"tsParseFunctionOrConstructorType",value:function(e){var t=this.startNode()
 return"TSConstructorType"===e&&this.expect(b._new),this.tsFillSignature(b.arrow,t),this.finishNode(t,e)}},{key:"tsParseLiteralTypeNode",value:function(){var e=this,t=this.startNode()
 return t.literal=function(){switch(e.state.type){case b.num:case b.string:case b._true:case b._false:return e.parseExprAtom()
 default:throw e.unexpected()}}(),this.finishNode(t,"TSLiteralType")}},{key:"tsParseTemplateLiteralType",value:function(){var e=this.startNode(),t=this.parseTemplate(!1)
-return t.expressions.length>0&&this.raise(t.expressions[0].start,"Template literal types cannot have any substitution"),e.literal=t,this.finishNode(e,"TSLiteralType")}},{key:"tsParseThisTypeOrThisTypePredicate",value:function(){var e=this.tsParseThisTypeNode()
-return this.isContextual("is")&&!this.hasPrecedingLineBreak()?this.tsParseThisTypePredicate(e):e}},{key:"tsParseNonArrayType",value:function(){switch(this.state.type){case b.name:case b._void:case b._null:var e=this.match(b._void)?"TSVoidKeyword":this.match(b._null)?"TSNullKeyword":function(e){switch(e){case"any":return"TSAnyKeyword"
+return t.expressions.length>0&&this.raise(t.expressions[0].start,"Template literal types cannot have any substitution"),e.literal=t,this.finishNode(e,"TSLiteralType")}},{key:"tsParseNonArrayType",value:function(){switch(this.state.type){case b.name:case b._void:case b._null:var e=this.match(b._void)?"TSVoidKeyword":this.match(b._null)?"TSNullKeyword":function(e){switch(e){case"any":return"TSAnyKeyword"
 case"boolean":return"TSBooleanKeyword"
 case"bigint":return"TSBigIntKeyword"
 case"never":return"TSNeverKeyword"
@@ -11830,7 +11831,8 @@ case b.string:case b.num:case b._true:case b._false:return this.tsParseLiteralTy
 case b.plusMin:if("-"===this.state.value){var r=this.startNode()
 if(this.lookahead().type!==b.num)throw this.unexpected()
 return r.literal=this.parseMaybeUnary(),this.finishNode(r,"TSLiteralType")}break
-case b._this:return this.tsParseThisTypeOrThisTypePredicate()
+case b._this:var n=this.tsParseThisTypeNode()
+return this.isContextual("is")&&!this.hasPrecedingLineBreak()?this.tsParseThisTypePredicate(n):n
 case b._typeof:return this.tsParseTypeQuery()
 case b._import:return this.tsParseImportType()
 case b.braceL:return this.tsLookAhead(this.tsIsStartOfMappedType.bind(this))?this.tsParseMappedType():this.tsParseTypeLiteral()
@@ -11858,18 +11860,12 @@ if(this.tsSkipParameterStart()){if(this.match(b.colon)||this.match(b.comma)||thi
 if(this.match(b.parenR)&&(this.next(),this.match(b.arrow)))return!0}return!1}},{key:"tsParseTypeOrTypePredicateAnnotation",value:function(e){var t=this
 return this.tsInType((function(){var r=t.startNode()
 t.expect(e)
-var n=t.tsTryParse(t.tsParseTypePredicateAsserts.bind(t))
-if(n&&t.match(b._this)){var i=t.tsParseThisTypeOrThisTypePredicate()
-if("TSThisType"===i.type){var s=t.startNodeAtNode(r)
-s.parameterName=i,s.asserts=!0,i=t.finishNode(s,"TSTypePredicate")}else i.asserts=!0
-return r.typeAnnotation=i,t.finishNode(r,"TSTypeAnnotation")}var a=t.tsIsIdentifier()&&t.tsTryParse(t.tsParseTypePredicatePrefix.bind(t))
-if(!a){if(!n)return t.tsParseTypeAnnotation(!1,r)
-var o=t.startNodeAtNode(r)
-return o.parameterName=t.parseIdentifier(),o.asserts=n,r.typeAnnotation=t.finishNode(o,"TSTypePredicate"),t.finishNode(r,"TSTypeAnnotation")}var l=t.tsParseTypeAnnotation(!1),u=t.startNodeAtNode(r)
-return u.parameterName=a,u.typeAnnotation=l,u.asserts=n,r.typeAnnotation=t.finishNode(u,"TSTypePredicate"),t.finishNode(r,"TSTypeAnnotation")}))}},{key:"tsTryParseTypeOrTypePredicateAnnotation",value:function(){return this.match(b.colon)?this.tsParseTypeOrTypePredicateAnnotation(b.colon):void 0}},{key:"tsTryParseTypeAnnotation",value:function(){return this.match(b.colon)?this.tsParseTypeAnnotation():void 0}},{key:"tsTryParseType",value:function(){return this.tsEatThenParseType(b.colon)}},{key:"tsParseTypePredicatePrefix",value:function(){var e=this.parseIdentifier()
-if(this.isContextual("is")&&!this.hasPrecedingLineBreak())return this.next(),e}},{key:"tsParseTypePredicateAsserts",value:function(){if(!this.match(b.name)||"asserts"!==this.state.value||this.hasPrecedingLineBreak())return!1
-var e=this.state.containsEsc
-return this.next(),!(!this.match(b.name)&&!this.match(b._this)||(e&&this.raise(this.state.lastTokStart,"Escape sequence in keyword asserts"),0))}},{key:"tsParseTypeAnnotation",value:function(){var e=this,t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0],r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this.startNode()
+var n=t.tsTryParse(t.tsParseTypePredicateAsserts.bind(t)),i=t.tsIsIdentifier()&&t.tsTryParse(t.tsParseTypePredicatePrefix.bind(t))
+if(!i){if(!n)return t.tsParseTypeAnnotation(!1,r)
+var s=t.startNodeAtNode(r)
+return s.parameterName=t.parseIdentifier(),s.asserts=n,r.typeAnnotation=t.finishNode(s,"TSTypePredicate"),t.finishNode(r,"TSTypeAnnotation")}var a=t.tsParseTypeAnnotation(!1),o=t.startNodeAtNode(r)
+return o.parameterName=i,o.typeAnnotation=a,o.asserts=n,r.typeAnnotation=t.finishNode(o,"TSTypePredicate"),t.finishNode(r,"TSTypeAnnotation")}))}},{key:"tsTryParseTypeOrTypePredicateAnnotation",value:function(){return this.match(b.colon)?this.tsParseTypeOrTypePredicateAnnotation(b.colon):void 0}},{key:"tsTryParseTypeAnnotation",value:function(){return this.match(b.colon)?this.tsParseTypeAnnotation():void 0}},{key:"tsTryParseType",value:function(){return this.tsEatThenParseType(b.colon)}},{key:"tsParseTypePredicatePrefix",value:function(){var e=this.parseIdentifier()
+if(this.isContextual("is")&&!this.hasPrecedingLineBreak())return this.next(),e}},{key:"tsParseTypePredicateAsserts",value:function(){return!!this.tsIsIdentifier()&&!("asserts"!==this.parseIdentifier().name||this.hasPrecedingLineBreak()||!this.tsIsIdentifier())}},{key:"tsParseTypeAnnotation",value:function(){var e=this,t=!(arguments.length>0&&void 0!==arguments[0])||arguments[0],r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this.startNode()
 return this.tsInType((function(){t&&e.expect(b.colon),r.typeAnnotation=e.tsParseType()})),this.finishNode(r,"TSTypeAnnotation")}},{key:"tsParseType",value:function(){ce(this.state.inType)
 var e=this.tsParseNonConditionalType()
 if(this.hasPrecedingLineBreak()||!this.eat(b._extends))return e
@@ -11891,7 +11887,7 @@ return e.id=this.match(b.string)?this.parseExprAtom():this.parseIdentifier(!0),t
 return this.scope.enter(0),this.expect(b.braceL),this.parseBlockOrModuleBlockBody(e.body=[],void 0,!0,b.braceR),this.scope.exit(),this.finishNode(e,"TSModuleBlock")}},{key:"tsParseModuleOrNamespaceDeclaration",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1]
 if(e.id=this.parseIdentifier(),t||this.checkLVal(e.id,1024,null,"module or namespace declaration"),this.eat(b.dot)){var r=this.startNode()
 this.tsParseModuleOrNamespaceDeclaration(r,!0),e.body=r}else this.scope.enter(512),e.body=this.tsParseModuleBlock(),this.scope.exit()
-return this.finishNode(e,"TSModuleDeclaration")}},{key:"tsParseAmbientExternalModuleDeclaration",value:function(e){return this.isContextual("global")?(e.global=!0,e.id=this.parseIdentifier()):this.match(b.string)?e.id=this.parseExprAtom():this.unexpected(),this.match(b.braceL)?(this.scope.enter(512),e.body=this.tsParseModuleBlock(),this.scope.exit()):this.semicolon(),this.finishNode(e,"TSModuleDeclaration")}},{key:"tsParseImportEqualsDeclaration",value:function(e,t){return e.isExport=t||!1,e.id=this.parseIdentifier(),this.checkLVal(e.id,9,void 0,"import equals declaration"),this.expect(b.eq),e.moduleReference=this.tsParseModuleReference(),this.semicolon(),this.finishNode(e,"TSImportEqualsDeclaration")}},{key:"tsIsExternalModuleReference",value:function(){return this.isContextual("require")&&40===this.lookaheadCharCode()}},{key:"tsParseModuleReference",value:function(){return this.tsIsExternalModuleReference()?this.tsParseExternalModuleReference():this.tsParseEntityName(!1)}},{key:"tsParseExternalModuleReference",value:function(){var e=this.startNode()
+return this.finishNode(e,"TSModuleDeclaration")}},{key:"tsParseAmbientExternalModuleDeclaration",value:function(e){return this.isContextual("global")?(e.global=!0,e.id=this.parseIdentifier()):this.match(b.string)?e.id=this.parseExprAtom():this.unexpected(),this.match(b.braceL)?(this.scope.enter(512),e.body=this.tsParseModuleBlock(),this.scope.exit()):this.semicolon(),this.finishNode(e,"TSModuleDeclaration")}},{key:"tsParseImportEqualsDeclaration",value:function(e,t){return e.isExport=t||!1,e.id=this.parseIdentifier(),this.expect(b.eq),e.moduleReference=this.tsParseModuleReference(),this.semicolon(),this.finishNode(e,"TSImportEqualsDeclaration")}},{key:"tsIsExternalModuleReference",value:function(){return this.isContextual("require")&&40===this.lookaheadCharCode()}},{key:"tsParseModuleReference",value:function(){return this.tsIsExternalModuleReference()?this.tsParseExternalModuleReference():this.tsParseEntityName(!1)}},{key:"tsParseExternalModuleReference",value:function(){var e=this.startNode()
 if(this.expectContextual("require"),this.expect(b.parenL),!this.match(b.string))throw this.unexpected()
 return e.expression=this.parseExprAtom(),this.expect(b.parenR),this.finishNode(e,"TSExternalModuleReference")}},{key:"tsLookAhead",value:function(e){var t=this.state.clone(),r=e()
 return this.state=t,r}},{key:"tsTryParseAndCatch",value:function(e){var t=this.tryParse((function(t){return e()||t()}))
@@ -12012,10 +12008,10 @@ default:return c(h(t.prototype),"parseBindingAtom",this).call(this)}}},{key:"par
 if(this.match(b.parenL)){var n=c(h(t.prototype),"parseMaybeDecoratorArguments",this).call(this,e)
 return n.typeParameters=r,n}this.unexpected(this.state.start,b.parenL)}return c(h(t.prototype),"parseMaybeDecoratorArguments",this).call(this,e)}},{key:"isClassMethod",value:function(){return this.isRelational("<")||c(h(t.prototype),"isClassMethod",this).call(this)}},{key:"isClassProperty",value:function(){return this.match(b.bang)||this.match(b.colon)||c(h(t.prototype),"isClassProperty",this).call(this)}},{key:"parseMaybeDefault",value:function(){for(var e,r=arguments.length,n=new Array(r),i=0;i<r;i++)n[i]=arguments[i]
 var s=(e=c(h(t.prototype),"parseMaybeDefault",this)).call.apply(e,[this].concat(n))
-return"AssignmentPattern"===s.type&&s.typeAnnotation&&s.right.start<s.typeAnnotation.start&&this.raise(s.typeAnnotation.start,"Type annotations must come before default assignments, e.g. instead of `age = 25: number` use `age: number = 25`"),s}},{key:"getTokenFromCode",value:function(e){return!this.state.inType||62!==e&&60!==e?c(h(t.prototype),"getTokenFromCode",this).call(this,e):this.finishOp(b.relational,1)}},{key:"toAssignableList",value:function(e,r){for(var n=0;n<e.length;n++){var i=e[n]
-if(i)switch(i.type){case"TSTypeCastExpression":e[n]=this.typeCastToParameter(i)
+return"AssignmentPattern"===s.type&&s.typeAnnotation&&s.right.start<s.typeAnnotation.start&&this.raise(s.typeAnnotation.start,"Type annotations must come before default assignments, e.g. instead of `age = 25: number` use `age: number = 25`"),s}},{key:"getTokenFromCode",value:function(e){return!this.state.inType||62!==e&&60!==e?c(h(t.prototype),"getTokenFromCode",this).call(this,e):this.finishOp(b.relational,1)}},{key:"toAssignableList",value:function(e){for(var r=0;r<e.length;r++){var n=e[r]
+if(n)switch(n.type){case"TSTypeCastExpression":e[r]=this.typeCastToParameter(n)
 break
-case"TSAsExpression":case"TSTypeAssertion":r?this.raise(i.start,"Unexpected type cast in parameter position."):e[n]=this.typeCastToParameter(i)}}return c(h(t.prototype),"toAssignableList",this).apply(this,arguments)}},{key:"typeCastToParameter",value:function(e){return e.expression.typeAnnotation=e.typeAnnotation,this.resetEndLocation(e.expression,e.typeAnnotation.end,e.typeAnnotation.loc.end),e.expression}},{key:"toReferencedList",value:function(e,t){for(var r=0;r<e.length;r++){var n=e[r]
+case"TSAsExpression":case"TSTypeAssertion":this.raise(n.start,"Unexpected type cast in parameter position.")}}return c(h(t.prototype),"toAssignableList",this).apply(this,arguments)}},{key:"typeCastToParameter",value:function(e){return e.expression.typeAnnotation=e.typeAnnotation,this.resetEndLocation(e.expression,e.typeAnnotation.end,e.typeAnnotation.loc.end),e.expression}},{key:"toReferencedList",value:function(e,t){for(var r=0;r<e.length;r++){var n=e[r]
 n&&n._exprListItem&&"TsTypeCastExpression"===n.type&&this.raise(n.start,"Did not expect a type annotation here.")}return e}},{key:"shouldParseArrow",value:function(){return this.match(b.colon)||c(h(t.prototype),"shouldParseArrow",this).call(this)}},{key:"shouldParseAsyncArrow",value:function(){return this.match(b.colon)||c(h(t.prototype),"shouldParseAsyncArrow",this).call(this)}},{key:"canHaveLeadingDecorator",value:function(){return c(h(t.prototype),"canHaveLeadingDecorator",this).call(this)||this.isAbstractClass()}},{key:"jsxParseOpeningElementAfterName",value:function(e){var r=this
 if(this.isRelational("<")){var n=this.tsTryParseAndCatch((function(){return r.tsParseTypeArguments()}))
 n&&(e.typeParameters=n)}return c(h(t.prototype),"jsxParseOpeningElementAfterName",this).call(this,e)}},{key:"getGetterSetterExpectedParamCount",value:function(e){var r=c(h(t.prototype),"getGetterSetterExpectedParamCount",this).call(this,e),n=e.params[0]
@@ -12365,7 +12361,7 @@ var y=this.isNonstaticConstructor(s),v=!1
 y&&(s.kind="constructor",r.hadConstructor&&!this.hasPlugin("typescript")&&this.raise(p.start,"Duplicate constructor in the same class"),r.hadConstructor=!0,v=i),this.pushClassMethod(e,s,!1,!1,y,v)}else if(this.isClassProperty())d?this.pushClassPrivateProperty(e,l):this.pushClassProperty(e,o)
 else if(!f||"async"!==p.name||h||this.isLineTerminator())!f||"get"!==p.name&&"set"!==p.name||h||this.match(b.star)&&this.isLineTerminator()?this.isLineTerminator()?d?this.pushClassPrivateProperty(e,l):this.pushClassProperty(e,o):this.unexpected():(u.kind=p.name,this.parseClassPropertyName(s),"PrivateName"===u.key.type?this.pushClassPrivateMethod(e,a,!1,!1):(this.isNonstaticConstructor(s)&&this.raise(s.key.start,"Constructor can't have get/set modifier"),this.pushClassMethod(e,s,!1,!1,!1,!1)),this.checkGetterSetterParams(s))
 else{var g=this.eat(b.star)
-c.optional&&this.unexpected(m),u.kind="method",this.parseClassPropertyName(u),this.parsePostMemberNameModifiers(c),"PrivateName"===u.key.type?this.pushClassPrivateMethod(e,a,g,!0):(this.isNonstaticConstructor(s)&&this.raise(s.key.start,"Constructor can't be an async function"),this.pushClassMethod(e,s,g,!0,!1,!1))}}},{key:"parseClassPropertyName",value:function(e){var t=this.parsePropertyName(e)
+c.optional&&this.unexpected(m),u.kind="method",this.parseClassPropertyName(u),"PrivateName"===u.key.type?this.pushClassPrivateMethod(e,a,g,!0):(this.isNonstaticConstructor(s)&&this.raise(s.key.start,"Constructor can't be an async function"),this.pushClassMethod(e,s,g,!0,!1,!1))}}},{key:"parseClassPropertyName",value:function(e){var t=this.parsePropertyName(e)
 return e.computed||!e.static||"prototype"!==t.name&&"prototype"!==t.value||this.raise(t.start,"Classes may not have static property named prototype"),"PrivateName"===t.type&&"constructor"===t.id.name&&this.raise(t.start,"Classes may not have a private field named '#constructor'"),t}},{key:"pushClassProperty",value:function(e,t){t.computed||"constructor"!==t.key.name&&"constructor"!==t.key.value||this.raise(t.key.start,"Classes may not have a field named 'constructor'"),e.body.push(this.parseClassProperty(t))}},{key:"pushClassPrivateProperty",value:function(e,t){this.expectPlugin("classPrivateProperties",t.key.start),e.body.push(this.parseClassPrivateProperty(t))}},{key:"pushClassMethod",value:function(e,t,r,n,i,s){e.body.push(this.parseMethod(t,r,n,i,s,"ClassMethod",!0))}},{key:"pushClassPrivateMethod",value:function(e,t,r,n){this.expectPlugin("classPrivateMethods",t.key.start),e.body.push(this.parseMethod(t,r,n,!1,!1,"ClassPrivateMethod",!0))}},{key:"parsePostMemberNameModifiers",value:function(e){}},{key:"parseAccessModifier",value:function(){}},{key:"parseClassPrivateProperty",value:function(e){return this.state.inClassProperty=!0,this.scope.enter(320),e.value=this.eat(b.eq)?this.parseMaybeAssign():null,this.semicolon(),this.state.inClassProperty=!1,this.scope.exit(),this.finishNode(e,"ClassPrivateProperty")}},{key:"parseClassProperty",value:function(e){return e.typeAnnotation||this.expectPlugin("classProperties"),this.state.inClassProperty=!0,this.scope.enter(320),this.match(b.eq)?(this.expectPlugin("classProperties"),this.next(),e.value=this.parseMaybeAssign()):e.value=null,this.semicolon(),this.state.inClassProperty=!1,this.scope.exit(),this.finishNode(e,"ClassProperty")}},{key:"parseClassId",value:function(e,t,r){var n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:139
 this.match(b.name)?(e.id=this.parseIdentifier(),t&&this.checkLVal(e.id,n,void 0,"class name")):r||!t?e.id=null:this.unexpected(null,"A class name is required")}},{key:"parseClassSuper",value:function(e){e.superClass=this.eat(b._extends)?this.parseExprSubscripts():null}},{key:"parseExport",value:function(e){var t=this.maybeParseExportDefaultSpecifier(e),r=!t||this.eat(b.comma),n=r&&this.eatExportStar(e),i=n&&this.maybeParseExportNamespaceSpecifier(e),s=r&&(!i||this.eat(b.comma)),a=t||n
 if(n&&!i)return t&&this.unexpected(),this.parseExportFrom(e,!0),this.finishNode(e,"ExportAllDeclaration")
@@ -12464,7 +12460,7 @@ r&&"SpreadElement"===r.type&&this.raise(r.start,"... is not allowed in import()"
 for(this.state.inFSharpPipelineDirectBody=!1;!this.eat(e);){if(o)o=!1
 else if(this.expect(b.comma),this.match(e)){r&&this.raise(this.state.lastTokStart,"Trailing comma is disallowed inside import(...) arguments"),i&&this.addExtra(i,"trailingComma",this.state.lastTokStart),this.next()
 break}this.match(b.parenL)&&!s&&(s=this.state.start),a.push(this.parseExprListItem(!1,t?{start:0}:void 0,t?{start:0}:void 0,n))}return t&&s&&this.shouldParseAsyncArrow()&&this.unexpected(),this.state.inFSharpPipelineDirectBody=l,a}},{key:"shouldParseAsyncArrow",value:function(){return this.match(b.arrow)&&!this.canInsertSemicolon()}},{key:"parseAsyncArrowFromCallExpression",value:function(e,t){var r
-return this.expect(b.arrow),this.parseArrowExpression(e,t.arguments,!0,null==(r=t.extra)?void 0:r.trailingComma),e}},{key:"parseNoCallExpr",value:function(){var e=this.state.start,t=this.state.startLoc
+return this.expect(b.arrow),this.parseArrowExpression(e,t.arguments,!0,null===(r=t.extra)||void 0===r?void 0:r.trailingComma),e}},{key:"parseNoCallExpr",value:function(){var e=this.state.start,t=this.state.startLoc
 return this.parseSubscripts(this.parseExprAtom(),e,t,!0)}},{key:"parseExprAtom",value:function(e){this.state.type===b.slash&&this.readRegexp()
 var t,r=this.state.potentialArrowAt===this.state.start
 switch(this.state.type){case b._super:return t=this.startNode(),this.next(),!this.match(b.parenL)||this.scope.allowDirectSuper||this.options.allowSuperOutsideMethod?this.scope.allowSuper||this.options.allowSuperOutsideMethod||this.raise(t.start,"super is only allowed in object methods and classes"):this.raise(t.start,"super() is only valid inside a class constructor of a subclass. Maybe a typo in the method name ('constructor') or not extending another class?"),this.match(b.parenL)||this.match(b.bracketL)||this.match(b.dot)||this.raise(t.start,"super can only be used with function calls (i.e. super()) or in property accesses (i.e. super.prop or super[prop])"),this.finishNode(t,"Super")
@@ -12472,38 +12468,37 @@ case b._import:return t=this.startNode(),this.next(),this.match(b.dot)?this.pars
 case b._this:return t=this.startNode(),this.next(),this.finishNode(t,"ThisExpression")
 case b.name:t=this.startNode()
 var n=this.state.containsEsc,i=this.parseIdentifier()
-if(!n&&"async"===i.name&&this.match(b._function)&&!this.canInsertSemicolon()){var s=this.state.context.length-1
-if(this.state.context[s]!==N.functionStatement)throw new Error("Internal error")
-return this.state.context[s]=N.functionExpression,this.next(),this.parseFunction(t,void 0,!0)}if(r&&!n&&"async"===i.name&&this.match(b.name)&&!this.canInsertSemicolon()){var a=[this.parseIdentifier()]
-return this.expect(b.arrow),this.parseArrowExpression(t,a,!0),t}return r&&this.match(b.arrow)&&!this.canInsertSemicolon()?(this.next(),this.parseArrowExpression(t,[i],!1),t):i
+if(!n&&"async"===i.name&&this.match(b._function)&&!this.canInsertSemicolon())return this.next(),this.parseFunction(t,void 0,!0)
+if(r&&!n&&"async"===i.name&&this.match(b.name)&&!this.canInsertSemicolon()){var s=[this.parseIdentifier()]
+return this.expect(b.arrow),this.parseArrowExpression(t,s,!0),t}return r&&this.match(b.arrow)&&!this.canInsertSemicolon()?(this.next(),this.parseArrowExpression(t,[i],!1),t):i
 case b._do:this.expectPlugin("doExpressions")
-var o=this.startNode()
+var a=this.startNode()
 this.next()
-var l=this.state.labels
-return this.state.labels=[],o.body=this.parseBlock(),this.state.labels=l,this.finishNode(o,"DoExpression")
-case b.regexp:var u=this.state.value
-return(t=this.parseLiteral(u.value,"RegExpLiteral")).pattern=u.pattern,t.flags=u.flags,t
+var o=this.state.labels
+return this.state.labels=[],a.body=this.parseBlock(),this.state.labels=o,this.finishNode(a,"DoExpression")
+case b.regexp:var l=this.state.value
+return(t=this.parseLiteral(l.value,"RegExpLiteral")).pattern=l.pattern,t.flags=l.flags,t
 case b.num:return this.parseLiteral(this.state.value,"NumericLiteral")
 case b.bigint:return this.parseLiteral(this.state.value,"BigIntLiteral")
 case b.string:return this.parseLiteral(this.state.value,"StringLiteral")
 case b._null:return t=this.startNode(),this.next(),this.finishNode(t,"NullLiteral")
 case b._true:case b._false:return this.parseBooleanLiteral()
 case b.parenL:return this.parseParenAndDistinguishExpression(r)
-case b.bracketL:var c=this.state.inFSharpPipelineDirectBody
-return this.state.inFSharpPipelineDirectBody=!1,t=this.startNode(),this.next(),t.elements=this.parseExprList(b.bracketR,!0,e,t),this.state.maybeInArrowParameters||this.toReferencedList(t.elements),this.state.inFSharpPipelineDirectBody=c,this.finishNode(t,"ArrayExpression")
-case b.braceL:var h=this.state.inFSharpPipelineDirectBody
+case b.bracketL:var u=this.state.inFSharpPipelineDirectBody
+return this.state.inFSharpPipelineDirectBody=!1,t=this.startNode(),this.next(),t.elements=this.parseExprList(b.bracketR,!0,e,t),this.state.maybeInArrowParameters||this.toReferencedList(t.elements),this.state.inFSharpPipelineDirectBody=u,this.finishNode(t,"ArrayExpression")
+case b.braceL:var c=this.state.inFSharpPipelineDirectBody
 this.state.inFSharpPipelineDirectBody=!1
-var p=this.parseObj(!1,e)
-return this.state.inFSharpPipelineDirectBody=h,p
+var h=this.parseObj(!1,e)
+return this.state.inFSharpPipelineDirectBody=c,h
 case b._function:return this.parseFunctionExpression()
 case b.at:this.parseDecorators()
 case b._class:return t=this.startNode(),this.takeDecorators(t),this.parseClass(t,!1)
 case b._new:return this.parseNew()
 case b.backQuote:return this.parseTemplate(!1)
 case b.doubleColon:t=this.startNode(),this.next(),t.object=null
-var d=t.callee=this.parseNoCallExpr()
-if("MemberExpression"===d.type)return this.finishNode(t,"BindExpression")
-throw this.raise(d.start,"Binding should be performed on object property.")
+var p=t.callee=this.parseNoCallExpr()
+if("MemberExpression"===p.type)return this.finishNode(t,"BindExpression")
+throw this.raise(p.start,"Binding should be performed on object property.")
 case b.hash:if(this.state.inPipeline)return t=this.startNode(),"smart"!==this.getPluginOption("pipelineOperator","proposal")&&this.raise(t.start,"Primary Topic Reference found but pipelineOperator not passed 'smart' for 'proposal' option."),this.next(),this.primaryTopicReferenceIsAllowedInCurrentTopicContext()||this.raise(t.start,"Topic reference was used in a lexical context without topic binding"),this.registerTopicReference(),this.finishNode(t,"PipelinePrimaryTopicReference")
 default:throw this.unexpected()}}},{key:"parseBooleanLiteral",value:function(){var e=this.startNode()
 return e.value=this.match(b._true),this.next(),this.finishNode(e,"BooleanLiteral")}},{key:"parseMaybePrivateName",value:function(){if(this.match(b.hash)){this.expectOnePlugin(["classPrivateProperties","classPrivateMethods"])
@@ -12578,7 +12573,7 @@ return this.createIdentifier(t,r)}},{key:"createIdentifier",value:function(e,t){
 if(this.match(b.name))r=this.state.value
 else{if(!this.state.type.keyword)throw this.unexpected()
 "class"!==(r=this.state.type.keyword)&&"function"!==r||this.state.lastTokEnd===this.state.lastTokStart+1&&46===this.input.charCodeAt(this.state.lastTokStart)||this.state.context.pop()}return t?this.state.type=b.name:this.checkReservedWord(r,this.state.start,!!this.state.type.keyword,!1),this.next(),r}},{key:"checkReservedWord",value:function(e,t,r,n){if(this.scope.inGenerator&&"yield"===e)this.raise(t,"Can not use 'yield' as identifier inside a generator")
-else{if("await"===e){if(this.scope.inAsync)return void this.raise(t,"Can not use 'await' as identifier inside an async function");-1===this.state.awaitPos&&(this.state.maybeInArrowParameters||this.isAwaitAllowed())&&(this.state.awaitPos=this.state.start)}!this.scope.inClass||this.scope.inNonArrowFunction||"arguments"!==e?r&&function(e){return y.has(e)}(e)?this.raise(t,"Unexpected keyword '".concat(e,"'")):(this.state.strict?n?F:I:L)(e,this.inModule)&&(this.scope.inAsync||"await"!==e?this.raise(t,"Unexpected reserved word '".concat(e,"'")):this.raise(t,"Can not use keyword 'await' outside an async function")):this.raise(t,"'arguments' is not allowed in class field initializer")}}},{key:"isAwaitAllowed",value:function(){return this.scope.inFunction?this.scope.inAsync:!!this.options.allowAwaitOutsideFunction||!!this.hasPlugin("topLevelAwait")&&this.inModule}},{key:"parseAwait",value:function(){var e=this.startNode()
+else{if("await"===e){if(this.scope.inAsync)return void this.raise(t,"Can not use 'await' as identifier inside an async function");-1===this.state.awaitPos&&(this.state.maybeInArrowParameters||this.isAwaitAllowed())&&(this.state.awaitPos=this.state.start)}this.state.inClassProperty&&"arguments"===e?this.raise(t,"'arguments' is not allowed in class field initializer"):r&&function(e){return y.has(e)}(e)?this.raise(t,"Unexpected keyword '".concat(e,"'")):(this.state.strict?n?F:I:L)(e,this.inModule)&&(this.scope.inAsync||"await"!==e?this.raise(t,"Unexpected reserved word '".concat(e,"'")):this.raise(t,"Can not use keyword 'await' outside an async function"))}}},{key:"isAwaitAllowed",value:function(){return this.scope.inFunction?this.scope.inAsync:!!this.options.allowAwaitOutsideFunction||!!this.hasPlugin("topLevelAwait")&&this.inModule}},{key:"parseAwait",value:function(){var e=this.startNode()
 return this.next(),this.state.inParameters?this.raise(e.start,"await is not allowed in async function parameters"):-1===this.state.awaitPos&&(this.state.awaitPos=e.start),this.eat(b.star)&&this.raise(e.start,"await* has been removed from the async functions proposal. Use Promise.all() instead."),this.scope.inFunction||this.options.allowAwaitOutsideFunction||(this.hasPrecedingLineBreak()||this.match(b.plusMin)||this.match(b.parenL)||this.match(b.bracketL)||this.match(b.backQuote)||this.match(b.regexp)||this.match(b.slash)||this.hasPlugin("v8intrinsic")&&this.match(b.modulo)?this.ambiguousScriptDifferentAst=!0:this.sawUnambiguousESM=!0),this.state.soloAwait||(e.argument=this.parseMaybeUnary()),this.finishNode(e,"AwaitExpression")}},{key:"parseYield",value:function(e){var t=this.startNode()
 return this.state.inParameters?this.raise(t.start,"yield is not allowed in generator parameters"):-1===this.state.yieldPos&&(this.state.yieldPos=t.start),this.next(),this.match(b.semi)||!this.match(b.star)&&!this.state.type.startsExpr||this.hasPrecedingLineBreak()?(t.delegate=!1,t.argument=null):(t.delegate=this.eat(b.star),t.argument=this.parseMaybeAssign(e)),this.finishNode(t,"YieldExpression")}},{key:"checkPipelineAtInfixOperator",value:function(e,t){"smart"===this.getPluginOption("pipelineOperator","proposal")&&"SequenceExpression"===e.type&&this.raise(t,"Pipeline head should not be a comma-separated sequence expression")}},{key:"parseSmartPipelineBody",value:function(e,t,r){var n=this.checkSmartPipelineBodyStyle(e)
 return this.checkSmartPipelineBodyEarlyErrors(e,n,t),this.parseSmartPipelineBodyInStyle(e,n,t,r)}},{key:"checkSmartPipelineBodyEarlyErrors",value:function(e,t,r){if(this.match(b.arrow))throw this.raise(this.state.start,'Unexpected arrow "=>" after pipeline body; arrow function in pipeline body must be parenthesized')
@@ -12608,18 +12603,20 @@ return this.state.inFSharpPipelineDirectBody=i,s}}]),t}(function(e){function t()
 if(e)switch(e.type){case"Identifier":case"ObjectPattern":case"ArrayPattern":case"AssignmentPattern":break
 case"ObjectExpression":e.type="ObjectPattern"
 for(var i=0,s=e.properties.length,a=s-1;i<s;i++){var o,l=e.properties[i],u=i===a
-this.toAssignableObjectExpressionProp(l,t,u),u&&"RestElement"===l.type&&(null==(o=e.extra)?void 0:o.trailingComma)&&this.raiseRestNotLast(e.extra.trailingComma)}break
+this.toAssignableObjectExpressionProp(l,t,u),u&&"RestElement"===l.type&&(null===(o=e.extra)||void 0===o?void 0:o.trailingComma)&&this.raiseRestNotLast(e.extra.trailingComma)}break
 case"ObjectProperty":this.toAssignable(e.value,t,r)
 break
 case"SpreadElement":this.checkToRestConversion(e),e.type="RestElement"
 var c=e.argument
 this.toAssignable(c,t,r)
 break
-case"ArrayExpression":e.type="ArrayPattern",this.toAssignableList(e.elements,t,r,null==(n=e.extra)?void 0:n.trailingComma)
+case"ArrayExpression":e.type="ArrayPattern",this.toAssignableList(e.elements,t,r,null===(n=e.extra)||void 0===n?void 0:n.trailingComma)
 break
 case"AssignmentExpression":"="!==e.operator&&this.raise(e.left.end,"Only '=' operator can be used for specifying default value."),e.type="AssignmentPattern",delete e.operator,this.toAssignable(e.left,t,r)
 break
-case"ParenthesizedExpression":e.expression=this.toAssignable(e.expression,t,r)}return e}},{key:"toAssignableObjectExpressionProp",value:function(e,t,r){if("ObjectMethod"===e.type){var n="get"===e.kind||"set"===e.kind?"Object pattern can't contain getter or setter":"Object pattern can't contain methods"
+case"ParenthesizedExpression":e.expression=this.toAssignable(e.expression,t,r)
+break
+case"MemberExpression":if(!t)break}return e}},{key:"toAssignableObjectExpressionProp",value:function(e,t,r){if("ObjectMethod"===e.type){var n="get"===e.kind||"set"===e.kind?"Object pattern can't contain getter or setter":"Object pattern can't contain methods"
 this.raise(e.key.start,n)}else"SpreadElement"!==e.type||r?this.toAssignable(e,t,"object destructuring pattern"):this.raiseRestNotLast(e.start)}},{key:"toAssignableList",value:function(e,t,r,n){var i=e.length
 if(i){var s=e[i-1]
 if(s&&"RestElement"===s.type)--i
@@ -13431,4 +13428,24 @@ if(62===t)return++this.state.pos,this.finishToken(_.jsxTagEnd)
 if((34===t||39===t)&&r===N.j_oTag)return this.jsxReadString(t)}return 60===t&&this.state.exprAllowed?(++this.state.pos,this.finishToken(_.jsxTagStart)):e.call(this,t)}})),e.extend("updateContext",(function(e){return function(t){if(this.match(_.braceL)){var r=this.curContext()
 r===N.j_oTag?this.state.context.push(N.braceExpression):r===N.j_expr?this.state.context.push(N.templateQuasi):e.call(this,t),this.state.exprAllowed=!0}else{if(!this.match(_.slash)||t!==_.jsxTagStart)return e.call(this,t)
 this.state.context.length-=2,this.state.context.push(N.j_cTag),this.state.exprAllowed=!1}}}))},t.parse=function(e,t){return new U(t,e).parse()},t.parseExpression=function(e,t){var r=new U(t,e)
-return r.options.strictMode&&(r.state.strict=!0),r.getExpression()},t.tokTypes=_}]])
+return r.options.strictMode&&(r.state.strict=!0),r.getExpression()},t.tokTypes=_},function(e,t,r){"use strict"
+Object.defineProperty(t,"__esModule",{value:!0}),function(e){for(var r in e)t.hasOwnProperty(r)||(t[r]=e[r])}(r(37))}]])
+var __ember_auto_import__=function(e){function t(t){for(var n,a,o=t[0],l=t[1],u=t[2],h=0,p=[];h<o.length;h++)a=o[h],i[a]&&p.push(i[a][0]),i[a]=0
+for(n in l)Object.prototype.hasOwnProperty.call(l,n)&&(e[n]=l[n])
+for(c&&c(t);p.length;)p.shift()()
+return s.push.apply(s,u||[]),r()}function r(){for(var e,t=0;t<s.length;t++){for(var r=s[t],n=!0,o=1;o<r.length;o++){var l=r[o]
+0!==i[l]&&(n=!1)}n&&(s.splice(t--,1),e=a(a.s=r[0]))}return e}var n={},i={0:0},s=[]
+function a(t){if(n[t])return n[t].exports
+var r=n[t]={i:t,l:!1,exports:{}}
+return e[t].call(r.exports,r,r.exports,a),r.l=!0,r.exports}a.m=e,a.c=n,a.d=function(e,t,r){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e
+if(4&t&&"object"==typeof e&&e&&e.__esModule)return e
+var r=Object.create(null)
+if(a.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)a.d(r,n,function(t){return e[t]}.bind(null,n))
+return r},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e}
+return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p=""
+var o=window.webpackJsonp_ember_auto_import_=window.webpackJsonp_ember_auto_import_||[],l=o.push.bind(o)
+o.push=t,o=o.slice()
+for(var u=0;u<o.length;u++)t(o[u])
+var c=l
+return s.push([39,2]),r()}({11:function(e,t){window._eai_r=require,window._eai_d=define},39:function(e,t,r){r(11),e.exports=r(40)},40:function(e,t,r){var n,i,s
+"undefined"!=typeof document&&(r.p=(n=document.querySelectorAll("script"))[n.length-1].src.replace(/\/[^/]*$/,"/")),e.exports=(i=_eai_d,s=_eai_r,window.emberAutoImportDynamic=function(e){return s("_eai_dyn_"+e)},i("ast-node-builder",[],(function(){return r(41)})),i("ember-template-recast",[],(function(){return r(44)})),i("recast",[],(function(){return r(67)})),i("recastBabel",[],(function(){return r(37)})),void i("recastBabylon",[],(function(){return r(100)})))},68:function(e,t){}})
