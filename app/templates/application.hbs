@@ -1,5 +1,5 @@
 <header>
-  <h1>ast-builder</h1>
+  <h1>AST-Builder</h1>
 
   <div class="parser_wrapper">
     <PowerSelect @selected={{language}} @options={{languages}} @onChange={{action (mut language)}} as |lang|>
@@ -13,7 +13,7 @@
   <div id="options">
     <p>DarkMode: <Input @type="checkbox" @click={{action "toggleDarkMode"}}/></p>
   </div>
-  <span class="label-text">{{parser}}: "{{parserVersion}}"</span>
+  <span class="label-text">{{parser}}: <strong>{{parserVersion}}</strong></span>
 </header>
 <main>
   <AstMaker 

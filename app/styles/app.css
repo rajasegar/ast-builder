@@ -18,7 +18,10 @@ header {
 }
 
 h1 {
-    margin: .25em 0;
+    font-size: 1.5em;
+    margin: .15em 0;
+    padding-left: 0.25em;
+    line-height: 2em;
   }
 
 nav ul {

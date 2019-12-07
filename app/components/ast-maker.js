@@ -69,7 +69,7 @@ export default Component.extend({
 
   nodeApi: computed("pseudoAst", function() {
     let str = this.get("pseudoAst").join("\n//-----------------------\n");
-    return recast.prettyPrint(recast.parse(str)).code || "";
+    return recast.prettyPrint(recast.parse(str), { tabWidth: 2 }).code || "";
   }),
 
   print: computed('pseudoAst', 'mode', function() {
