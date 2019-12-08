@@ -24,9 +24,10 @@ const modes = {
 export default Controller.extend({
   customize: service(),
   language: "Javascript",
-  parser: computed("language", function() {
-    return Object.keys(PARSERS[this.get("language")])[0];
-  }),
+  parser: "babel",
+  //parser: computed("language", function() {
+    //return Object.keys(PARSERS[this.get("language")])[0];
+  //}),
   parsers: computed("language", function() {
     return Object.keys(PARSERS[this.get("language")]);
   }),

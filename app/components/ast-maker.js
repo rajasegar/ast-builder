@@ -41,7 +41,7 @@ export default Component.extend({
       console.error(error); // eslint-disable-line
       ast = {};
     }
-    return JSON.stringify(ast);
+    return JSON.stringify(ast, null, 2);
   }),
 
   astBuilder: computed("ast", "mode", function() {
@@ -106,5 +106,6 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.set("jsonMode", { name: "javascript", json: true });
+    this.set("gutters", ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]);
   }
 });

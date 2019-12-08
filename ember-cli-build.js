@@ -24,7 +24,9 @@ module.exports = function(defaults) {
       addonFiles: [
         'fold/foldcode.js', 
         'fold/foldgutter.js',
-        'edit/matchbrackets.js'
+        'fold/foldgutter.css',
+        'edit/matchbrackets.js',
+        'fold/brace-fold.js'
       ]
     }
   });
