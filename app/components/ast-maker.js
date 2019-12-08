@@ -11,9 +11,12 @@ import recastBabylon from "recastBabylon";
 const j = recast.types.builders; // eslint-disable-line
 const b = etr.builders; // eslint-disable-line
 
+function filterAstNodes(key, value) {
+  return ["loc","tokens"].includes(key) ? undefined : value;
+}
+
 export default Component.extend({
   customize: service(),
-  //code: _code,
   theme: computed.reads("customize.theme"),
   parse: computed("parser", function() {
     let parse = recast.parse;
@@ -41,7 +44,7 @@ export default Component.extend({
       console.error(error); // eslint-disable-line
       ast = {};
     }
-    return JSON.stringify(ast, null, 2);
+    return JSON.stringify(ast, filterAstNodes, 2);
   }),
 
   astBuilder: computed("ast", "mode", function() {
@@ -108,4 +111,5 @@ export default Component.extend({
     this.set("jsonMode", { name: "javascript", json: true });
     this.set("gutters", ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]);
   }
+
 });
