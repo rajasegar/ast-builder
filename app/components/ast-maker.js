@@ -1,10 +1,10 @@
 import Component from "@ember/component";
 import recast from "recast";
 import etr from "ember-template-recast";
-import { buildAST } from "ast-node-builder";
+import { buildAST, glimmer as hbsBuilder } from "ast-node-builder";
 import { computed } from "@ember/object";
 import { inject as service } from "@ember/service";
-import hbsBuilder from "../utils/template-recast-builders";
+//import { glimmer as hbsBuilder } from "../utils/template-recast-builders";
 import recastBabel from "recastBabel";
 import recastBabylon from "recastBabylon";
 
