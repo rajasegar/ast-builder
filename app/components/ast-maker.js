@@ -1,7 +1,7 @@
 import Component from "@ember/component";
 import recast from "recast";
 import etr from "ember-template-recast";
-import { buildAST, glimmer as hbsBuilder } from "ast-node-builder";
+import { buildAST, es6, glimmer as hbsBuilder } from "ast-node-builder";
 import { computed } from "@ember/object";
 import { inject as service } from "@ember/service";
 import recastBabel from "recastBabel";
@@ -46,11 +46,14 @@ export default Component.extend({
     return JSON.stringify(ast, filterAstNodes, 2);
   }),
 
-  astBuilder: computed("ast", "mode", function() {
+  astBuilder: computed("ast", "parser", function() {
     let _builder = buildAST;
-    let _mode = this.get("mode");
-    switch (_mode) {
-      case "handlebars":
+    let _parser = this.get("parser");
+    switch (_parser) {
+      case 'babel':
+        _builder = es6.buildAST;
+        break;
+      case 'ember-template-recast':
         _builder = hbsBuilder.buildAST;
         break;
     }
