@@ -1,5 +1,6 @@
-<div class="grid-row">
-  <div class="grid-col">
+<div {{split-view sizes=(array 50 50)}}>
+  <div {{split-view sizes=(array 50 50) direction="vertical"}}>
+    <div>
     {{ivy-codemirror 
       value=code 
       options=(hash 
@@ -9,7 +10,21 @@
       theme=theme)
       valueUpdated=(action (mut code))
     }}
-    {{ivy-codemirror 
+    </div>
+    <div>
+
+    {{ivy-codemirror value=nodeApi options=(hash 
+      lineNumbers=true 
+      mode="javascript" 
+      theme=theme 
+      matchBrackets=true
+      autoIndent=true )}}
+    
+    </div>
+  </div>
+  <div {{split-view sizes=(array 50 50) direction="vertical"}}>
+    <div>
+{{ivy-codemirror 
       value=ast 
       options=(hash 
       mode=jsonMode 
@@ -19,17 +34,12 @@
       lineWrapping=true
       gutters=gutters
       )}}
-  </div>
-  <div class="grid-col">
-    {{ivy-codemirror value=nodeApi options=(hash 
-      lineNumbers=true 
-      mode="javascript" 
-      theme=theme 
-      matchBrackets=true
-      autoIndent=true )}}
+    </div>
+    <div>
     {{ivy-codemirror value=output options=(hash 
       lineNumbers=true 
       mode=mode 
       theme=theme )}}
+    </div>
   </div>
 </div>
