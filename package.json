@@ -55,7 +55,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
-    "ast-node-builder": "^3.0.6",
+    "ast-node-builder": "^3.0.8",
     "ember-template-recast": "^3.2.8",
     "recast": "^0.18.5"
   }
