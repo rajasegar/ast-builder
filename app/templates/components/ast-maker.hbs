@@ -1,5 +1,5 @@
-<div {{split-view sizes=(array 50 50)}}>
-  <div {{split-view sizes=(array 50 50) direction="vertical"}}>
+<SplitViewHorizontal>
+  <SplitViewVertical>
     <div>
     {{ivy-codemirror 
       value=code 
@@ -21,8 +21,8 @@
       autoIndent=true )}}
     
     </div>
-  </div>
-  <div {{split-view sizes=(array 50 50) direction="vertical"}}>
+  </SplitViewVertical>
+  <SplitViewVertical>
     <div>
 {{ivy-codemirror 
       value=ast 
@@ -41,5 +41,5 @@
       mode=mode 
       theme=theme )}}
     </div>
-  </div>
-</div>
+  </SplitViewVertical>
+</SplitViewHorizontal>
