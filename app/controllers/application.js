@@ -1,5 +1,4 @@
 import Controller from "@ember/controller";
-import { inject as service } from "@ember/service";
 import { computed } from "@ember/object";
 import ENV from "ast-builder/config/environment";
 import PARSERS from 'ast-builder/constants/parsers';
@@ -22,7 +21,6 @@ const modes = {
 };
 
 export default Controller.extend({
-  customize: service(),
   language: "Javascript",
   parser: "babel",
   //parser: computed("language", function() {
@@ -56,10 +54,4 @@ export default Controller.extend({
     this._super(...arguments);
     this.set("languages", Object.keys(PARSERS));
   },
-
-  actions: {
-    toggleDarkMode() {
-      this.customize.toggleDarkMode();
-    }
-  }
 });
