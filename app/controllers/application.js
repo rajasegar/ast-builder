@@ -4,12 +4,7 @@ import ENV from "ast-builder/config/environment";
 import PARSERS from 'ast-builder/constants/parsers';
 
 // Sample code to test
-const jscode = `
-const profile = <div>
-    <img src="avatar.png" className="profile" />
-    <h3>{[user.firstName, user.lastName].join(' ')}</h3>
-  </div>;
-`;
+const jscode = `foo.bar('hello', 1)`;
 
 const hbscode = `{{#common/accordion-component data-test-accordion as |accordion|}}
   block
