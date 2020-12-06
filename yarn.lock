@@ -1868,10 +1868,10 @@ assign-symbols@^1.0.0:
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
   integrity sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
 
-ast-node-builder@^3.0.14:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/ast-node-builder/-/ast-node-builder-3.0.14.tgz#8b82bda30f5c0f059e12de71f43539c53a70a58d"
-  integrity sha512-GPMwVse2n72fH9PP7H3v2t838SMQIIUx6BQDYF1FxxlAwSs4DdeOlLRszzsnFnLxjEisCzBUKnTe5uCpztdyjA==
+ast-node-builder@^3.0.15:
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/ast-node-builder/-/ast-node-builder-3.0.15.tgz#df8f1d0d4e85a08c39566dff1cffe2103055af41"
+  integrity sha512-c7moyt6QUvtSj8tRyBO6kF0mFmiJWhpDTU2n3fNSv/ZXbbyc8jh7BGiHYirYW1E66K8zLZZiiZ6To5vhpe9vgQ==
   dependencies:
     ember-template-recast "^3.3.0"
 

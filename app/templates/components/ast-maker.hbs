@@ -1,45 +1,45 @@
 <SplitViewHorizontal>
   <SplitViewVertical>
     <div>
-    {{ivy-codemirror 
-      value=code 
-      options=(hash 
-      lineNumbers=true 
-      mode=mode 
-      matchBrackets=true
-      theme=theme)
-      valueUpdated=(action (mut code))
-    }}
+      {{ivy-codemirror 
+        value=code 
+        options=(hash 
+        lineNumbers=true 
+        mode=mode 
+        matchBrackets=true
+        theme=theme)
+        valueUpdated=(action (mut code))
+      }}
     </div>
     <div>
 
-    {{ivy-codemirror value=nodeApi options=(hash 
-      lineNumbers=true 
-      mode="javascript" 
-      theme=theme 
-      matchBrackets=true
-      autoIndent=true )}}
+      {{ivy-codemirror value=nodeApi options=(hash 
+        lineNumbers=true 
+        mode="javascript" 
+        theme=theme 
+        matchBrackets=true
+        autoIndent=true )}}
     
     </div>
   </SplitViewVertical>
   <SplitViewVertical>
     <div>
-{{ivy-codemirror 
-      value=ast 
-      options=(hash 
-      mode=jsonMode 
-      theme=theme 
-      foldGutter=true 
-      lineNumbers=true
-      lineWrapping=true
-      gutters=gutters
+      {{ivy-codemirror 
+        value=ast 
+        options=(hash 
+        mode=jsonMode 
+        theme=theme 
+        foldGutter=true 
+        lineNumbers=true
+        lineWrapping=true
+        gutters=gutters
       )}}
     </div>
     <div>
-    {{ivy-codemirror value=output options=(hash 
-      lineNumbers=true 
-      mode=mode 
-      theme=theme )}}
+      {{ivy-codemirror value=output options=(hash 
+        lineNumbers=true 
+        mode=mode 
+        theme=theme )}}
     </div>
   </SplitViewVertical>
 </SplitViewHorizontal>
