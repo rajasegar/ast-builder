@@ -11021,6 +11021,8 @@ case"CallExpression":n="j.arrowFunctionExpression(\n      [".concat(B(t),"],\n  
 break
 case"NumericLiteral":n="j.arrowFunctionExpression(\n      [".concat(B(t),"],\n      ").concat(h(r),"\n      )")
 break
+case"Identifier":n="j.arrowFunctionExpression(\n      [".concat(B(t),"],\n      ").concat(i(r),"\n      )")
+break
 default:console.log("ES6::arrowFunctionExpression => ",r.type)}return n}function B(e){return e.map((function(e){switch(e.type){case"Identifier":return i(e)
 case"SpreadElement":return U(e)
 case"FunctionExpression":return z(e)
@@ -11140,7 +11142,7 @@ return"j.importDefaultSpecifier(\n    ".concat(i(t),"\n  )")}(e)
 case"ImportNamespaceSpecifier":return function(e){var t=e.local
 return"j.importNamespaceSpecifier(\n    ".concat(i(t),"\n  )")}(e)}})).join(",")
 return"j.importDeclaration(\n           [".concat(r,"],\n    ").concat(c(t),"\n                  );")}function te(e){var t=e.properties.map((function(e){return re(e)}))
-return"j.objectExpression([".concat(t.join(","),"])")}function re(e){var t=e.key,r=e.value,n=e.computed,s=e.shorthand,a=(e.decorators,"")
+return"j.objectExpression([".concat(t.join(","),"])")}function re(e){var t=e.key,r=e.value,n=e.computed,s=e.shorthand,a=""
 switch(e.type){case"ObjectMethod":a="j.objectMethod(\n        '".concat(e.kind,"',\n        ").concat(i(t),",\n        [],\n        j.blockStatement([").concat(L(e.body.body),"]),\n        false\n    )")
 break
 case"ObjectProperty":a="j.objectProperty(\n        ".concat(i(t),",\n        ").concat(I(r),",\n        ").concat(n,",\n        ").concat(s,"\n    )")
