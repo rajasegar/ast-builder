@@ -2,23 +2,23 @@
   <div class="grid-row">
     <div class="editor">
       {{ivy-codemirror 
-        value=code 
+        value=this.code 
         options=(hash 
         lineNumbers=true 
-        mode=mode 
-        matchBrackets=true
-        theme=theme)
-        valueUpdated=(action (mut code))
+        mode=this.mode 
+        matchBrackets=true 
+        theme=this.theme) 
+        valueUpdated=(action (mut this.code))
       }}
     </div>
   <div class="gutter"></div>
     <div class="editor">
 
-      {{ivy-codemirror value=nodeApi options=(hash 
+      {{ivy-codemirror value=this.nodeApi options=(hash 
         lineNumbers=true 
         mode="javascript" 
-        theme=theme 
-        matchBrackets=true
+        theme=this.theme 
+        matchBrackets=true 
         autoIndent=true )}}
     
     </div>
@@ -27,22 +27,22 @@
   <div class="grid-row">
     <div class="editor">
       {{ivy-codemirror 
-        value=ast 
+        value=this.ast 
         options=(hash 
-        mode=jsonMode 
-        theme=theme 
+        mode=this.jsonMode 
+        theme=this.theme 
         foldGutter=true 
-        lineNumbers=true
-        lineWrapping=true
-        gutters=gutters
+        lineNumbers=true 
+        lineWrapping=true 
+        gutters=this.gutters
       )}}
     </div>
   <div class="gutter"></div>
     <div class="editor">
-      {{ivy-codemirror value=output options=(hash 
+      {{ivy-codemirror value=this.output options=(hash 
         lineNumbers=true 
-        mode=mode 
-        theme=theme )}}
+        mode=this.mode 
+        theme=this.theme )}}
     </div>
   </div>
 </div>

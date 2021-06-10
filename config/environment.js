@@ -1,7 +1,7 @@
 'use strict';
 const pkg = require('../package.json');
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'ast-builder',
     environment,
@@ -14,15 +14,15 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    pkg
+    pkg,
   };
 
   if (environment === 'development') {
