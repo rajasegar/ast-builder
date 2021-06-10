@@ -1,6 +1,6 @@
-<SplitViewHorizontal>
-  <SplitViewVertical>
-    <div>
+<div class="grid-col">
+  <div class="grid-row">
+    <div class="editor">
       {{ivy-codemirror 
         value=code 
         options=(hash 
@@ -11,7 +11,8 @@
         valueUpdated=(action (mut code))
       }}
     </div>
-    <div>
+  <div class="gutter"></div>
+    <div class="editor">
 
       {{ivy-codemirror value=nodeApi options=(hash 
         lineNumbers=true 
@@ -21,9 +22,10 @@
         autoIndent=true )}}
     
     </div>
-  </SplitViewVertical>
-  <SplitViewVertical>
-    <div>
+  </div>
+  <div class="gutter"></div>
+  <div class="grid-row">
+    <div class="editor">
       {{ivy-codemirror 
         value=ast 
         options=(hash 
@@ -35,11 +37,12 @@
         gutters=gutters
       )}}
     </div>
-    <div>
+  <div class="gutter"></div>
+    <div class="editor">
       {{ivy-codemirror value=output options=(hash 
         lineNumbers=true 
         mode=mode 
         theme=theme )}}
     </div>
-  </SplitViewVertical>
-</SplitViewHorizontal>
+  </div>
+</div>
