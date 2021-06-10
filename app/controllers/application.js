@@ -13,26 +13,25 @@ const hbscode = `{{#common/accordion-component data-test-accordion as |accordion
 {{/common/accordion-component}}`;
 
 const modes = {
-  Javascript: 'javascript',
+  JavaScript: 'javascript',
   Handlebars: 'handlebars',
 };
 
 export default class ApplicationController extends Controller {
-  @tracked language = 'Javascript';
-  @tracked parser = 'babel';
+  @tracked language = 'JavaScript';
+  @tracked parser = 'recast';
 
   get parsers() {
-    return Object.keys(PARSERS[this.language]);
+    return PARSERS.find(p => p.name === this.language).parsers.map(p => p.name);
   }
 
   get parserVersion() {
-    let _lang = this.language;
-    let _parsers = PARSERS[_lang];
-    return _parsers[this.parser].version;
+    let _lang = PARSERS.find(l => l.name === this.language);
+    let _parser = _lang.parsers.find(p => p.name === this.parser);
+    return _parser.version;
   }
 
   get emberVersion() {
-    debugger;
     return ENV.pkg.devDependencies['ember-source'];
   }
 
@@ -45,7 +44,7 @@ export default class ApplicationController extends Controller {
   }
 
   get sampleCode() {
-    if (this.language === 'Javascript') {
+    if (this.language === 'JavaScript') {
       return jscode;
     } else {
       return hbscode;
@@ -54,14 +53,15 @@ export default class ApplicationController extends Controller {
 
   constructor() {
     super(...arguments);
-    this.languages = Object.keys(PARSERS);
+    this.languages = PARSERS.map(p => p.name);
   }
 
-  @action updateLanguage(lang) {
-    this.language = lang;
+  @action updateLanguage(evt) {
+    this.language = evt.target.value;
+    this.parser = PARSERS.find(l => l.name === this.language).parsers[0].name; 
   }
 
-  @action updateParser(parser) {
-    this.parser = parser;
+  @action updateParser(evt) {
+    this.parser = evt.target.value;
   }
 }

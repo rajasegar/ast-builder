@@ -26,3 +26,8 @@ header {
 .CodeMirror {
   height: 100%;
 }
+
+select {
+  height: 30px;
+  margin: 10px;
+}

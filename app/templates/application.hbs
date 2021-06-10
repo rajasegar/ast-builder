@@ -2,24 +2,17 @@
   <h1>AST-Builder</h1>
 
   <div class="parser_wrapper">
-    <select {{ on 'change' this.updateLanguage}} aria-label="Language">
+    <select {{ on 'change' this.updateLanguage }} aria-label="Language">
       {{#each this.languages as |lang|}}
-        <option>{{lang}}</option>
+        <option value={{lang}}>{{lang}}</option>
       {{/each}}
     </select>
-    {{!--<PowerSelect @selected={{this.language}} @options={{this.languages}} @onChange={{action (mut this.language)}} as |lang|>
-      {{lang}}
-    </PowerSelect>
-    --}}
     <span id="label-parser" class="label-text">Parser:</span>
     <select {{ on 'change' this.updateParser}} aria-labelledby="label-parser">
       {{#each this.parsers as |parser|}}
         <option value={{parser}}>{{parser}}</option>
       {{/each}}
     </select>
-    {{!--<PowerSelect @selected={{this.parser}} @options={{this.parsers}} @onChange={{action (mut this.parser)}} as |parser|>
-      {{parser}}
-    </PowerSelect>--}}
   </div>
   <div id="options">
     <DarkModeToggle/>
