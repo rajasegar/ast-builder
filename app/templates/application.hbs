@@ -2,34 +2,33 @@
   <h1>AST-Builder</h1>
 
   <div class="parser_wrapper">
-    <PowerSelect @selected={{language}} @options={{languages}} @onChange={{action (mut language)}} as |lang|>
+    <PowerSelect @selected={{this.language}} @options={{this.languages}} @onChange={{action (mut this.language)}} as |lang|>
       {{lang}}
     </PowerSelect>
     <span class="label-text">Parser:</span>
-    <PowerSelect @selected={{parser}} @options={{parsers}} @onChange={{action (mut parser)}} as |parser|>
+    <PowerSelect @selected={{this.parser}} @options={{this.parsers}} @onChange={{action (mut this.parser)}} as |parser|>
       {{parser}}
     </PowerSelect>
   </div>
   <div id="options">
     <DarkModeToggle/>
   </div>
-  <span class="label-text">{{parser}}: <strong>{{parserVersion}}</strong></span>
+  <span class="label-text">{{this.parser}}: <strong>{{this.parserVersion}}</strong></span>
 </header>
 <main>
   <AstMaker 
-  @mode={{mode}} 
-  @code={{sampleCode}}
-  @parser={{parser}}>
+  @mode={{this.mode}} 
+  @code={{this.sampleCode}} 
+  @parser={{this.parser}}>
   </AstMaker>
 </main>
 <footer>
   <p>
-    Built with <a href="https://emberjs.com">Ember {{emberVersion}}</a> |
-    <a href="https://github.com/rajasegar/ast-node-builder">ast-node-builder:  {{nodeBuilderVersion}}</a> |
+    Built with <a href="https://emberjs.com">Ember {{this.emberVersion}}</a> |
+    <a href="https://github.com/rajasegar/ast-node-builder">ast-node-builder:  {{this.nodeBuilderVersion}}</a> |
     <a href="https://rajasegar.github.io/ast-finder">AST-Finder</a> |
     <a href="https://rajasegar.github.io/jarvis">JARVIS</a> |
     <a href="https://github.com/rajasegar/ast-builder">Github</a> |
     <a href="https://github.com/rajasegar/ast-builder/issues">Report issues</a> 
   </p>
 </footer>
-
