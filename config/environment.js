@@ -1,4 +1,5 @@
 'use strict';
+const pkg = require('../package.json');
 
 module.exports = function (environment) {
   let ENV = {
@@ -21,6 +22,7 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    pkg,
   };
 
   if (environment === 'development') {
