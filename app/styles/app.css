@@ -31,3 +31,8 @@ select {
   height: 30px;
   margin: 10px;
 }
+
+.CodeMirror-linenumber {
+  color: #444;
+}
+
