@@ -34,5 +34,9 @@ jobs:
       run: yarn install
     - name: Build
       run: yarn build
-    - name: Release
-      run: yarn ghpages
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist
