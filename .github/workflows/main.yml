@@ -35,4 +35,4 @@ jobs:
     - name: Build
       run: yarn build
     - name: Release
-      run: yarn gh-pages
+      run: yarn ghpages
