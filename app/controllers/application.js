@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
 import ENV from 'ast-builder/config/environment';
 import PARSERS from 'ast-builder/constants/parsers';
 import { action } from '@ember/object';
@@ -22,12 +21,14 @@ export default class ApplicationController extends Controller {
   @tracked parser = 'recast';
 
   get parsers() {
-    return PARSERS.find(p => p.name === this.language).parsers.map(p => p.name);
+    return PARSERS.find((p) => p.name === this.language).parsers.map(
+      (p) => p.name
+    );
   }
 
   get parserVersion() {
-    let _lang = PARSERS.find(l => l.name === this.language);
-    let _parser = _lang.parsers.find(p => p.name === this.parser);
+    let _lang = PARSERS.find((l) => l.name === this.language);
+    let _parser = _lang.parsers.find((p) => p.name === this.parser);
     return _parser.version;
   }
 
@@ -53,12 +54,12 @@ export default class ApplicationController extends Controller {
 
   constructor() {
     super(...arguments);
-    this.languages = PARSERS.map(p => p.name);
+    this.languages = PARSERS.map((p) => p.name);
   }
 
   @action updateLanguage(evt) {
     this.language = evt.target.value;
-    this.parser = PARSERS.find(l => l.name === this.language).parsers[0].name; 
+    this.parser = PARSERS.find((l) => l.name === this.language).parsers[0].name;
   }
 
   @action updateParser(evt) {

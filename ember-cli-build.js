@@ -6,29 +6,29 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
     autoImport: {
-          alias: {
-            'recastBabel': 'recast/parsers/babel',
-            'recastBabylon': 'recast/parsers/babylon',
-            'recastFlow': 'recast/parsers/flow',
-            'recastTypeScript': 'recast/parsers/typescript'
-          },
-      webpack: { 
-        node: { 
-          path: true 
-        }
-      }
+      alias: {
+        recastBabel: 'recast/parsers/babel',
+        recastBabylon: 'recast/parsers/babylon',
+        recastFlow: 'recast/parsers/flow',
+        recastTypeScript: 'recast/parsers/typescript',
+      },
+      webpack: {
+        node: {
+          path: true,
+        },
+      },
     },
     codemirror: {
       themes: ['solarized'],
       modes: ['javascript', 'handlebars'],
       addonFiles: [
-        'fold/foldcode.js', 
+        'fold/foldcode.js',
         'fold/foldgutter.js',
         'fold/foldgutter.css',
         'edit/matchbrackets.js',
-        'fold/brace-fold.js'
-      ]
-    }
+        'fold/brace-fold.js',
+      ],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
