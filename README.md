@@ -1,5 +1,8 @@
 # ast-builder
 
+**WARNING:**
+This repository is moved here https://github.com/rajasegar/ast-tooling/tree/master/apps/ast-builder
+
 Build your Abstract Syntax Trees (AST) directly by writing code.
 Simply type in your code and get the right [jscodeshift](https://github.com/facebook/jscodeshift) api to build your AST.
 
